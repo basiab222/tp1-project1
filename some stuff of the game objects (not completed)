@@ -1,0 +1,148 @@
+public class UCMShip {
+    private int column;
+    private int row;
+    private int resistance;
+
+    // Constructor
+    public UCMShip(int initialColumn, int initialRow) {
+        this.column = initialColumn;
+        this.row = initialRow;
+        this.resistance = 3;
+    }
+
+    // Getter 
+    public int getColumn() {
+        return column;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    // Other methods (add more)
+
+    public void moveHorizontally(int amount) {
+        // Implement horizontal movement logic
+    }
+
+    public void fireLaser() {
+        // Implement logic to fire a laser
+    }
+
+    public int getResistance() {
+        return resistance;
+    }
+    
+    // Other methods specific to UCMShip
+}
+
+
+public class RegularAlien {
+    // Private attributes
+    private int column;
+    private int row;
+    private int resistance;
+
+    // Constructor
+    public RegularAlien(int initialColumn, int initialRow) {
+        this.column = initialColumn;
+        this.row = initialRow;
+        this.resistance = 2;
+    }
+
+    // Getter methods
+    public int getColumn() {
+        return column;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    // Other methods
+    public void moveHorizontally(int amount) {
+        // Implement horizontal movement logic
+    }
+
+    public int getResistance() {
+        return resistance;
+    }
+
+    // Other methods specific to RegularAlien
+}
+
+
+
+public class DestroyerAlien {
+    // Private attributes
+    private int column;
+    private int row;
+    private int resistance;
+
+    // Constructor
+    public DestroyerAlien(int initialColumn, int initialRow) {
+        this.column = initialColumn;
+        this.row = initialRow;
+        this.resistance = 1;
+    }
+
+    // Getter methods
+    public int getColumn() {
+        return column;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    // Other methods
+    public void moveHorizontally(int amount) {
+        // Implement horizontal movement logic
+    }
+
+    public void dropBomb() {
+        // Implement logic to drop a bomb
+    }
+
+    public int getResistance() {
+        return resistance;
+    }
+
+    // Other methods specific to DestroyerAlien
+}
+
+
+
+public class UFO {
+    // Private attributes
+    private int column;
+    private int row;
+    private int resistance;
+
+    // Constructor
+    public UFO(int initialColumn, int initialRow) {
+        this.column = initialColumn;
+        this.row = initialRow;
+        this.resistance = 1;
+    }
+
+    // Getter methods
+    public int getColumn() {
+        return column;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    // Other methods
+    public void moveHorizontally(int amount) {
+        // Implement horizontal movement logic
+    }
+
+    public int getResistance() {
+        return resistance;
+    }
+
+    // Other methods specific to UFO
+}
