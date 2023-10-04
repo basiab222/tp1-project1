@@ -13,7 +13,7 @@ private int column;
     private int resistance;
 
     // Constructor
-    public UFO(int initialColumn, int initialRow) {
+    public Ufo(int initialColumn, int initialRow) {
         this.column = initialColumn;
         this.row = initialRow;
         this.resistance = 1;

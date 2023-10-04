@@ -43,18 +43,8 @@ public class Controller {
 	 * Runs the game logic
 	 */
 	public void run() {
-		for (int i = 0; i < 17; i++) {
-			for (int j = 0; j < 71; j++) {
-				if (i%2 == 0){
-					System.out.print("─");
-				} else if (j%7 == 0){
-					System.out.print("|");
-				} else{
-					System.out.print(" ");
-				}
-			}
-			System.out.println();
-		}
+		GamePrinter gamePrinter = new GamePrinter(game);
+		System.out.println(gamePrinter);
 	}
 
 	/**

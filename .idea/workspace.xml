@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMSpaceship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/some stuff of the game objects (not completed)" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/control/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMSpaceship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMSpaceship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Ufo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Ufo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="barbara" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -73,11 +79,23 @@
       <workItem from="1695826881040" duration="94000" />
       <workItem from="1695827010684" duration="274000" />
       <workItem from="1696248745445" duration="623000" />
-      <workItem from="1696429703672" duration="3036000" />
+      <workItem from="1696429703672" duration="3967000" />
     </task>
+    <task id="LOCAL-00001" summary="board game">
+      <created>1696433074166</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696433074166</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="board game" />
+    <option name="LAST_COMMIT_MESSAGE" value="board game" />
   </component>
 </project>

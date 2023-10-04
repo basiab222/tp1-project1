@@ -21,6 +21,18 @@ public class UCMSpaceship {
         return row;
     }
 
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public void setResistance(int resistance) {
+        this.resistance = resistance;
+    }
+
     // Other methods (add more)
 
     public void moveHorizontally(int amount) {

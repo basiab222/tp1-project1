@@ -28,10 +28,9 @@ public class Game {
 		//TODO fill your code
 		return 0;
 	}
-
 	public String positionToString(int col, int row) {
-		//TODO fill your code
-		return null;
+		String s = "";
+		return s;
 	}
 
 	public boolean playerWin() {
