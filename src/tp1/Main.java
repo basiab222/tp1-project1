@@ -11,7 +11,6 @@ import static tp1.view.Messages.error;
 
 
 public class Main {
-
 	/**
 	 * Show application help message
 	 */
@@ -20,7 +19,6 @@ public class Main {
 		System.out.println(Messages.USAGE_LEVEL_PARAM);
 		System.out.println(Messages.USAGE_SEED_PARAM);
 	}
-
 	/**
 	 * SpaceInvaders entry point
 	 * 
@@ -54,6 +52,7 @@ public class Main {
 					Game game = new Game(level, seed);
 					Scanner scanner = new Scanner(System.in);
 					Controller controller = new Controller(game, scanner);
+
 					controller.run();
 		
 				} catch (NumberFormatException nfe) {

@@ -1,5 +1,7 @@
 package tp1.logic;
 
+import tp1.logic.gameobjects.UCMSpaceship;
+
 import java.util.Random;
 
 // TODO implementarlo
@@ -9,14 +11,29 @@ public class Game {
 	public static final int DIM_Y = 8;
 
 	//TODO fill your code
+	private UCMSpaceship ucmShip;
 
 	public Game(Level level, long seed) {
 		//TODO fill your code
+		ucmShip = new UCMSpaceship(4,DIM_Y - 1);
+
 	}
 
 	public String stateToString() {
 		//TODO fill your code
-		return null;
+		StringBuilder sb = new StringBuilder();
+
+		for (int row = 0; row < DIM_Y; row++){
+			for (int col = 0; col < DIM_X; col++){
+				if (ucmShip.getRow() == row && ucmShip.getColumn() == col){
+					sb.append("^__^");
+				} else{
+					sb.append(" ");
+				}
+			}
+			sb.append("\n");
+		}
+		return sb.toString();
 	}
 
 	public int getCycle() {

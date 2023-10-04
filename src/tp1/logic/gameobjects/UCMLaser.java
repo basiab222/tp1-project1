@@ -10,11 +10,71 @@ import tp1.logic.Position;
  *
  */
 public class UCMLaser {
-	
+	private int row;
+	private int column;
+	private int life;
+	private DestroyerAlien launcher; //reference to the destroyer ship that launched the bomb
+
 	//TODO fill your code
 	private Move dir;
 	private Game game;
 
+	public UCMLaser(int row, int column, DestroyerAlien launcher, Move dir, Game game) {
+		this.row = row;
+		this.column = column;
+		this.life = 1;
+		this.launcher = launcher;
+		this.dir = dir;
+		this.game = game;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public void setRow(int row) {
+		this.row = row;
+	}
+
+	public int getColumn() {
+		return column;
+	}
+
+	public void setColumn(int column) {
+		this.column = column;
+	}
+
+	public int getLife() {
+		return life;
+	}
+
+	public void setLife(int life) {
+		this.life = life;
+	}
+
+	public DestroyerAlien getLauncher() {
+		return launcher;
+	}
+
+	public void setLauncher(DestroyerAlien launcher) {
+		this.launcher = launcher;
+	}
+
+	public Move getDir() {
+		return dir;
+	}
+
+	public void setDir(Move dir) {
+		this.dir = dir;
+	}
+
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
 
 	/**
 	 *  Method called when the laser disappears from the board
