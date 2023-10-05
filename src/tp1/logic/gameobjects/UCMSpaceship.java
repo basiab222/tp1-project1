@@ -1,5 +1,7 @@
 package tp1.logic.gameobjects;
 
+import tp1.logic.Move;
+
 public class UCMSpaceship {
     private int column;
     private int row;
@@ -40,7 +42,9 @@ public class UCMSpaceship {
     }
 
     public void fireLaser() {
-        // Implement logic to fire a laser
+        int laserRow = this.row - 1;
+        int laserCol = this.column;
+
     }
 
     public int getResistance() {
