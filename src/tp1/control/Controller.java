@@ -43,8 +43,46 @@ public class Controller {
 	 * Runs the game logic
 	 */
 	public void run() {
+		boolean gameRunning = true;
+
 		GamePrinter gamePrinter = new GamePrinter(game);
 		System.out.println(gamePrinter);
+
+		while (gameRunning) {
+			System.out.println(gamePrinter);
+			String[] input = prompt();
+
+			if (input.length > 0) {
+				switch (input[0]) {
+					case "m":
+						if (input.length > 1) {
+							String direction = input[1].toLowerCase();
+							Move move = Move.NONE; // Default to no movement
+
+							if ("left".equals(direction)) {
+								move = Move.LEFT;
+							} else if ("lleft".equals(direction)) {
+								move = Move.LLEFT;
+							} else if ("right".equals(direction)) {
+								move = Move.RIGHT;
+							} else if ("rright".equals(direction)) {
+								move = Move.RRIGHT;
+							}
+
+							game.moveUCMShip(move.getX(), move.getY());
+						}
+						break;
+					case "n":
+						// Skip ship movement for this cycle
+						break;
+					// Handle other commands here
+					case "e":
+						gameRunning = false; // Exit the game
+						break;
+				}
+			}
+
+		}
 	}
 
 	/**
