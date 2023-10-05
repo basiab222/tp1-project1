@@ -6,7 +6,7 @@ import tp1.logic.Position;
 
 /**
  * 
- * Class that represents the laser fired by {@link UCMShip}
+ * Class that represents the laser fired by {@link UCMSpaceship}
  *
  */
 public class UCMLaser {
