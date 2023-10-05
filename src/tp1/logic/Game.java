@@ -1,42 +1,47 @@
 package tp1.logic;
 
 import tp1.logic.gameobjects.UCMSpaceship;
+import tp1.view.Messages;
 
 import java.util.Random;
 
 // TODO implementarlo
 public class Game {
-
 	public static final int DIM_X = 9;
 	public static final int DIM_Y = 8;
 
 	//TODO fill your code
 	private UCMSpaceship ucmShip;
-
 	public Game(Level level, long seed) {
 		//TODO fill your code
-		ucmShip = new UCMSpaceship(4,DIM_Y - 1);
-
+		ucmShip = new UCMSpaceship(DIM_X / 2,DIM_Y-1);
 	}
 
-	public String stateToString() {
-		//TODO fill your code
-		StringBuilder sb = new StringBuilder();
+	public UCMSpaceship getUcmShip() {
+		return ucmShip;
+	}
 
-		for (int row = 0; row < DIM_Y; row++){
-			for (int col = 0; col < DIM_X; col++){
-				if (ucmShip.getRow() == row && ucmShip.getColumn() == col){
-					sb.append("^__^");
-				} else{
-					sb.append(" ");
-				}
-			}
-			sb.append("\n");
+	public String stateToString() { //THIS METHOD IS RETURNING THE STUFF BEFORE THE REMAINING ALIENS LINE, SO NEED TO FIX THAT BEFORE ADDING THE SHIP
+		return null;
+	}
+
+	public void moveUCMShip(int x, int y) {
+		int newColumn = ucmShip.getColumn() + x;
+		int newRow = ucmShip.getRow() + y;
+
+		// Check if the new position is within the game board boundaries
+		if (isValidPosition(newColumn, newRow)) {
+			ucmShip.setColumn(newColumn);
+			ucmShip.setRow(newRow);
 		}
-		return sb.toString();
 	}
 
-	public int getCycle() {
+	// Method to check if a position is within the game board boundaries
+	private boolean isValidPosition(int column, int row) {
+		return column >= 0 && column < DIM_X && row >= 0 && row < DIM_Y;
+	}
+
+public int getCycle() {
 		//TODO fill your code
 		return 0;
 	}
@@ -46,8 +51,15 @@ public class Game {
 		return 0;
 	}
 	public String positionToString(int col, int row) {
-		String s = "";
-		return s;
+		//String s = "";
+
+		if (ucmShip.getRow() == row && ucmShip.getColumn() == col) {
+			return Messages.UCMSHIP_SYMBOL; // Display the spaceship symbol
+		} else {
+			// Add logic to display other game elements (e.g., aliens, laser, etc.)
+			return " "; // Empty cell
+		}
+		//return s;
 	}
 
 	public boolean playerWin() {
