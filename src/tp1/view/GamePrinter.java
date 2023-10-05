@@ -37,7 +37,7 @@ public class GamePrinter {
 		/* @formatter:off */
 		buffer
 		.append(Messages.NUMBER_OF_CYCLES).append(SPACE).append(game.getCycle()).append(NEW_LINE)
-		.append(game.stateToString())
+				.append(game.stateToString()) //why is it here??
 		.append(Messages.REMAINING_ALIENS).append(SPACE).append(game.getRemainingAliens()).append(NEW_LINE);
 		/* @formatter:on */
 		return buffer.toString();
