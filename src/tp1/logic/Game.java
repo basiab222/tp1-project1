@@ -41,6 +41,18 @@ public class Game {
 		return column >= 0 && column < DIM_X && row >= 0 && row < DIM_Y;
 	}
 
+	public void displayHelp() {
+		System.out.println("[m]ove <left|lleft|right|rright>: Moves UCM-Ship to the indicated direction. \r\n" + 
+					"[s]hoot: UCM-Ship launches a laser.\r\n" + 
+					"shock[W]ave: UCM-Ship releases a shock wave.\r\n" +
+					"[l]ist: Prints the list of available ships.\r\n" +
+					"[r]eset: Starts a new game.\r\n" + 
+					"[h]elp: Prints this help message.\r\n" +
+					"[e]xit: Terminates the program. \r\n" + 
+					"[n]one: Skips one cycle.");
+			
+	}
+
 public int getCycle() {
 		//TODO fill your code
 		return 0;
