@@ -79,6 +79,8 @@ public class Controller {
 					case "e":
 						gameRunning = false; // Exit the game
 						break;
+					case "s":
+						break;
 				}
 			}
 
