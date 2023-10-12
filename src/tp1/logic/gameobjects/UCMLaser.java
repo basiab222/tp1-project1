@@ -19,13 +19,11 @@ public class UCMLaser {
 	private Move dir;
 	private Game game;
 
-	public UCMLaser(int row, int column, DestroyerAlien launcher, Move dir, Game game) {
+	public UCMLaser(int row, int column, Move dir) {
 		this.row = row;
 		this.column = column;
 		this.life = 1;
-		this.launcher = launcher;
 		this.dir = dir;
-		this.game = game;
 	}
 
 	public int getRow() {
@@ -109,6 +107,7 @@ public class UCMLaser {
 
 	private void performMovement(Move dir) {
 		//TODO fill your code
+
 	}
 
 	/**
