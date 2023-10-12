@@ -1,6 +1,7 @@
 package tp1.logic;
 
 import tp1.logic.gameobjects.UCMSpaceship;
+import tp1.logic.gameobjects.UCMLaser;
 import tp1.view.Messages;
 
 import java.util.Random;
@@ -12,9 +13,13 @@ public class Game {
 
 	//TODO fill your code
 	private UCMSpaceship ucmShip;
+	private UCMLaser ucmLaser;
 	public Game(Level level, long seed) {
 		//TODO fill your code
 		ucmShip = new UCMSpaceship(DIM_X / 2,DIM_Y-1);
+
+		ucmLaser = new UCMLaser(ucmShip.getRow() - 1, ucmShip.getColumn(), Move.UP);
+
 	}
 
 	public UCMSpaceship getUcmShip() {
@@ -67,8 +72,9 @@ public int getCycle() {
 
 		if (ucmShip.getRow() == row && ucmShip.getColumn() == col) {
 			return Messages.UCMSHIP_SYMBOL; // Display the spaceship symbol
-		} else {
-			// Add logic to display other game elements (e.g., aliens, laser, etc.)
+		} else if (ucmLaser.getRow() == row && ucmShip.getColumn() == col){
+			return Messages.LASER_SYMBOL; //add option if it cannot be shot
+		}else{
 			return " "; // Empty cell
 		}
 		//return s;
