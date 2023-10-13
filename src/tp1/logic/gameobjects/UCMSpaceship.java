@@ -7,11 +7,17 @@ public class UCMSpaceship {
     private int row;
     private int resistance;
 
+    private boolean laserAvailable;
+    private boolean shockwaveAvailable;
+
+
     // Constructor
     public UCMSpaceship(int initialColumn, int initialRow) {
         this.column = initialColumn;
         this.row = initialRow;
         this.resistance = 3;
+        laserAvailable = false;
+        shockwaveAvailable = false;
     }
 
     // Getter
@@ -35,11 +41,28 @@ public class UCMSpaceship {
         this.resistance = resistance;
     }
 
+    public boolean getLaserAvailable() {
+        return laserAvailable;
+    }
+
+    public boolean getShockwave(){
+        return shockwaveAvailable;
+    }
+
+    public void setLaserAvailable(boolean laserAvailable) {
+        this.laserAvailable = laserAvailable;
+    }
+
+    public void setShockwaveAvailable(boolean shockwaveAvailable){
+        this.shockwaveAvailable = shockwaveAvailable;
+    }
     // Other methods (add more)
 
     public void moveHorizontally(int amount) {
         // Implement horizontal movement logic
     }
+
+
 
     public void fireLaser() {
         int laserRow = this.row - 1;
