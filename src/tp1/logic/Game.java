@@ -18,7 +18,6 @@ public class Game {
 		//TODO fill your code
 		ucmShip = new UCMSpaceship(DIM_X / 2,DIM_Y-1);
 
-		ucmLaser = new UCMLaser(ucmShip.getRow() - 1, ucmShip.getColumn(), Move.UP);
 
 	}
 
@@ -40,6 +39,17 @@ public class Game {
 			ucmShip.setRow(newRow);
 		}
 	}
+
+	public void ShootLaser(){
+		if (ucmShip.getLaserAvailable()){
+			System.out.println("There's already a laser on the screen!");
+		}
+		else{
+			ucmLaser = new UCMLaser(ucmShip.getRow() - 1, ucmShip.getColumn(), Move.UP);
+			ucmShip.setLaserAvailable(true);
+		}
+	}
+
 
 	// Method to check if a position is within the game board boundaries
 	private boolean isValidPosition(int column, int row) {
@@ -72,10 +82,10 @@ public int getCycle() {
 
 		if (ucmShip.getRow() == row && ucmShip.getColumn() == col) {
 			return Messages.UCMSHIP_SYMBOL; // Display the spaceship symbol
-		} else if (ucmLaser.getRow() == row && ucmShip.getColumn() == col){
+		} else if (ucmShip.getLaserAvailable() && ucmLaser.getRow() == row && ucmLaser.getColumn() == col){
 			return Messages.LASER_SYMBOL; //add option if it cannot be shot
 		}else{
-			return " "; // Empty cell
+			return " "; // Empty cells
 		}
 		//return s;
 	}
@@ -103,5 +113,6 @@ public int getCycle() {
 		//TODO fill your code
 		return null;
 	}
+
 
 }
