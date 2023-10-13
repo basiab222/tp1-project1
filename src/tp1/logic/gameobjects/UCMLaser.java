@@ -13,7 +13,6 @@ public class UCMLaser {
 	private int row;
 	private int column;
 	private int life;
-	private DestroyerAlien launcher; //reference to the destroyer ship that launched the bomb
 
 	//TODO fill your code
 	private Move dir;
@@ -50,14 +49,6 @@ public class UCMLaser {
 		this.life = life;
 	}
 
-	public DestroyerAlien getLauncher() {
-		return launcher;
-	}
-
-	public void setLauncher(DestroyerAlien launcher) {
-		this.launcher = launcher;
-	}
-
 	public Move getDir() {
 		return dir;
 	}
@@ -84,8 +75,13 @@ public class UCMLaser {
 	/**
 	 *  Implements the automatic movement of the laser	
 	 */
+
+	public void performLaserMovement(Move dir){
+		this.setColumn(this.getColumn()-1);
+	}
+
 	public void automaticMove () {
-		performMovement(dir);
+		performLaserMovement(dir);
 		if(isOut())
 			die();
 	}
@@ -105,10 +101,10 @@ public class UCMLaser {
 		return false;
 	}
 
-	private void performMovement(Move dir) {
-		//TODO fill your code
+	//private void performMovement(Move dir) {
+	//}
 
-	}
+	//performMovement in game class.
 
 	/**
 	 * Method that implements the attack by the laser to a regular alien.
