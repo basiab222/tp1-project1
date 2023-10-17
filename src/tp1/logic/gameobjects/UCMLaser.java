@@ -76,15 +76,16 @@ public class UCMLaser {
 	 *  Implements the automatic movement of the laser	
 	 */
 
-	public void performLaserMovement(Move dir){
-		this.setColumn(this.getColumn()-1);
+	public void performLaserMovement(){
+		this.setRow(this.getRow()-1);
 	}
 
-	public void automaticMove () {
-		performLaserMovement(dir);
-		if(isOut())
-			die();
-	}
+//	public void automaticMove () {
+//		performLaserMovement(dir);
+//		if(isOut()) {
+//			die();
+//		}
+//	}
 
 	
 	// PERFORM ATTACK METHODS
@@ -92,14 +93,13 @@ public class UCMLaser {
 	
 	
 	
-	private void die() {
-		//TODO fill your code
-	}
-
-	private boolean isOut() {
-		//TODO fill your code
-		return false;
-	}
+//	private void die() {
+//		//TODO fill your code
+//	}
+//
+//	private boolean isOut() {
+//		return column >= 0 && column < 9 && row >= 0 && row < 8;
+//	}
 
 	//private void performMovement(Move dir) {
 	//}

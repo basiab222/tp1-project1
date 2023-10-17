@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 import tp1.logic.Game;
 import tp1.logic.Move;
-import tp1.logic.gameobjects.UCMSpaceship;
 import tp1.view.GamePrinter;
 import tp1.view.Messages;
 
@@ -69,8 +68,9 @@ public class Controller {
 							} else if ("rright".equals(direction)) {
 								move = Move.RRIGHT;
 							}
-
 							game.moveUCMShip(move.getX(), move.getY());
+
+							game.enableLaser();
 						}
 						break;
 					case "n":
@@ -81,7 +81,8 @@ public class Controller {
 						gameRunning = false; // Exit the game
 						break;
 					case "s":
-						game.ShootLaser();
+						game.shootLaser();
+						game.enableLaser();
 						break;
 					case "h":
 						game.displayHelp();
