@@ -69,12 +69,12 @@ public class Controller {
 								move = Move.RRIGHT;
 							}
 							game.moveUCMShip(move.getX(), move.getY());
-
-							game.enableLaser();
+//							game.enableLaser();
+							game.moveRegAliens();
 						}
 						break;
 					case "n":
-						// Skip ship movement for this cycle
+						game.moveRegAliens();
 						break;
 					// Handle other commands here
 					case "e":
@@ -83,6 +83,7 @@ public class Controller {
 					case "s":
 						game.shootLaser();
 						game.enableLaser();
+						game.moveRegAliens();
 						break;
 					case "h":
 						game.displayHelp();

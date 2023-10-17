@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="board game 2.0">
+    <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/control/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/RegularAlien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/RegularAlien.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +29,7 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -85,6 +86,7 @@
       <workItem from="1696429703672" duration="3967000" />
       <workItem from="1696451937839" duration="1381000" />
       <workItem from="1696457652349" duration="2116000" />
+      <workItem from="1697539572291" duration="3131000" />
     </task>
     <task id="LOCAL-00001" summary="board game">
       <created>1696433074166</created>
@@ -93,14 +95,33 @@
       <option name="project" value="LOCAL" />
       <updated>1696433074166</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="moving laser">
+      <created>1697539251043</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697539251043</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="board game" />
-    <option name="LAST_COMMIT_MESSAGE" value="board game" />
+    <MESSAGE value="moving laser" />
+    <option name="LAST_COMMIT_MESSAGE" value="moving laser" />
   </component>
 </project>

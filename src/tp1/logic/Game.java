@@ -1,5 +1,6 @@
 package tp1.logic;
 
+import tp1.logic.gameobjects.RegularAlien;
 import tp1.logic.gameobjects.UCMSpaceship;
 import tp1.logic.gameobjects.UCMLaser;
 import tp1.view.Messages;
@@ -14,12 +15,11 @@ public class Game {
     //TODO fill your code
     private UCMSpaceship ucmShip;
     private UCMLaser ucmLaser;
+    private RegularAlien regularAlien;
 
     public Game(Level level, long seed) {
-        //TODO fill your code
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
-
-
+        regularAlien = new RegularAlien(DIM_X / 2,DIM_Y / 2);
     }
 
     public UCMSpaceship getUcmShip() {
@@ -39,6 +39,10 @@ public class Game {
             ucmShip.setColumn(newColumn);
             ucmShip.setRow(newRow);
         }
+    }
+
+    public void moveRegAliens(){
+        regularAlien.automaticMove();
     }
 
     public void shootLaser() {
@@ -84,6 +88,9 @@ public class Game {
 
         if (ucmShip.getRow() == row && ucmShip.getColumn() == col) {
             return Messages.UCMSHIP_SYMBOL; // Display the spaceship symbol
+        } else if (regularAlien.getRow() == row && regularAlien.getColumn() == col){
+
+            return Messages.REGULAR_ALIEN_SYMBOL;
         } else if (ucmShip.getLaserAvailable() && ucmLaser.getRow() == row && ucmLaser.getColumn() == col) {
             return Messages.LASER_SYMBOL; //add option if it cannot be shot
         } else {

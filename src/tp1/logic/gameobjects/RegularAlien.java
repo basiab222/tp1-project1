@@ -20,8 +20,8 @@ public class RegularAlien {
 	public RegularAlien(int row, int col){
 		this.row = row;
 		this.col = col;
-		resistance = 2;
-		damage = 5;
+		this.resistance = 2;
+		this.damage = 5;
 	}
 
 	
@@ -34,11 +34,11 @@ public class RegularAlien {
 
 	public int getRow(){ return row;}
 
-	public int setRow(int row){ this.row = row; }
+	public int setRow(int row){ return this.row = row;}
 
 	public int getColumn(){ return col; }
 
-	public int setColumn(int column){ this.col = column; }
+	public int setColumn(int column){ return this.col = column;}
 
 	public int getResistance() {
 		return resistance;
@@ -63,22 +63,23 @@ public class RegularAlien {
 	 *  Implements the automatic movement of the regular alien	
 	 */
 	public void automaticMove() {
-		//TODO fill your code
+		this.setColumn(this.getColumn() - 1);
+		if (!isInBorder()){
+			descent();
+		}
 	}
 
 	private void descent() {
-		//TODO fill your code
-		
+		this.setRow(this.getRow() + 1);
 	}
 
 	private void performMovement(Move dir) {
 		//TODO fill your code
-		
+		return;
 	}
 
 	private boolean isInBorder() {
-		//TODO fill your code
-		return false;
+		return col > 0 && col < 9 && row > 0 && row < 8;
 	}
 
 	public boolean receiveAttack(UCMLaser laser) {
