@@ -8,7 +8,7 @@ import tp1.logic.Position;
 public class Ufo {
 
 	//TODO fill your code
-private int column;
+    private int column;
     private int row;
     private int resistance;
 
