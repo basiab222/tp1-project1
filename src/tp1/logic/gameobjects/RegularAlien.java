@@ -12,12 +12,50 @@ import tp1.logic.Position;
  */
 public class RegularAlien {
 
+	private int row;
+	private int col;
+	private int resistance;
+	private int damage;
+
+	public RegularAlien(int row, int col){
+		this.row = row;
+		this.col = col;
+		resistance = 2;
+		damage = 5;
+	}
+
+	
 	//TODO fill your code
 	private int cyclesToMove;
 	private int speed;
 	private Move dir;
 	
 	private AlienManager alienManager;
+
+	public int getRow(){ return row;}
+
+	public int setRow(int row){ this.row = row; }
+
+	public int getColumn(){ return col; }
+
+	public int setColumn(int column){ this.col = column; }
+
+	public int getResistance() {
+		return resistance;
+	}
+	
+	public void setResistance(int resistance) {
+		this.resistance = resistance;
+	}
+	
+	public int getDamage() {
+		return damage;
+	}
+	
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
+	
 
 	//TODO fill your code
 
