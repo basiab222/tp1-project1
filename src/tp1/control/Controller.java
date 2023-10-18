@@ -44,6 +44,9 @@ public class Controller {
 	 */
 	public void run() {
 		boolean gameRunning = true;
+		boolean laserIsEnabled = false;
+		//1 for left, - 1 for right
+		int directionOfAlien = 1;
 
 		GamePrinter gamePrinter = new GamePrinter(game);
 		System.out.println(gamePrinter);
@@ -69,7 +72,9 @@ public class Controller {
 								move = Move.RRIGHT;
 							}
 							game.moveUCMShip(move.getX(), move.getY());
-//							game.enableLaser();
+							if (laserIsEnabled){
+								game.enableLaser();
+							}
 							game.moveRegAliens();
 						}
 						break;
@@ -81,6 +86,7 @@ public class Controller {
 						gameRunning = false; // Exit the game
 						break;
 					case "s":
+						laserIsEnabled = true;
 						game.shootLaser();
 						game.enableLaser();
 						game.moveRegAliens();

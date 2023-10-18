@@ -11,11 +11,11 @@ import tp1.logic.Position;
  *
  */
 public class RegularAlien {
-
 	private int row;
 	private int col;
 	private int resistance;
 	private int damage;
+	public static boolean movingLeft = true;
 
 	public RegularAlien(int row, int col){
 		this.row = row;
@@ -40,6 +40,7 @@ public class RegularAlien {
 
 	public int setColumn(int column){ return this.col = column;}
 
+
 	public int getResistance() {
 		return resistance;
 	}
@@ -62,12 +63,25 @@ public class RegularAlien {
 	/**
 	 *  Implements the automatic movement of the regular alien	
 	 */
-	public void automaticMove() {
-		this.setColumn(this.getColumn() - 1);
-		if (!isInBorder()){
-			descent();
-		}
+	private boolean isInBorder() {
+		return col > 0 && col <= 8 && row > 0 && row < 8;
 	}
+
+	public void automaticMove() {
+		if (movingLeft) {
+			this.setColumn(this.getColumn() - 1);
+				if (!isInBorder()) {
+				descent();
+				movingLeft = false;
+			}
+		} else {
+			this.setColumn(this.getColumn() + 1);
+				if (!isInBorder()) {
+					descent();
+					movingLeft = true;
+				}
+			}
+		}
 
 	private void descent() {
 		this.setRow(this.getRow() + 1);
@@ -78,9 +92,8 @@ public class RegularAlien {
 		return;
 	}
 
-	private boolean isInBorder() {
-		return col > 0 && col < 9 && row > 0 && row < 8;
-	}
+
+
 
 	public boolean receiveAttack(UCMLaser laser) {
 		//TODO fill your code
