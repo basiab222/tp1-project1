@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="alien moving not totally correct but doesnt exit the right border">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/control/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/RegularAlien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/RegularAlien.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/view/GamePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/view/GamePrinter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,23 +43,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/basia/Downloads/tp1-project1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/Users/basia/Downloads/tp1-project1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Test" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tp1.Main" />
@@ -90,7 +88,7 @@
       <workItem from="1696457652349" duration="2116000" />
       <workItem from="1697539572291" duration="3282000" />
       <workItem from="1697638723966" duration="5062000" />
-      <workItem from="1697737196893" duration="4134000" />
+      <workItem from="1697737196893" duration="6091000" />
     </task>
     <task id="LOCAL-00001" summary="board game">
       <created>1696433074166</created>
@@ -113,7 +111,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697542867399</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="alien moving not totally correct but doesnt exit the right border">
+      <option name="closed" value="true" />
+      <created>1697744933538</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1697744933538</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,6 +140,7 @@
     <MESSAGE value="board game" />
     <MESSAGE value="moving laser" />
     <MESSAGE value="alien moving but not right" />
-    <option name="LAST_COMMIT_MESSAGE" value="alien moving but not right" />
+    <MESSAGE value="alien moving not totally correct but doesnt exit the right border" />
+    <option name="LAST_COMMIT_MESSAGE" value="alien moving not totally correct but doesnt exit the right border" />
   </component>
 </project>
