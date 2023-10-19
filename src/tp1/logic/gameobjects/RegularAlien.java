@@ -63,20 +63,24 @@ public class RegularAlien {
 	/**
 	 *  Implements the automatic movement of the regular alien	
 	 */
+	//private boolean isInBorder() {
+		//return col > 0 && col <= 8 && row > 0 && row < 8;
+	//}
+			//new isInBorder to check if it is right in the border, not if its outside or w/e
 	private boolean isInBorder() {
-		return col > 0 && col <= 8 && row > 0 && row < 8;
+		return (col == 0 || col == 8 || row == 8);
 	}
 
 	public void automaticMove() {
 		if (movingLeft) {
 			this.setColumn(this.getColumn() - 1);
-				if (!isInBorder()) {
+				if (isInBorder()) {
 				descent();
 				movingLeft = false;
 			}
 		} else {
 			this.setColumn(this.getColumn() + 1);
-				if (!isInBorder()) {
+				if (isInBorder()) {
 					descent();
 					movingLeft = true;
 				}
@@ -92,11 +96,11 @@ public class RegularAlien {
 		return;
 	}
 
-
-
-
 	public boolean receiveAttack(UCMLaser laser) {
-		//TODO fill your code
+		if (this.resistance > 0) {
+			this.resistance -= 1;
+			return true;
+		}
 		return false;
 	}
 	

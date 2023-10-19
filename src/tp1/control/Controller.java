@@ -80,6 +80,9 @@ public class Controller {
 						break;
 					case "n":
 						game.moveRegAliens();
+						if (laserIsEnabled){
+							game.enableLaser();
+						}
 						break;
 					// Handle other commands here
 					case "e":
