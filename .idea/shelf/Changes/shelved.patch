@@ -1,0 +1,69 @@
+Index: src/tp1/logic/Game.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tp1.logic;\n\nimport tp1.logic.gameobjects.UCMSpaceship;\nimport tp1.logic.gameobjects.UCMLaser;\nimport tp1.view.Messages;\n\nimport java.util.Random;\n\n// TODO implementarlo\npublic class Game {\n\tpublic static final int DIM_X = 9;\n\tpublic static final int DIM_Y = 8;\n\n\t//TODO fill your code\n\tprivate UCMSpaceship ucmShip;\n\tprivate UCMLaser ucmLaser;\n\tpublic Game(Level level, long seed) {\n\t\t//TODO fill your code\n\t\tucmShip = new UCMSpaceship(DIM_X / 2,DIM_Y-1);\n\n\n\t}\n\n\tpublic UCMSpaceship getUcmShip() {\n\t\treturn ucmShip;\n\t}\n\n\tpublic String stateToString() { //THIS METHOD IS RETURNING THE STUFF BEFORE THE REMAINING ALIENS LINE, SO NEED TO FIX THAT BEFORE ADDING THE SHIP\n\t\treturn null;\n\t}\n\n\tpublic void moveUCMShip(int x, int y) {\n\t\tint newColumn = ucmShip.getColumn() + x;\n\t\tint newRow = ucmShip.getRow() + y;\n\n\t\t// Check if the new position is within the game board boundaries\n\t\tif (isValidPosition(newColumn, newRow)) {\n\t\t\tucmShip.setColumn(newColumn);\n\t\t\tucmShip.setRow(newRow);\n\t\t}\n\t}\n\n\tpublic void ShootLaser(){\n\t\tif (ucmShip.getLaserAvailable()){\n\t\t\tSystem.out.println(\"There's already a laser on the screen!\");\n\t\t}\n\t\telse{\n\t\t\tucmLaser = new UCMLaser(ucmShip.getRow() - 1, ucmShip.getColumn(), Move.UP);\n\t\t\tucmShip.setLaserAvailable(true);\n\t\t}\n\t}\n\n\n\t// Method to check if a position is within the game board boundaries\n\tprivate boolean isValidPosition(int column, int row) {\n\t\treturn column >= 0 && column < DIM_X && row >= 0 && row < DIM_Y;\n\t}\n\n\tpublic void displayHelp() {\n\t\tSystem.out.println(\"[m]ove <left|lleft|right|rright>: Moves UCM-Ship to the indicated direction. \\r\\n\" + \n\t\t\t\t\t\"[s]hoot: UCM-Ship launches a laser.\\r\\n\" + \n\t\t\t\t\t\"shock[W]ave: UCM-Ship releases a shock wave.\\r\\n\" +\n\t\t\t\t\t\"[l]ist: Prints the list of available ships.\\r\\n\" +\n\t\t\t\t\t\"[r]eset: Starts a new game.\\r\\n\" + \n\t\t\t\t\t\"[h]elp: Prints this help message.\\r\\n\" +\n\t\t\t\t\t\"[e]xit: Terminates the program. \\r\\n\" + \n\t\t\t\t\t\"[n]one: Skips one cycle.\");\n\t\t\t\n\t}\n\npublic int getCycle() {\n\t\t//TODO fill your code\n\t\treturn 0;\n\t}\n\n\tpublic int getRemainingAliens() {\n\t\t//TODO fill your code\n\t\treturn 0;\n\t}\n\tpublic String positionToString(int col, int row) {\n\t\t//String s = \"\";\n\n\t\tif (ucmShip.getRow() == row && ucmShip.getColumn() == col) {\n\t\t\treturn Messages.UCMSHIP_SYMBOL; // Display the spaceship symbol\n\t\t} else if (ucmShip.getLaserAvailable() && ucmLaser.getRow() == row && ucmLaser.getColumn() == col){\n\t\t\treturn Messages.LASER_SYMBOL; //add option if it cannot be shot\n\t\t}else{\n\t\t\treturn \" \"; // Empty cells\n\t\t}\n\t\t//return s;\n\t}\n\n\tpublic boolean playerWin() {\n\t\t//TODO fill your code\n\t\treturn false;\n\t}\n\n\tpublic boolean aliensWin() {\n\t\t//TODO fill your code\n\t\treturn false;\n\t}\n\n\tpublic void enableLaser() {\n\t\t//TODO fill your code\t\t\n\t}\n\n\tpublic Random getRandom() {\n\t\t//TODO fill your code\n\t\treturn null;\n\t}\n\n\tpublic Level getLevel() {\n\t\t//TODO fill your code\n\t\treturn null;\n\t}\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/tp1/logic/Game.java b/src/tp1/logic/Game.java
+--- a/src/tp1/logic/Game.java	(revision 2862ba5e6d553dfa2a16e976fde09ffa5c16be63)
++++ b/src/tp1/logic/Game.java	(date 1697533784388)
+@@ -1,7 +1,6 @@
+ package tp1.logic;
+ 
+ import tp1.logic.gameobjects.UCMSpaceship;
+-import tp1.logic.gameobjects.UCMLaser;
+ import tp1.view.Messages;
+ 
+ import java.util.Random;
+@@ -13,12 +12,9 @@
+ 
+ 	//TODO fill your code
+ 	private UCMSpaceship ucmShip;
+-	private UCMLaser ucmLaser;
+ 	public Game(Level level, long seed) {
+ 		//TODO fill your code
+ 		ucmShip = new UCMSpaceship(DIM_X / 2,DIM_Y-1);
+-
+-
+ 	}
+ 
+ 	public UCMSpaceship getUcmShip() {
+@@ -40,17 +36,6 @@
+ 		}
+ 	}
+ 
+-	public void ShootLaser(){
+-		if (ucmShip.getLaserAvailable()){
+-			System.out.println("There's already a laser on the screen!");
+-		}
+-		else{
+-			ucmLaser = new UCMLaser(ucmShip.getRow() - 1, ucmShip.getColumn(), Move.UP);
+-			ucmShip.setLaserAvailable(true);
+-		}
+-	}
+-
+-
+ 	// Method to check if a position is within the game board boundaries
+ 	private boolean isValidPosition(int column, int row) {
+ 		return column >= 0 && column < DIM_X && row >= 0 && row < DIM_Y;
+@@ -82,10 +67,9 @@
+ 
+ 		if (ucmShip.getRow() == row && ucmShip.getColumn() == col) {
+ 			return Messages.UCMSHIP_SYMBOL; // Display the spaceship symbol
+-		} else if (ucmShip.getLaserAvailable() && ucmLaser.getRow() == row && ucmLaser.getColumn() == col){
+-			return Messages.LASER_SYMBOL; //add option if it cannot be shot
+-		}else{
+-			return " "; // Empty cells
++		} else {
++			// Add logic to display other game elements (e.g., aliens, laser, etc.)
++			return " "; // Empty cell
+ 		}
+ 		//return s;
+ 	}
+@@ -114,5 +98,4 @@
+ 		return null;
+ 	}
+ 
+-
+ }

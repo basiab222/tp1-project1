@@ -1,0 +1,202 @@
+Index: src/tp1/logic/Game.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tp1.logic;\n\nimport tp1.logic.gameobjects.UCMSpaceship;\nimport tp1.view.Messages;\n\nimport java.util.Random;\n\n// TODO implementarlo\npublic class Game {\n\tpublic static final int DIM_X = 9;\n\tpublic static final int DIM_Y = 8;\n\n\t//TODO fill your code\n\tprivate UCMSpaceship ucmShip;\n\tpublic Game(Level level, long seed) {\n\t\t//TODO fill your code\n\t\tucmShip = new UCMSpaceship(DIM_X / 2,DIM_Y-1);\n\t}\n\n\tpublic UCMSpaceship getUcmShip() {\n\t\treturn ucmShip;\n\t}\n\n\tpublic String stateToString() { //THIS METHOD IS RETURNING THE STUFF BEFORE THE REMAINING ALIENS LINE, SO NEED TO FIX THAT BEFORE ADDING THE SHIP\n\t\treturn null;\n\t}\n\n\tpublic void moveUCMShip(int x, int y) {\n\t\tint newColumn = ucmShip.getColumn() + x;\n\t\tint newRow = ucmShip.getRow() + y;\n\n\t\t// Check if the new position is within the game board boundaries\n\t\tif (isValidPosition(newColumn, newRow)) {\n\t\t\tucmShip.setColumn(newColumn);\n\t\t\tucmShip.setRow(newRow);\n\t\t}\n\t}\n\n\t// Method to check if a position is within the game board boundaries\n\tprivate boolean isValidPosition(int column, int row) {\n\t\treturn column >= 0 && column < DIM_X && row >= 0 && row < DIM_Y;\n\t}\n\n\tpublic void displayHelp() {\n\t\tSystem.out.println(\"[m]ove <left|lleft|right|rright>: Moves UCM-Ship to the indicated direction. \\r\\n\" + \n\t\t\t\t\t\"[s]hoot: UCM-Ship launches a laser.\\r\\n\" + \n\t\t\t\t\t\"shock[W]ave: UCM-Ship releases a shock wave.\\r\\n\" +\n\t\t\t\t\t\"[l]ist: Prints the list of available ships.\\r\\n\" +\n\t\t\t\t\t\"[r]eset: Starts a new game.\\r\\n\" + \n\t\t\t\t\t\"[h]elp: Prints this help message.\\r\\n\" +\n\t\t\t\t\t\"[e]xit: Terminates the program. \\r\\n\" + \n\t\t\t\t\t\"[n]one: Skips one cycle.\");\n\t\t\t\n\t}\n\npublic int getCycle() {\n\t\t//TODO fill your code\n\t\treturn 0;\n\t}\n\n\tpublic int getRemainingAliens() {\n\t\t//TODO fill your code\n\t\treturn 0;\n\t}\n\tpublic String positionToString(int col, int row) {\n\t\t//String s = \"\";\n\n\t\tif (ucmShip.getRow() == row && ucmShip.getColumn() == col) {\n\t\t\treturn Messages.UCMSHIP_SYMBOL; // Display the spaceship symbol\n\t\t} else {\n\t\t\t// Add logic to display other game elements (e.g., aliens, laser, etc.)\n\t\t\treturn \" \"; // Empty cell\n\t\t}\n\t\t//return s;\n\t}\n\n\tpublic boolean playerWin() {\n\t\t//TODO fill your code\n\t\treturn false;\n\t}\n\n\tpublic boolean aliensWin() {\n\t\t//TODO fill your code\n\t\treturn false;\n\t}\n\n\tpublic void enableLaser() {\n\t\t//TODO fill your code\t\t\n\t}\n\n\tpublic Random getRandom() {\n\t\t//TODO fill your code\n\t\treturn null;\n\t}\n\n\tpublic Level getLevel() {\n\t\t//TODO fill your code\n\t\treturn null;\n\t}\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/tp1/logic/Game.java b/src/tp1/logic/Game.java
+--- a/src/tp1/logic/Game.java	(revision 94872597b0337e9bfa25af2928f1cec5d934d32d)
++++ b/src/tp1/logic/Game.java	(date 1697038845362)
+@@ -1,5 +1,6 @@
+ package tp1.logic;
+ 
++import tp1.logic.gameobjects.UCMLaser;
+ import tp1.logic.gameobjects.UCMSpaceship;
+ import tp1.view.Messages;
+ 
+@@ -10,11 +11,11 @@
+ 	public static final int DIM_X = 9;
+ 	public static final int DIM_Y = 8;
+ 
+-	//TODO fill your code
++	public UCMLaser ucmLaser;
+ 	private UCMSpaceship ucmShip;
+ 	public Game(Level level, long seed) {
+-		//TODO fill your code
+ 		ucmShip = new UCMSpaceship(DIM_X / 2,DIM_Y-1);
++		ucmLaser = new UCMLaser(ucmShip.getRow() - 1, ucmShip.getColumn(),Move.UP);
+ 	}
+ 
+ 	public UCMSpaceship getUcmShip() {
+@@ -85,7 +86,7 @@
+ 	}
+ 
+ 	public void enableLaser() {
+-		//TODO fill your code		
++
+ 	}
+ 
+ 	public Random getRandom() {
+Index: src/tp1/logic/gameobjects/UCMLaser.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tp1.logic.gameobjects;\n\nimport tp1.logic.Game;\nimport tp1.logic.Move;\nimport tp1.logic.Position;\n\n/**\n * \n * Class that represents the laser fired by {@link UCMSpaceship}\n *\n */\npublic class UCMLaser {\n\tprivate int row;\n\tprivate int column;\n\tprivate int life;\n\tprivate DestroyerAlien launcher; //reference to the destroyer ship that launched the bomb\n\n\t//TODO fill your code\n\tprivate Move dir;\n\tprivate Game game;\n\n\tpublic UCMLaser(int row, int column, DestroyerAlien launcher, Move dir, Game game) {\n\t\tthis.row = row;\n\t\tthis.column = column;\n\t\tthis.life = 1;\n\t\tthis.launcher = launcher;\n\t\tthis.dir = dir;\n\t\tthis.game = game;\n\t}\n\n\tpublic int getRow() {\n\t\treturn row;\n\t}\n\n\tpublic void setRow(int row) {\n\t\tthis.row = row;\n\t}\n\n\tpublic int getColumn() {\n\t\treturn column;\n\t}\n\n\tpublic void setColumn(int column) {\n\t\tthis.column = column;\n\t}\n\n\tpublic int getLife() {\n\t\treturn life;\n\t}\n\n\tpublic void setLife(int life) {\n\t\tthis.life = life;\n\t}\n\n\tpublic DestroyerAlien getLauncher() {\n\t\treturn launcher;\n\t}\n\n\tpublic void setLauncher(DestroyerAlien launcher) {\n\t\tthis.launcher = launcher;\n\t}\n\n\tpublic Move getDir() {\n\t\treturn dir;\n\t}\n\n\tpublic void setDir(Move dir) {\n\t\tthis.dir = dir;\n\t}\n\n\tpublic Game getGame() {\n\t\treturn game;\n\t}\n\n\tpublic void setGame(Game game) {\n\t\tthis.game = game;\n\t}\n\n\t/**\n\t *  Method called when the laser disappears from the board\n\t */\n\tpublic void onDelete() {\n\t\tgame.enableLaser();\n\t}\n\n\t/**\n\t *  Implements the automatic movement of the laser\t\n\t */\n\tpublic void automaticMove () {\n\t\tperformMovement(dir);\n\t\tif(isOut())\n\t\t\tdie();\n\t}\n\n\t\n\t// PERFORM ATTACK METHODS\n\t\n\t\n\t\n\t\n\tprivate void die() {\n\t\t//TODO fill your code\n\t}\n\n\tprivate boolean isOut() {\n\t\t//TODO fill your code\n\t\treturn false;\n\t}\n\n\tprivate void performMovement(Move dir) {\n\t\t//TODO fill your code\n\t}\n\n\t/**\n\t * Method that implements the attack by the laser to a regular alien.\n\t * It checks whether both objects are alive and in the same position.\n\t * If so call the \"actual\" attack method {@link weaponAttack}.\n\t * @param other the regular alien possibly under attack\n\t * @return <code>true</code> if the alien has been attacked by the laser.\n\t */\n\tpublic boolean performAttack(RegularAlien other) {\n\t\t//TODO fill your code\n\t\treturn false;\n\t}\n\n\t/**\n\t * Method that implements the attack by the laser to a destroyer alien.\n\t * It checks whether both objects are alive and in the same position.\n\t * If so call the \"actual\" attack method {@link weaponAttack}.\n\t * @param other the destroyer alien possibly under attack\n\t * @return <code>true</code> if the alien has been attacked by the laser.\n\t */\n\n\t/*\n\tpublic boolean performAttack(DestroyerAlien other) {\n\t\t//TODO fill your code\n\t\treturn false;\n\t}\n\t*/\n\t\n\t//TODO fill your code\n\n\n\t//ACTUAL ATTACK METHODS\n\t\n\n\t/**\n\t * \n\t * @param other regular alien under attack by the laser\n\t * @return always returns <code>true</code>\n\t */\n\tprivate boolean weaponAttack(RegularAlien other) {\n\t\treturn other.receiveAttack(this);\t\n\t}\n\n\t//TODO fill your code\n\n\n\t// RECEIVE ATTACK METHODS\n\t\n\t/**\n\t * Method to implement the effect of bomb attack on a laser\n\t * @param weapon the received bomb\n\t * @return always returns <code>true</code>\n\t */\n\t/*\n\tpublic boolean receiveAttack(Bomb weapon) {\n\t\treceiveDamage(weapon.getDamage());\n\t\treturn true;\n\t}\n\t*/\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/tp1/logic/gameobjects/UCMLaser.java b/src/tp1/logic/gameobjects/UCMLaser.java
+--- a/src/tp1/logic/gameobjects/UCMLaser.java	(revision 94872597b0337e9bfa25af2928f1cec5d934d32d)
++++ b/src/tp1/logic/gameobjects/UCMLaser.java	(date 1697038845399)
+@@ -13,19 +13,19 @@
+ 	private int row;
+ 	private int column;
+ 	private int life;
+-	private DestroyerAlien launcher; //reference to the destroyer ship that launched the bomb
++//	private DestroyerAlien launcher; //reference to the destroyer ship that launched the bomb
+ 
+ 	//TODO fill your code
+ 	private Move dir;
+ 	private Game game;
+ 
+-	public UCMLaser(int row, int column, DestroyerAlien launcher, Move dir, Game game) {
++	public UCMLaser(int row, int column, Move dir) {
+ 		this.row = row;
+ 		this.column = column;
+ 		this.life = 1;
+-		this.launcher = launcher;
++//		this.launcher = launcher;
+ 		this.dir = dir;
+-		this.game = game;
++
+ 	}
+ 
+ 	public int getRow() {
+@@ -52,13 +52,13 @@
+ 		this.life = life;
+ 	}
+ 
+-	public DestroyerAlien getLauncher() {
+-		return launcher;
+-	}
+-
+-	public void setLauncher(DestroyerAlien launcher) {
+-		this.launcher = launcher;
+-	}
++//	public DestroyerAlien getLauncher() {
++//		return launcher;
++//	}
++//
++//	public void setLauncher(DestroyerAlien launcher) {
++//		this.launcher = launcher;
++//	}
+ 
+ 	public Move getDir() {
+ 		return dir;
+@@ -108,7 +108,8 @@
+ 	}
+ 
+ 	private void performMovement(Move dir) {
+-		//TODO fill your code
++		this.row = dir.getY() - 1;
++		this.column = dir.getX();
+ 	}
+ 
+ 	/**
+Index: src/tp1/control/Controller.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tp1.control;\n\nimport static tp1.view.Messages.debug;\n\nimport java.util.Scanner;\n\nimport tp1.logic.Game;\nimport tp1.logic.Move;\nimport tp1.view.GamePrinter;\nimport tp1.view.Messages;\n\n/**\n *  Accepts user input and coordinates the game execution logic\n */\npublic class Controller {\n\n\tprivate Game game;\n\tprivate Scanner scanner;\n\tprivate GamePrinter printer;\n\n\tpublic Controller(Game game, Scanner scanner) {\n\t\tthis.game = game;\n\t\tthis.scanner = scanner;\n\t\tprinter = new GamePrinter(game);\n\t}\n\n\t/**\n\t * Show prompt and request command.\n\t *\n\t * @return the player command as words\n\t */\n\tprivate String[] prompt() {\n\t\tSystem.out.print(Messages.PROMPT);\n\t\tString line = scanner.nextLine();\n\t\tString[] words = line.toLowerCase().trim().split(\"\\\\s+\");\n\n\t\tSystem.out.println(debug(line));\n\n\t\treturn words;\n\t}\n\n\t/**\n\t * Runs the game logic\n\t */\n\tpublic void run() {\n\t\tboolean gameRunning = true;\n\n\t\tGamePrinter gamePrinter = new GamePrinter(game);\n\t\tSystem.out.println(gamePrinter);\n\n\t\twhile (gameRunning) {\n\t\t\tSystem.out.println(gamePrinter);\n\t\t\tString[] input = prompt();\n\n\t\t\tif (input.length > 0) {\n\t\t\t\tswitch (input[0]) {\n\t\t\t\t\tcase \"m\":\n\t\t\t\t\t\tif (input.length > 1) {\n\t\t\t\t\t\t\tString direction = input[1].toLowerCase();\n\t\t\t\t\t\t\tMove move = Move.NONE; // Default to no movement\n\n\t\t\t\t\t\t\tif (\"left\".equals(direction)) {\n\t\t\t\t\t\t\t\tmove = Move.LEFT;\n\t\t\t\t\t\t\t} else if (\"lleft\".equals(direction)) {\n\t\t\t\t\t\t\t\tmove = Move.LLEFT;\n\t\t\t\t\t\t\t} else if (\"right\".equals(direction)) {\n\t\t\t\t\t\t\t\tmove = Move.RIGHT;\n\t\t\t\t\t\t\t} else if (\"rright\".equals(direction)) {\n\t\t\t\t\t\t\t\tmove = Move.RRIGHT;\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tgame.moveUCMShip(move.getX(), move.getY());\n\t\t\t\t\t\t}\n\t\t\t\t\t\tbreak;\n\t\t\t\t\tcase \"n\":\n\t\t\t\t\t\t// Skip ship movement for this cycle\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t// Handle other commands here\n\t\t\t\t\tcase \"e\":\n\t\t\t\t\t\tgameRunning = false; // Exit the game\n\t\t\t\t\t\tbreak;\n\t\t\t\t\tcase \"s\":\n\t\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t}\n\n\t\t}\n\t}\n\n\t/**\n\t * Draw / paint the game\n\t */\n\tprivate void printGame() {\n\t\tSystem.out.println(printer);\n\t}\n\t\n\t/**\n\t * Prints the final message once the game is finished\n\t */\n\tpublic void printEndMessage() {\n\t\tSystem.out.println(printer.endMessage());\n\t}\n\t\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/tp1/control/Controller.java b/src/tp1/control/Controller.java
+--- a/src/tp1/control/Controller.java	(revision 94872597b0337e9bfa25af2928f1cec5d934d32d)
++++ b/src/tp1/control/Controller.java	(date 1697037328144)
+@@ -80,6 +80,7 @@
+ 						gameRunning = false; // Exit the game
+ 						break;
+ 					case "s":
++
+ 						break;
+ 				}
+ 			}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"a8c8e18b-d412-465d-95ac-60027667e805\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/tp1/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/tp1/Main.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/tp1/logic/Game.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/tp1/logic/Game.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"PREVIOUS_COMMIT_AUTHORS\">\n      <list>\n        <option value=\"barbara\" />\n      </list>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2Vz76FsT07JLMDzdCX2QepAPR3j\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/Users/basia/Downloads/tp1-project1&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RunManager\">\n    <configuration name=\"Test\" type=\"Application\" factoryName=\"Application\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"tp1.Main\" />\n      <module name=\"tp1-project1\" />\n      <option name=\"PROGRAM_PARAMETERS\" value=\"EASY 123\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"a8c8e18b-d412-465d-95ac-60027667e805\" name=\"Changes\" comment=\"\" />\n      <created>1695826877929</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1695826877929</updated>\n      <workItem from=\"1695826881040\" duration=\"94000\" />\n      <workItem from=\"1695827010684\" duration=\"274000\" />\n      <workItem from=\"1696248745445\" duration=\"623000\" />\n      <workItem from=\"1696429703672\" duration=\"3967000\" />\n      <workItem from=\"1696451937839\" duration=\"1381000\" />\n      <workItem from=\"1696457652349\" duration=\"2116000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"board game\">\n      <created>1696433074166</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1696433074166</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"board game\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"board game\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 94872597b0337e9bfa25af2928f1cec5d934d32d)
++++ b/.idea/workspace.xml	(date 1697048924730)
+@@ -5,11 +5,9 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/tp1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/tp1/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/control/Controller.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/tp1/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Game.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -35,9 +33,6 @@
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+-  <component name="ProjectColorInfo">{
+-  &quot;associatedIndex&quot;: 5
+-}</component>
+   <component name="ProjectId" id="2Vz76FsT07JLMDzdCX2QepAPR3j" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+@@ -51,7 +46,6 @@
+     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+     &quot;last_opened_file_path&quot;: &quot;/Users/basia/Downloads/tp1-project1&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+@@ -84,9 +78,8 @@
+       <workItem from="1695826881040" duration="94000" />
+       <workItem from="1695827010684" duration="274000" />
+       <workItem from="1696248745445" duration="623000" />
+-      <workItem from="1696429703672" duration="3967000" />
+-      <workItem from="1696451937839" duration="1381000" />
+-      <workItem from="1696457652349" duration="2116000" />
++      <workItem from="1696429703672" duration="4255000" />
++      <workItem from="1697033802453" duration="4298000" />
+     </task>
+     <task id="LOCAL-00001" summary="board game">
+       <created>1696433074166</created>
+@@ -95,7 +88,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1696433074166</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="board game 2.0">
++      <created>1696434086385</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1696434086385</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -103,6 +103,7 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="board game" />
+-    <option name="LAST_COMMIT_MESSAGE" value="board game" />
++    <MESSAGE value="board game 2.0" />
++    <option name="LAST_COMMIT_MESSAGE" value="board game 2.0" />
+   </component>
+ </project>
+\ No newline at end of file

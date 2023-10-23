@@ -1,0 +1,73 @@
+Index: src/tp1/logic/gameobjects/UCMLaser.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tp1.logic.gameobjects;\n\nimport tp1.logic.Game;\nimport tp1.logic.Move;\nimport tp1.logic.Position;\n\n/**\n * \n * Class that represents the laser fired by {@link UCMSpaceship}\n *\n */\npublic class UCMLaser {\n\tprivate int row;\n\tprivate int column;\n\tprivate int life;\n\n\t//TODO fill your code\n\tprivate Move dir;\n\tprivate Game game;\n\n\tpublic UCMLaser(int row, int column, Move dir) {\n\t\tthis.row = row;\n\t\tthis.column = column;\n\t\tthis.life = 1;\n\t\tthis.dir = dir;\n\t}\n\n\tpublic int getRow() {\n\t\treturn row;\n\t}\n\n\tpublic void setRow(int row) {\n\t\tthis.row = row;\n\t}\n\n\tpublic int getColumn() {\n\t\treturn column;\n\t}\n\n\tpublic void setColumn(int column) {\n\t\tthis.column = column;\n\t}\n\n\tpublic int getLife() {\n\t\treturn life;\n\t}\n\n\tpublic void setLife(int life) {\n\t\tthis.life = life;\n\t}\n\n\tpublic Move getDir() {\n\t\treturn dir;\n\t}\n\n\tpublic void setDir(Move dir) {\n\t\tthis.dir = dir;\n\t}\n\n\tpublic Game getGame() {\n\t\treturn game;\n\t}\n\n\tpublic void setGame(Game game) {\n\t\tthis.game = game;\n\t}\n\n\t/**\n\t *  Method called when the laser disappears from the board\n\t */\n\tpublic void onDelete() {\n\t\tgame.enableLaser();\n\t}\n\n\t/**\n\t *  Implements the automatic movement of the laser\t\n\t */\n\n\tpublic void performLaserMovement(Move dir){\n\t\tthis.setColumn(this.getColumn()-1);\n\t}\n\n\tpublic void automaticMove () {\n\t\tperformLaserMovement(dir);\n\t\tif(isOut())\n\t\t\tdie();\n\t}\n\n\t\n\t// PERFORM ATTACK METHODS\n\t\n\t\n\t\n\t\n\tprivate void die() {\n\t\t//TODO fill your code\n\t}\n\n\tprivate boolean isOut() {\n\t\t//TODO fill your code\n\t\treturn false;\n\t}\n\n\t//private void performMovement(Move dir) {\n\t//}\n\n\t//performMovement in game class.\n\n\t/**\n\t * Method that implements the attack by the laser to a regular alien.\n\t * It checks whether both objects are alive and in the same position.\n\t * If so call the \"actual\" attack method {@link weaponAttack}.\n\t * @param other the regular alien possibly under attack\n\t * @return <code>true</code> if the alien has been attacked by the laser.\n\t */\n\tpublic boolean performAttack(RegularAlien other) {\n\t\t//TODO fill your code\n\t\treturn false;\n\t}\n\n\t/**\n\t * Method that implements the attack by the laser to a destroyer alien.\n\t * It checks whether both objects are alive and in the same position.\n\t * If so call the \"actual\" attack method {@link weaponAttack}.\n\t * @param other the destroyer alien possibly under attack\n\t * @return <code>true</code> if the alien has been attacked by the laser.\n\t */\n\n\t/*\n\tpublic boolean performAttack(DestroyerAlien other) {\n\t\t//TODO fill your code\n\t\treturn false;\n\t}\n\t*/\n\t\n\t//TODO fill your code\n\n\n\t//ACTUAL ATTACK METHODS\n\t\n\n\t/**\n\t * \n\t * @param other regular alien under attack by the laser\n\t * @return always returns <code>true</code>\n\t */\n\tprivate boolean weaponAttack(RegularAlien other) {\n\t\treturn other.receiveAttack(this);\t\n\t}\n\n\t//TODO fill your code\n\n\n\t// RECEIVE ATTACK METHODS\n\t\n\t/**\n\t * Method to implement the effect of bomb attack on a laser\n\t * @param weapon the received bomb\n\t * @return always returns <code>true</code>\n\t */\n\t/*\n\tpublic boolean receiveAttack(Bomb weapon) {\n\t\treceiveDamage(weapon.getDamage());\n\t\treturn true;\n\t}\n\t*/\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/tp1/logic/gameobjects/UCMLaser.java b/src/tp1/logic/gameobjects/UCMLaser.java
+--- a/src/tp1/logic/gameobjects/UCMLaser.java	(revision 2862ba5e6d553dfa2a16e976fde09ffa5c16be63)
++++ b/src/tp1/logic/gameobjects/UCMLaser.java	(date 1697533793118)
+@@ -13,6 +13,7 @@
+ 	private int row;
+ 	private int column;
+ 	private int life;
++//	private DestroyerAlien launcher; //reference to the destroyer ship that launched the bomb
+ 
+ 	//TODO fill your code
+ 	private Move dir;
+@@ -22,7 +23,9 @@
+ 		this.row = row;
+ 		this.column = column;
+ 		this.life = 1;
++//		this.launcher = launcher;
+ 		this.dir = dir;
++
+ 	}
+ 
+ 	public int getRow() {
+@@ -49,6 +52,14 @@
+ 		this.life = life;
+ 	}
+ 
++//	public DestroyerAlien getLauncher() {
++//		return launcher;
++//	}
++//
++//	public void setLauncher(DestroyerAlien launcher) {
++//		this.launcher = launcher;
++//	}
++
+ 	public Move getDir() {
+ 		return dir;
+ 	}
+@@ -75,13 +86,8 @@
+ 	/**
+ 	 *  Implements the automatic movement of the laser	
+ 	 */
+-
+-	public void performLaserMovement(Move dir){
+-		this.setColumn(this.getColumn()-1);
+-	}
+-
+ 	public void automaticMove () {
+-		performLaserMovement(dir);
++		performMovement(dir);
+ 		if(isOut())
+ 			die();
+ 	}
+@@ -101,10 +107,10 @@
+ 		return false;
+ 	}
+ 
+-	//private void performMovement(Move dir) {
+-	//}
+-
+-	//performMovement in game class.
++	private void performMovement(Move dir) {
++		this.row = dir.getY() - 1;
++		this.column = dir.getX();
++	}
+ 
+ 	/**
+ 	 * Method that implements the attack by the laser to a regular alien.

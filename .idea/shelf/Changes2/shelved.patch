@@ -1,0 +1,79 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"a8c8e18b-d412-465d-95ac-60027667e805\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/tp1/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/tp1/Main.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/tp1/logic/Game.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/tp1/logic/Game.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"PREVIOUS_COMMIT_AUTHORS\">\n      <list>\n        <option value=\"barbara\" />\n      </list>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2Vz76FsT07JLMDzdCX2QepAPR3j\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/Users/basia/Downloads/tp1-project1&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RunManager\">\n    <configuration name=\"Test\" type=\"Application\" factoryName=\"Application\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"tp1.Main\" />\n      <module name=\"tp1-project1\" />\n      <option name=\"PROGRAM_PARAMETERS\" value=\"EASY 123\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"a8c8e18b-d412-465d-95ac-60027667e805\" name=\"Changes\" comment=\"\" />\n      <created>1695826877929</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1695826877929</updated>\n      <workItem from=\"1695826881040\" duration=\"94000\" />\n      <workItem from=\"1695827010684\" duration=\"274000\" />\n      <workItem from=\"1696248745445\" duration=\"623000\" />\n      <workItem from=\"1696429703672\" duration=\"3967000\" />\n      <workItem from=\"1696451937839\" duration=\"1381000\" />\n      <workItem from=\"1696457652349\" duration=\"2116000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"board game\">\n      <created>1696433074166</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1696433074166</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"board game\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"board game\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2862ba5e6d553dfa2a16e976fde09ffa5c16be63)
++++ b/.idea/workspace.xml	(date 1697533926079)
+@@ -5,11 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/tp1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/Main.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/tp1/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Game.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -35,9 +32,6 @@
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+-  <component name="ProjectColorInfo">{
+-  &quot;associatedIndex&quot;: 5
+-}</component>
+   <component name="ProjectId" id="2Vz76FsT07JLMDzdCX2QepAPR3j" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+@@ -51,7 +45,6 @@
+     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+     &quot;last_opened_file_path&quot;: &quot;/Users/basia/Downloads/tp1-project1&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+@@ -84,9 +77,9 @@
+       <workItem from="1695826881040" duration="94000" />
+       <workItem from="1695827010684" duration="274000" />
+       <workItem from="1696248745445" duration="623000" />
+-      <workItem from="1696429703672" duration="3967000" />
+-      <workItem from="1696451937839" duration="1381000" />
+-      <workItem from="1696457652349" duration="2116000" />
++      <workItem from="1696429703672" duration="4255000" />
++      <workItem from="1697033802453" duration="4298000" />
++      <workItem from="1697533623610" duration="246000" />
+     </task>
+     <task id="LOCAL-00001" summary="board game">
+       <created>1696433074166</created>
+@@ -95,7 +88,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1696433074166</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="board game 2.0">
++      <created>1696434086385</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1696434086385</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -103,6 +103,7 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="board game" />
+-    <option name="LAST_COMMIT_MESSAGE" value="board game" />
++    <MESSAGE value="board game 2.0" />
++    <option name="LAST_COMMIT_MESSAGE" value="board game 2.0" />
+   </component>
+ </project>
+\ No newline at end of file
