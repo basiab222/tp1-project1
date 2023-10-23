@@ -85,6 +85,7 @@ public class Controller {
 						gameRunning = false; // Exit the game
 						break;
 					case "s":
+						game.incrementCycles();
 						laserIsEnabled = true;
 						game.shootLaser();
 						game.enableLaser();

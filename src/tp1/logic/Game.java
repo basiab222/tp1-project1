@@ -17,20 +17,26 @@ public class Game {
     private UCMLaser ucmLaser;
     private RegularAlien regularAlien;
 
+    private int cycles;
+
     public static boolean laserShotObject = false;
 
     public Game(Level level, long seed) {
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
         regularAlien = new RegularAlien(5,(DIM_Y / 2) + 2);
+
+        cycles = 0; //initialise cycles to 0
     }
 
     public UCMSpaceship getUcmShip() {
         return ucmShip;
     }
 
-    public String stateToString() { //THIS METHOD IS RETURNING THE STUFF BEFORE THE REMAINING ALIENS LINE, SO NEED TO FIX THAT BEFORE ADDING THE SHIP
-        return "";
+    public String stateToString() {
+        return getCycle() + "\n" + getRemainingAliens() + "\n";
     }
+
+
 
     public void moveUCMShip(int x, int y) {
         int newColumn = ucmShip.getColumn() + x;
@@ -77,7 +83,7 @@ public class Game {
 
     public int getCycle() {
         //TODO fill your code
-        return 0;
+        return cycles;
     }
 
     public int getRemainingAliens() {
@@ -135,7 +141,12 @@ public class Game {
         }
     }
 
+    public void incrementCycles(){
+        cycles++;
+    }
+
     public void updateGame(){
+        incrementCycles();
         if (ucmLaser != null && !laserShotObject ) //only call this when there is a laser on screen, so can move before that
             enableLaser();
 

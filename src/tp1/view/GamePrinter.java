@@ -36,12 +36,13 @@ public class GamePrinter {
 		StringBuilder buffer = new StringBuilder();
 		/* @formatter:off */
 		buffer
-				.append(Messages.NUMBER_OF_CYCLES).append(SPACE).append(game.getCycle()).append(NEW_LINE)
-				.append(game.stateToString())
-				.append(Messages.REMAINING_ALIENS).append(SPACE).append(game.getRemainingAliens()).append(NEW_LINE);
+				.append(Messages.NUMBER_OF_CYCLES).append(" ").append(game.getCycle()).append(NEW_LINE)
+				.append(Messages.REMAINING_ALIENS).append(" ").append(game.getRemainingAliens()).append(NEW_LINE);
 		/* @formatter:on */
 		return buffer.toString();
 	}
+
+
 
 	@Override
 	public String toString() {
