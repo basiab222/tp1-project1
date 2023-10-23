@@ -103,44 +103,15 @@ public class RegularAlien {
 
 	}
 
-
-
-		/*if (movingLeft && !shouldDescend) {
-			this.setColumn(this.getColumn() - 1);
-				if (isInBorder()) {
-				//descent();
-				movingLeft = false;
-				shouldDescend = true;
-			}
-		} else if (!shouldDescend) {
-			this.setColumn(this.getColumn() + 1);
-			if (isInBorder()) {
-				//descent();
-				movingLeft = true;
-				shouldDescend = true;
-			}
-		} else {
-			descent();
-			shouldDescend = false;
-		}*/
-
-
-
 	private void descent() {
 		this.setRow(this.getRow() + 1);
 	}
 
-	private void performMovement(Move dir) {
-		//TODO fill your code
-		return;
-	}
 
-	public boolean receiveAttack(UCMLaser laser) {
+	public void receiveAttack() {
 		if (this.resistance > 0) {
 			this.resistance -= 1;
-			return true;
 		}
-		return false;
 	}
 	
 

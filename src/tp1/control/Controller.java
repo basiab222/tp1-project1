@@ -45,8 +45,6 @@ public class Controller {
 	public void run() {
 		boolean gameRunning = true;
 		boolean laserIsEnabled = false;
-		//1 for left, - 1 for right
-		int directionOfAlien = 1;
 
 		GamePrinter gamePrinter = new GamePrinter(game);
 		System.out.println(gamePrinter);
@@ -64,25 +62,23 @@ public class Controller {
 
 							if ("left".equals(direction)) {
 								move = Move.LEFT;
+								game.updateGame();
 							} else if ("lleft".equals(direction)) {
 								move = Move.LLEFT;
+								game.updateGame();
 							} else if ("right".equals(direction)) {
 								move = Move.RIGHT;
+								game.updateGame();
 							} else if ("rright".equals(direction)) {
 								move = Move.RRIGHT;
+								game.updateGame();
 							}
 							game.moveUCMShip(move.getX(), move.getY());
-							if (laserIsEnabled){
-								game.enableLaser();
-							}
-							game.moveRegAliens();
+
 						}
 						break;
 					case "n":
-						game.moveRegAliens();
-						if (laserIsEnabled){
-							game.enableLaser();
-						}
+						game.updateGame();
 						break;
 					// Handle other commands here
 					case "e":
@@ -99,7 +95,15 @@ public class Controller {
 						break;
 				}
 			}
+			if (game.aliensWin()){
+				gameRunning = false;
+				System.out.println(Messages.ALIENS_WIN);
+			} else if (game.playerWin()){
+				gameRunning = false;
+				System.out.println(Messages.PLAYER_WINS);
+			}
 		}
+
 	}
 
 	/**

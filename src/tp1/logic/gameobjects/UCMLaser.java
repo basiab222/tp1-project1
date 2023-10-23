@@ -113,12 +113,12 @@ public class UCMLaser {
 	 * @param other the regular alien possibly under attack
 	 * @return <code>true</code> if the alien has been attacked by the laser.
 	 */
-	public boolean performAttack(RegularAlien other) {
-		if (other.getColumn() == this.getColumn() && other.getRow() == this.getRow()) {
-			return weaponAttack(other);
-		}
-		return false;
-	}
+//	public boolean performAttack(RegularAlien other) {
+//		if (other.getColumn() == this.getColumn() && other.getRow() == this.getRow()) {
+//			return weaponAttack(other);
+//		}
+//		return false;
+//	}
 
 	/**
 	 * Method that implements the attack by the laser to a destroyer alien.
@@ -128,14 +128,6 @@ public class UCMLaser {
 	 * @return <code>true</code> if the alien has been attacked by the laser.
 	 */
 
-	/*
-	public boolean performAttack(DestroyerAlien other) {
-		//TODO fill your code
-		return false;
-	}
-	*/
-	
-	//TODO fill your code
 
 
 	//ACTUAL ATTACK METHODS
@@ -146,9 +138,9 @@ public class UCMLaser {
 	 * @param other regular alien under attack by the laser
 	 * @return always returns <code>true</code>
 	 */
-	private boolean weaponAttack(RegularAlien other) {
-		return other.receiveAttack(this);	
-	}
+//	private boolean weaponAttack(RegularAlien other) {
+//		return other.receiveAttack(this);
+//	}
 
 	//TODO fill your code
 

@@ -17,9 +17,11 @@ public class Game {
     private UCMLaser ucmLaser;
     private RegularAlien regularAlien;
 
+    public static boolean laserShotObject = false;
+
     public Game(Level level, long seed) {
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
-        regularAlien = new RegularAlien(DIM_X / 2,DIM_Y / 2);
+        regularAlien = new RegularAlien(5,(DIM_Y / 2) + 2);
     }
 
     public UCMSpaceship getUcmShip() {
@@ -87,9 +89,12 @@ public class Game {
         //String s = "";
 
         if (ucmShip.getRow() == row && ucmShip.getColumn() == col) {
-            return Messages.UCMSHIP_SYMBOL; // Display the spaceship symbol
-        } else if (regularAlien.getRow() == row && regularAlien.getColumn() == col){
-            return Messages.REGULAR_ALIEN_SYMBOL; //+ the Messenges.gameObjectstatus thing
+            if ( ucmShip.getResistance() > 0)
+                return Messages.UCMSHIP_SYMBOL;
+            else
+                return Messages.UCMSHIP_DEAD_SYMBOL;// Display the spaceship symbol
+        } else if (regularAlien.getRow() == row && regularAlien.getColumn() == col && regularAlien.getResistance() > 0){
+            return String.format(Messages.GAME_OBJECT_STATUS,Messages.REGULAR_ALIEN_SYMBOL,regularAlien.getResistance());
         } else if (ucmShip.getLaserAvailable() && ucmLaser.getRow() == row && ucmLaser.getColumn() == col) {
             return Messages.LASER_SYMBOL; //add option if it cannot be shot
         } else {
@@ -99,23 +104,45 @@ public class Game {
     }
 
     public boolean playerWin() {
-        //TODO fill your code
+        if (regularAlien.getResistance() == 0){
+            return true;
+        }
         return false;
     }
 
     public boolean aliensWin() {
-        //TODO fill your code
+        if (regularAlien.getRow() == ucmShip.getRow()){
+            ucmShip.setResistance(0);
+            return true;
+        }
         return false;
     }
 
     public void enableLaser() {
-        if (isValidPosition(ucmLaser.getColumn(), ucmLaser.getRow())) {
+        if (isValidPosition(ucmLaser.getColumn(), ucmLaser.getRow()) && ucmShip.getLaserAvailable()) {
             ucmLaser.performLaserMovement();
+            laserShotObject = false;
         } else {
-            ucmShip.setLaserAvailable(false);
+            ucmShip.setLaserAvailable(true);
+
         }
     }
 
+    public void alienIsShot(){
+        if (regularAlien.getRow() == ucmLaser.getRow() && regularAlien.getColumn() == ucmLaser.getColumn() + 1){
+            regularAlien.receiveAttack();
+            ucmShip.setLaserAvailable(false);
+            laserShotObject = true;
+        }
+    }
+
+    public void updateGame(){
+        if (!laserShotObject ){
+            enableLaser();
+        }
+        alienIsShot();
+        moveRegAliens();
+    }
 
     public Random getRandom() {
         //TODO fill your code
