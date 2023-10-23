@@ -2,6 +2,7 @@ package tp1.control;
 
 import static tp1.view.Messages.debug;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 import tp1.logic.Game;
@@ -47,7 +48,6 @@ public class Controller {
 		boolean laserIsEnabled = false;
 
 		GamePrinter gamePrinter = new GamePrinter(game);
-		System.out.println(gamePrinter);
 
 		while (gameRunning) {
 			System.out.println(gamePrinter);
@@ -96,11 +96,15 @@ public class Controller {
 				}
 			}
 			if (game.aliensWin()){
-				gameRunning = false;
 				System.out.println(Messages.ALIENS_WIN);
-			} else if (game.playerWin()){
+				System.out.println(gamePrinter);
 				gameRunning = false;
+
+			} else if (game.playerWin()){
 				System.out.println(Messages.PLAYER_WINS);
+				System.out.println(gamePrinter);
+				gameRunning = false;
+
 			}
 		}
 

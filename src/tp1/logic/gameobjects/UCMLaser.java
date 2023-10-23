@@ -97,9 +97,9 @@ public class UCMLaser {
 //		//TODO fill your code
 //	}
 //
-//	private boolean isOut() {
-//		return column >= 0 && column < 9 && row >= 0 && row < 8;
-//	}
+	public boolean isOut() { //to check if its exiting the board after not hitting any1
+		return (row <= 0);
+	}
 
 	//private void performMovement(Move dir) {
 	//}

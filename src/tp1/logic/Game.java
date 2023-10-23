@@ -104,10 +104,7 @@ public class Game {
     }
 
     public boolean playerWin() {
-        if (regularAlien.getResistance() == 0){
-            return true;
-        }
-        return false;
+        return regularAlien.getResistance() == 0;
     }
 
     public boolean aliensWin() {
@@ -121,10 +118,12 @@ public class Game {
     public void enableLaser() {
         if (isValidPosition(ucmLaser.getColumn(), ucmLaser.getRow()) && ucmShip.getLaserAvailable()) {
             ucmLaser.performLaserMovement();
+            if (ucmLaser.isOut()){
+                ucmShip.setLaserAvailable(false);
+            }
             laserShotObject = false;
         } else {
             ucmShip.setLaserAvailable(true);
-
         }
     }
 
@@ -137,10 +136,12 @@ public class Game {
     }
 
     public void updateGame(){
-        if (!laserShotObject ){
+        if (ucmLaser != null && !laserShotObject ) //only call this when there is a laser on screen, so can move before that
             enableLaser();
-        }
-        alienIsShot();
+
+        if (ucmShip.getLaserAvailable())
+            alienIsShot();
+
         moveRegAliens();
     }
 
