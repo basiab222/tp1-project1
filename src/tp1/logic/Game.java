@@ -33,9 +33,12 @@ public class Game {
     }
 
     public String stateToString() {
-        return getCycle() + "\n" + getRemainingAliens() + "\n";
+        return "Life: " + ucmShip.getResistance() + "\n" +
+                "Points: " //+ ucmShip.getPoints()
+                 + "\n" +
+                "shockWave: " //+ (ucmShip.isShockWaveEnabled() ? "ON" : "OFF") these to implement after
+                + "\n";
     }
-
 
 
     public void moveUCMShip(int x, int y) {
