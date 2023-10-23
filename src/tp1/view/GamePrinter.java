@@ -6,7 +6,7 @@ import tp1.logic.Game;
 import tp1.util.MyStringUtils;
 
 public class GamePrinter {
-	
+
 	private static final String SPACE = " ";
 
 	private static final String CELL_BORDER_CHAR = "─";
@@ -22,32 +22,32 @@ public class GamePrinter {
 	private static final String ROW_BORDER = SPACE + repeat(CELL_BORDER, Game.DIM_X) + NEW_LINE;
 
 	private Game game;
-		
+
 	public GamePrinter(Game game) {
 		this.game = game;
-	}	
-	
+	}
+
 	/**
 	 * Builds a string that represent the game status
-	 * 
+	 *
 	 * @return the string that represents the game status.
 	 */
 	protected String getInfo() {
 		StringBuilder buffer = new StringBuilder();
 		/* @formatter:off */
 		buffer
-		.append(Messages.NUMBER_OF_CYCLES).append(SPACE).append(game.getCycle()).append(NEW_LINE)
-				.append(game.stateToString()) //why is it here??
-		.append(Messages.REMAINING_ALIENS).append(SPACE).append(game.getRemainingAliens()).append(NEW_LINE);
+				.append(Messages.NUMBER_OF_CYCLES).append(SPACE).append(game.getCycle()).append(NEW_LINE)
+				.append(game.stateToString())
+				.append(Messages.REMAINING_ALIENS).append(SPACE).append(game.getRemainingAliens()).append(NEW_LINE);
 		/* @formatter:on */
 		return buffer.toString();
 	}
 
 	@Override
 	public String toString() {
-		
+
 		StringBuilder str = new StringBuilder();
-	
+
 		// Game Status
 		str.append(getInfo());
 
@@ -69,16 +69,15 @@ public class GamePrinter {
 
 	/**
 	 * Devuelve el mensaje de despedia en el que se indica el ganador y el resultado.
-	 * @return El mensaje con el ganador 
+	 * @return El mensaje con el ganador
 	 */
 	public String endMessage() {
 		StringBuilder sb = new StringBuilder();
-		
+
 		if (game.playerWin()) sb.append(Messages.PLAYER_WINS);
 		else if (game.aliensWin()) sb.append(Messages.ALIENS_WIN);
 		else sb.append(Messages.PLAYER_QUITS);
-		
+
 		return sb.toString();
 	}
 }
-

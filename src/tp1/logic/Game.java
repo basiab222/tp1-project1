@@ -27,7 +27,7 @@ public class Game {
     }
 
     public String stateToString() { //THIS METHOD IS RETURNING THE STUFF BEFORE THE REMAINING ALIENS LINE, SO NEED TO FIX THAT BEFORE ADDING THE SHIP
-        return null;
+        return "";
     }
 
     public void moveUCMShip(int x, int y) {
@@ -89,8 +89,7 @@ public class Game {
         if (ucmShip.getRow() == row && ucmShip.getColumn() == col) {
             return Messages.UCMSHIP_SYMBOL; // Display the spaceship symbol
         } else if (regularAlien.getRow() == row && regularAlien.getColumn() == col){
-
-            return Messages.REGULAR_ALIEN_SYMBOL;
+            return Messages.REGULAR_ALIEN_SYMBOL; //+ the Messenges.gameObjectstatus thing
         } else if (ucmShip.getLaserAvailable() && ucmLaser.getRow() == row && ucmLaser.getColumn() == col) {
             return Messages.LASER_SYMBOL; //add option if it cannot be shot
         } else {

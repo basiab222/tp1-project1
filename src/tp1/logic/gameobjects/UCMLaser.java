@@ -114,7 +114,9 @@ public class UCMLaser {
 	 * @return <code>true</code> if the alien has been attacked by the laser.
 	 */
 	public boolean performAttack(RegularAlien other) {
-		//TODO fill your code
+		if (other.getColumn() == this.getColumn() && other.getRow() == this.getRow()) {
+			return weaponAttack(other);
+		}
 		return false;
 	}
 
