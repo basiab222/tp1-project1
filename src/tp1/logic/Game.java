@@ -3,6 +3,7 @@ package tp1.logic;
 import tp1.logic.gameobjects.RegularAlien;
 import tp1.logic.gameobjects.UCMSpaceship;
 import tp1.logic.gameobjects.UCMLaser;
+import tp1.logic.lists.RegularAlienList;
 import tp1.view.Messages;
 
 import java.util.Random;
@@ -17,6 +18,8 @@ public class Game {
     private UCMLaser ucmLaser;
     private RegularAlien regularAlien;
 
+    private RegularAlienList regularAlienList;
+
     private int cycles;
 
     public static boolean laserShotObject = false;
@@ -25,8 +28,20 @@ public class Game {
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
         regularAlien = new RegularAlien(5,(DIM_Y / 2) + 2);
 
+
         cycles = 0; //initialise cycles to 0
     }
+
+    public void reset() {
+        // Reset game state to initial values (destroy all objects, clear lists, reset game cycle, etc.)
+        ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
+        ucmLaser = null;
+        regularAlien = new RegularAlien(5, (DIM_Y / 2) + 2);
+        laserShotObject = false;
+        cycles = 0; // Reset the cycles
+
+    }
+
 
     public UCMSpaceship getUcmShip() {
         return ucmShip;
@@ -36,7 +51,7 @@ public class Game {
         return "Life: " + ucmShip.getResistance() + "\n" +
                 "Points: " //+ ucmShip.getPoints()
                  + "\n" +
-                "shockWave: " //+ (ucmShip.isShockWaveEnabled() ? "ON" : "OFF") these to implement after
+                "shockWave: " //+ (ucmShip.isShockWaveEnabled() ? "ON" : "OFF")
                 + "\n";
     }
 

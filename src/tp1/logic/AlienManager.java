@@ -1,8 +1,8 @@
 package tp1.logic;
 
-//import tp1.logic.gameobjects.DestroyerAlien;
+import tp1.logic.gameobjects.DestroyerAlien;
 import tp1.logic.gameobjects.RegularAlien;
-//import tp1.logic.lists.DestroyerAlienList;
+import tp1.logic.lists.DestroyerAlienList;
 import tp1.logic.lists.RegularAlienList;
 
 /**
@@ -21,10 +21,16 @@ public class AlienManager {
 	private int shipsOnBorder;
 	private boolean onBorder;
 
+	private RegularAlienList regularAlienList;
+
+	private DestroyerAlienList destroyerAlienList;
+
 	public AlienManager(Game game, Level level) {
 		this.level = level;
 		this.game = game;
 		this.remainingAliens = 0;
+		regularAlienList = initializeRegularAliens();
+		destroyerAlienList = initializeDestroyerAliens();
 	}
 		
 	// INITIALIZER METHODS
@@ -34,7 +40,13 @@ public class AlienManager {
 	 * @return the initial list of regular aliens according to the current level
 	 */
 	protected RegularAlienList initializeRegularAliens() {
-		//TODO fill your code
+		RegularAlienList regularAlienList = new RegularAlienList(level.getNumRegularAliens());
+		for (int i = 0; i < level.getNumRowsRegularAliens(); i++) {
+			for (int j = 0; j < level.getNumRegularAliens() / level.getNumRowsRegularAliens(); j++) { //so it prints in the middle
+				regularAlienList.addAlien(i, j);
+				remainingAliens++;
+			}
+		}
 		return null;
 	}
 
@@ -42,9 +54,9 @@ public class AlienManager {
 	 * Initializes the list of destroyer aliens
 	 * @return the initial list of destroyer aliens according to the current level
 	 */
-//	protected  DestroyerAlienList initializeDestroyerAliens() {
-//		//TODO fill your code
-//	}
+	protected  DestroyerAlienList initializeDestroyerAliens() {
+		return null;
+	}
 
 	
 	// CONTROL METHODS
@@ -60,5 +72,7 @@ public class AlienManager {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
 
 }

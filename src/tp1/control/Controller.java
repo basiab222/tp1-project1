@@ -94,6 +94,9 @@ public class Controller {
 					case "h":
 						game.displayHelp();
 						break;
+					case "r":
+						game.reset();
+						break;
 				}
 			}
 			if (game.aliensWin()){

@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="-Added cycles &amp; cycle counter&#10;-Now it prints the board when the game ends&#10;-Fixed the double board at the start&#10;-Now can move before shooting laser">
+      <change afterPath="$PROJECT_DIR$/src/tp1/logic/lists/DestroyerAlienList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/control/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/view/GamePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/view/GamePrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/lists/RegularAlienList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/lists/RegularAlienList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +90,8 @@
       <workItem from="1696457652349" duration="2116000" />
       <workItem from="1697539572291" duration="3282000" />
       <workItem from="1697638723966" duration="5062000" />
-      <workItem from="1698082967143" duration="5745000" />
+      <workItem from="1698082967143" duration="9098000" />
+      <workItem from="1698103723944" duration="2030000" />
     </task>
     <task id="LOCAL-00001" summary="board game">
       <created>1696433074166</created>
@@ -132,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698088850929</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="-Added cycles &amp; cycle counter&#10;-Now it prints the board when the game ends&#10;-Fixed the double board at the start&#10;-Now can move before shooting laser">
+      <option name="closed" value="true" />
+      <created>1698089525601</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1698089525601</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

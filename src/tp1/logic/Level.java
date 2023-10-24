@@ -67,4 +67,51 @@ public enum Level {
 		String allLevels = sb.toString();
 		return allLevels.substring(0, allLevels.length() - separator.length());
 	}
+
+	//getters setters
+
+
+	public int getNumRegularAliens() {
+		return numRegularAliens;
+	}
+
+	public void setNumRegularAliens(int numRegularAliens) {
+		this.numRegularAliens = numRegularAliens;
+	}
+
+	public int getNumRowsRegularAliens() {
+		return numRowsRegularAliens;
+	}
+
+	public void setNumRowsRegularAliens(int numRowsRegularAliens) {
+		this.numRowsRegularAliens = numRowsRegularAliens;
+	}
+
+	public int getNumDestroyerAliens() {
+		return numDestroyerAliens;
+	}
+
+	public void setNumDestroyerAliens(int numDestroyerAliens) {
+		this.numDestroyerAliens = numDestroyerAliens;
+	}
+
+	public int getNumCyclesToMoveOneCell() {
+		return numCyclesToMoveOneCell;
+	}
+
+	public void setNumCyclesToMoveOneCell(int numCyclesToMoveOneCell) {
+		this.numCyclesToMoveOneCell = numCyclesToMoveOneCell;
+	}
+
+	public void setUfoFrequency(double ufoFrequency) {
+		this.ufoFrequency = ufoFrequency;
+	}
+
+	public double getShootFrequency() {
+		return shootFrequency;
+	}
+
+	public void setShootFrequency(double shootFrequency) {
+		this.shootFrequency = shootFrequency;
+	}
 }
