@@ -31,9 +31,9 @@ public class Game {
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
         regularAlien = new RegularAlien(5,(DIM_Y / 2) + 2);
         destroyerAlien = new DestroyerAlien(2,4);
-        alienManager = new AlienManager(level);
+        alienManager = new AlienManager(this, level);
         alienManager.initializeRegularAliens();
-        //initialize Daliens
+        //initialize D.aliens
         cycles = 0; //initialise cycles to 0
     }
 

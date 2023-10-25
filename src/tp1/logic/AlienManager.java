@@ -25,7 +25,7 @@ public class AlienManager {
 
 	private DestroyerAlienList destroyerAlienList;
 
-	public AlienManager(Level level) {
+	public AlienManager(Game game, Level level) {
 		this.level = level;
 		this.game = game;
 		this.remainingAliens = 0;

@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="alien moving but not right">
-      <change afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Bomb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_10_2023,_11_09_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_10_2023__11_09__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/control/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/RegularAlien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/RegularAlien.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMSpaceship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMSpaceship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/lists/RegularAlienList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/lists/RegularAlienList.java" afterDir="false" />
-    </list>
+    <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="alien moving but not right" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,6 +83,7 @@
       <workItem from="1696457652349" duration="2116000" />
       <workItem from="1697539572291" duration="3282000" />
       <workItem from="1697638723966" duration="5062000" />
+      <workItem from="1698247806670" duration="731000" />
     </task>
     <task id="LOCAL-00001" summary="board game">
       <created>1696433074166</created>
@@ -125,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698054832465</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="alien moving but not right">
+      <option name="closed" value="true" />
+      <created>1698248528287</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698248528287</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
