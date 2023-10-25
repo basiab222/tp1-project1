@@ -2,7 +2,6 @@ package tp1.control;
 
 import static tp1.view.Messages.debug;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 import tp1.logic.Game;
@@ -89,7 +88,7 @@ public class Controller {
 						laserIsEnabled = true;
 						game.shootLaser();
 						game.enableLaser();
-						game.moveRegAliens();
+						game.moveAliens();
 						break;
 					case "h":
 						game.displayHelp();

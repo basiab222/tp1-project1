@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="-Added cycles &amp; cycle counter&#10;-Now it prints the board when the game ends&#10;-Fixed the double board at the start&#10;-Now can move before shooting laser">
-      <change afterPath="$PROJECT_DIR$/src/tp1/logic/lists/DestroyerAlienList.java" afterDir="false" />
+    <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="alien moving but not right">
+      <change afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_10_2023,_11_09_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_10_2023__11_09__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/control/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/RegularAlien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/RegularAlien.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMSpaceship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMSpaceship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/lists/RegularAlienList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/lists/RegularAlienList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +37,7 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -90,8 +96,6 @@
       <workItem from="1696457652349" duration="2116000" />
       <workItem from="1697539572291" duration="3282000" />
       <workItem from="1697638723966" duration="5062000" />
-      <workItem from="1698082967143" duration="9098000" />
-      <workItem from="1698103723944" duration="2030000" />
     </task>
     <task id="LOCAL-00001" summary="board game">
       <created>1696433074166</created>
@@ -121,31 +125,7 @@
       <option name="project" value="LOCAL" />
       <updated>1698054832465</updated>
     </task>
-    <task id="LOCAL-00005" summary="-Now it prints the board when the game ends&#10;-Fixed the double board at the start&#10;-Now can move before shooting laser">
-      <option name="closed" value="true" />
-      <created>1698086841059</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1698086841059</updated>
-    </task>
-    <task id="LOCAL-00006" summary="-Added cycles &amp; cycle counter&#10;-Now it prints the board when the game ends&#10;-Fixed the double board at the start&#10;-Now can move before shooting laser">
-      <option name="closed" value="true" />
-      <created>1698088850929</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1698088850929</updated>
-    </task>
-    <task id="LOCAL-00007" summary="-Added cycles &amp; cycle counter&#10;-Now it prints the board when the game ends&#10;-Fixed the double board at the start&#10;-Now can move before shooting laser">
-      <option name="closed" value="true" />
-      <created>1698089525601</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1698089525601</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,8 +146,6 @@
     <MESSAGE value="board game" />
     <MESSAGE value="moving laser" />
     <MESSAGE value="alien moving but not right" />
-    <MESSAGE value="-Now it prints the board when the game ends&#10;-Fixed the double board at the start&#10;-Now can move before shooting laser" />
-    <MESSAGE value="-Added cycles &amp; cycle counter&#10;-Now it prints the board when the game ends&#10;-Fixed the double board at the start&#10;-Now can move before shooting laser" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Added cycles &amp; cycle counter&#10;-Now it prints the board when the game ends&#10;-Fixed the double board at the start&#10;-Now can move before shooting laser" />
+    <option name="LAST_COMMIT_MESSAGE" value="alien moving but not right" />
   </component>
 </project>

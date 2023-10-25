@@ -6,7 +6,6 @@ public class UCMSpaceship {
     private int column;
     private int row;
     private int resistance;
-
     private boolean laserAvailable;
     private boolean shockwaveAvailable;
 

@@ -14,7 +14,6 @@ public class UCMLaser {
 	private int column;
 	private int life;
 
-	//TODO fill your code
 	private Move dir;
 	private Game game;
 

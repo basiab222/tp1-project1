@@ -15,25 +15,31 @@ public class RegularAlien {
 	private int col;
 	private int resistance;
 	private int damage;
+	private int points;
 	public static boolean movingLeft = true;
-
 	private	boolean shouldDescend = false;
+	private int cyclesToMove;
+	private int speed;
+	private Move dir;
+	private AlienManager alienManager;
 
 	public RegularAlien(int row, int col) {
 		this.row = row;
 		this.col = col;
 		this.resistance = 2;
 		this.damage = 5;
+		this.points = 5;
 	}
 
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
 
 	//TODO fill your code
-	private int cyclesToMove;
-	private int speed;
-	private Move dir;
-
-	private AlienManager alienManager;
-
 	public int getRow() {
 		return row;
 	}
@@ -73,9 +79,7 @@ public class RegularAlien {
 	/**
 	 * Implements the automatic movement of the regular alien
 	 */
-	//private boolean isInBorder() {
-	//return col > 0 && col <= 8 && row > 0 && row < 8;
-	//}
+
 	//new isInBorder to check if it is right in the border, not if its outside or w/e
 	private boolean isInBorder() {
 		return (col == 0 || col == 8 || row == 8);
@@ -113,6 +117,4 @@ public class RegularAlien {
 			this.resistance -= 1;
 		}
 	}
-	
-
 }
