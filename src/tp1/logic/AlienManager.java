@@ -30,7 +30,7 @@ public class AlienManager {
 		this.game = game;
 		this.remainingAliens = 0;
 		regularAlienList = initializeRegularAliens();
-		destroyerAlienList = initializeDestroyerAliens();
+		//destroyerAlienList = initializeDestroyerAliens();
 	}
 		
 	// INITIALIZER METHODS
@@ -47,16 +47,16 @@ public class AlienManager {
 				remainingAliens++;
 			}
 		}
-		return null;
+		return regularAlienList;
 	}
 
 	/**
 	 * Initializes the list of destroyer aliens
 	 * @return the initial list of destroyer aliens according to the current level
 	 */
-	protected  DestroyerAlienList initializeDestroyerAliens() {
-		return null;
-	}
+	//protected  DestroyerAlienList initializeDestroyerAliens() {
+	//	return null;
+	//}
 
 	
 	// CONTROL METHODS
@@ -69,10 +69,25 @@ public class AlienManager {
 	}
 
 	public boolean onBorder() {
-		// TODO Auto-generated method stub
+		RegularAlien[] regularAliens = regularAlienList.getObjects();
+		for (RegularAlien regularAlien : regularAliens) {
+				if (regularAlien.getColumn() == 0 || regularAlien.getColumn() == 8 || regularAlien.getRow() == 8)
+					return true;
+		}
 		return false;
 	}
 
+	public void moveAlienList(){
+		moveRegAliensList();
+	}
+
+	private void moveRegAliensList(){
+		for (RegularAlien regularAlien : regularAlienList.getObjects()) {
+			if (regularAlien.getResistance() > 0){
+				regularAlien.automaticMove();
+			}
+		}
+	}
 
 
 }
