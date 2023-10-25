@@ -15,9 +15,13 @@ public class Game {
     private UCMSpaceship ucmShip;
     private UCMLaser ucmLaser;
     private RegularAlien regularAlien;
-    private DestroyerAlien destroyerAlien;
+   private DestroyerAlien destroyerAlien;
+
+    private AlienManager alienManager;
     private Bomb bomb;
     private RegularAlienList regularAlienList;
+
+    private RegularAlien[] regularAliensArray = regularAlienList.getRegularAliens();
     private int cycles;
     public static boolean laserShotObject = false;
 
@@ -27,7 +31,9 @@ public class Game {
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
         regularAlien = new RegularAlien(5,(DIM_Y / 2) + 2);
         destroyerAlien = new DestroyerAlien(2,4);
-
+        alienManager = new AlienManager(level);
+        alienManager.initializeRegularAliens();
+        //initialize Daliens
         cycles = 0; //initialise cycles to 0
     }
 
@@ -160,11 +166,15 @@ public class Game {
         }
     }
 
-    public void alienIsShot(){
-        if (regularAlien.getRow() == ucmLaser.getRow() && regularAlien.getColumn() == ucmLaser.getColumn() + 1){
-            regularAlien.receiveAttack();
-            ucmShip.setLaserAvailable(false);
-            laserShotObject = true;
+    public void alienIsShot(){ //change regularAlien for alienManager
+        for (RegularAlien regularAlienCurrent: regularAliensArray) {
+            if (regularAlienCurrent.getRow() == ucmLaser.getRow() && regularAlienCurrent.getColumn() == ucmLaser.getColumn() + 1){
+                regularAlienCurrent.receiveAttack();
+
+                ucmShip.setLaserAvailable(false);
+                laserShotObject = true;
+        }
+
         }
     }
 
@@ -181,6 +191,7 @@ public class Game {
             alienIsShot();
 
         moveAliens();
+        //add alienManager.mvoe aliens
     }
 
     public Random getRandom() {

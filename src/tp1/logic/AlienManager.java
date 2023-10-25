@@ -25,7 +25,7 @@ public class AlienManager {
 
 	private DestroyerAlienList destroyerAlienList;
 
-	public AlienManager(Game game, Level level) {
+	public AlienManager(Level level) {
 		this.level = level;
 		this.game = game;
 		this.remainingAliens = 0;
@@ -69,8 +69,24 @@ public class AlienManager {
 	}
 
 	public boolean onBorder() {
-		// TODO Auto-generated method stub
+		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
+		for (RegularAlien regularAlien : regularAliens) {
+			if (regularAlien.getColumn() == 0 || regularAlien.getColumn() == 8 || regularAlien.getRow() == 8)
+				return true;
+		}
 		return false;
+	}
+
+	public void moveAlienList(){
+		moveRegAliensList();
+	}
+
+	private void moveRegAliensList(){
+		for (RegularAlien regularAlien : regularAlienList.getRegularAliens()) {
+			if (regularAlien.getResistance() > 0){
+				regularAlien.automaticMove();
+			}
+		}
 	}
 
 
