@@ -119,4 +119,16 @@ public class DestroyerAlien {
     public void setBombAvailable(boolean bombAvailable) {
         isBombAvailable = bombAvailable;
     }
+
+    public void moveLeft() {
+        if (this.getResistance() > 0) {
+            this.setColumn(this.getColumn() - 1);
+        }
+    }
+
+    public void moveRight() {
+        if (this.getResistance() > 0) {
+            this.setColumn(this.getColumn() + 1);
+        }
+    }
 }

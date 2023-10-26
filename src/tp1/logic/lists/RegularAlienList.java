@@ -22,17 +22,6 @@ public class RegularAlienList {
 		counter++;
 	}
 
-	public boolean foundAlien(int row, int col) {
-		boolean found = false;
-		int i = 0;
-		while (!found && i < counter) {
-			if (regularAliens[i].getRow() == row && regularAliens[i].getColumn() == col)
-				found = true;
-			i++;
-		}
-		return found;
-	}
-
 	public void removeAlien(int row, int col) {
 		if (counter > 0) { // if there are objects
 			int i = 0, j;
@@ -51,17 +40,6 @@ public class RegularAlienList {
 		}
 	}
 
-	public void reduceResistance(int damage, int row, int col){
-		int i = 0;
-		boolean found = false;
-		while (!found && i < counter) {
-			if (regularAliens[i].getRow() == row && regularAliens[i].getColumn() == col) { //if the object is found decrease the hp
-				found = true;
-				regularAliens[i].setResistance(regularAliens[i].getResistance() - damage);
-			}
-			++i;
-		}
-	}
 
 	// getters and setters for the list
 	public RegularAlien[] getRegularAliens() {

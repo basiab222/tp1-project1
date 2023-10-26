@@ -21,7 +21,7 @@ public class Game {
     private Bomb bomb;
     private RegularAlienList regularAlienList;
 
-    private RegularAlien[] regularAliensArray = regularAlienList.getRegularAliens();
+    private RegularAlien[] regularAliensArray;
     private int cycles;
     public static boolean laserShotObject = false;
 
@@ -29,8 +29,6 @@ public class Game {
         this.level = level;
         this.seed = seed;
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
-        regularAlien = new RegularAlien(5,(DIM_Y / 2) + 2);
-        destroyerAlien = new DestroyerAlien(2,4);
         alienManager = new AlienManager(this, level);
         alienManager.initializeRegularAliens();
         //initialize D.aliens
@@ -42,11 +40,10 @@ public class Game {
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
         ucmLaser = null;
         bomb = null;
-        regularAlien = new RegularAlien(5, (DIM_Y / 2) + 2);
-        destroyerAlien = new DestroyerAlien(2,4);
         laserShotObject = false;
-        cycles = 0; // Reset the cycles
 
+        cycles = 0; // Reset the cycles
+        alienManager.reset();
     }
 
 
@@ -75,8 +72,7 @@ public class Game {
     }
 
     public void moveAliens(){
-        regularAlien.automaticMove();
-        destroyerAlien.automaticMove();
+        alienManager.moveAlienList();
     }
 
     public void shootLaser() {
@@ -96,7 +92,7 @@ public class Game {
 
 
     // Method to check if a position is within the game board boundaries
-    private boolean isValidPosition(int column, int row) {
+    boolean isValidPosition(int column, int row) {
         return column >= 0 && column < DIM_X && row > 0 && row < DIM_Y;
     }
 
@@ -123,59 +119,48 @@ public class Game {
     }
 
     public String positionToString(int col, int row) {
-        //String s = "";
-
         if (ucmShip.getRow() == row && ucmShip.getColumn() == col) {
-            if ( ucmShip.getResistance() > 0)
+            if (ucmShip.getResistance() > 0)
                 return Messages.UCMSHIP_SYMBOL;
             else
-                return Messages.UCMSHIP_DEAD_SYMBOL;// Display the spaceship symbol
-        } else if (regularAlien.getRow() == row && regularAlien.getColumn() == col && regularAlien.getResistance() > 0){
-            return String.format(Messages.GAME_OBJECT_STATUS,Messages.REGULAR_ALIEN_SYMBOL,regularAlien.getResistance());
-        } else if (ucmShip.getLaserAvailable() && ucmLaser.getRow() == row && ucmLaser.getColumn() == col) {
-            return Messages.LASER_SYMBOL; //add option if it cannot be shot
-        } else if (destroyerAlien.getRow() == row && destroyerAlien.getColumn() == col && destroyerAlien.getResistance() > 0){
-            return String.format(Messages.GAME_OBJECT_STATUS,Messages.DESTROYER_ALIEN_SYMBOL,destroyerAlien.getResistance());
+                return Messages.UCMSHIP_DEAD_SYMBOL; // Display the spaceship symbol
         } else {
+            // Check if there's a regular alien at the specified position
+            RegularAlien regularAlien = alienManager.getRegularAlienAtPosition(row, col);
+            if (regularAlien != null && regularAlien.getResistance() > 0) {
+                return String.format(Messages.GAME_OBJECT_STATUS, Messages.REGULAR_ALIEN_SYMBOL, regularAlien.getResistance());
+            }
+
+            // Check if there's a laser on the specified position
+            if (ucmShip.getLaserAvailable() && ucmLaser != null && ucmLaser.getRow() == row && ucmLaser.getColumn() == col) {
+                return Messages.LASER_SYMBOL;
+            }
+
+            // Check if there's a destroyer alien at the specified position
+            DestroyerAlien destroyerAlien = alienManager.getDestroyerAlienAtPosition(row, col);
+            if (destroyerAlien != null && destroyerAlien.getResistance() > 0) {
+                return String.format(Messages.GAME_OBJECT_STATUS, Messages.DESTROYER_ALIEN_SYMBOL, destroyerAlien.getResistance());
+            }
+
             return " "; // Empty cells
         }
-        //return s;
     }
 
+
     public boolean playerWin() {
-        return regularAlien.getResistance() == 0;
+        return alienManager.playerWin();
     }
 
     public boolean aliensWin() {
-        if (regularAlien.getRow() == ucmShip.getRow()){
-            ucmShip.setResistance(0);
-            return true;
-        }
-        return false;
+        return alienManager.aliensWin();
     }
 
     public void enableLaser() {
-        if (isValidPosition(ucmLaser.getColumn(), ucmLaser.getRow()) && ucmShip.getLaserAvailable()) {
-            ucmLaser.performLaserMovement();
-            if (ucmLaser.isOut()){
-                ucmShip.setLaserAvailable(false);
-            }
-            laserShotObject = false;
-        } else {
-            ucmShip.setLaserAvailable(true);
-        }
+        alienManager.enableLaser(ucmLaser);
     }
 
     public void alienIsShot(){ //change regularAlien for alienManager
-        for (RegularAlien regularAlienCurrent: regularAliensArray) {
-            if (regularAlienCurrent.getRow() == ucmLaser.getRow() && regularAlienCurrent.getColumn() == ucmLaser.getColumn() + 1){
-                regularAlienCurrent.receiveAttack();
-
-                ucmShip.setLaserAvailable(false);
-                laserShotObject = true;
-        }
-
-        }
+        alienManager.alienIsShot(ucmLaser);
     }
 
     public void incrementCycles(){
@@ -190,8 +175,12 @@ public class Game {
         if (ucmShip.getLaserAvailable())
             alienIsShot();
 
-        moveAliens();
-        //add alienManager.mvoe aliens
+        if (alienManager.onBorder()){
+            alienManager.moveAlienList();
+        }
+        else{
+            moveAliens();
+        }
     }
 
     public Random getRandom() {

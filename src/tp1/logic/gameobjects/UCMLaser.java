@@ -75,8 +75,15 @@ public class UCMLaser {
 	 *  Implements the automatic movement of the laser	
 	 */
 
-	public void performLaserMovement(){
-		this.setRow(this.getRow()-1);
+	public void performLaserMovement() {
+		switch (dir) {
+			case UP:
+				if (getRow() > 0) {
+					setRow(getRow() - 1);
+				}
+				break;
+			// Add more cases for other directions if needed
+		}
 	}
 
 //	public void automaticMove () {

@@ -107,6 +107,19 @@ public class RegularAlien {
 
 	}
 
+	public void moveRight(){
+		if (this.getResistance() > 0) {
+			this.setColumn(this.getColumn() + 1);
+		}
+	}
+
+	public void moveLeft(){
+		if (this.getResistance() > 0) {
+			this.setColumn(this.getColumn() - 1);
+		}
+	}
+
+
 	private void descent() {
 		this.setRow(this.getRow() + 1);
 	}
