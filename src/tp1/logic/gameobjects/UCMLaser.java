@@ -5,86 +5,78 @@ import tp1.logic.Move;
 import tp1.logic.Position;
 
 /**
- * 
  * Class that represents the laser fired by {@link UCMSpaceship}
- *
  */
 public class UCMLaser {
-	private int row;
-	private int column;
-	private int life;
+    private int row;
+    private int column;
+    private int life;
+    private Move dir;
+    private Game game;
 
-	private Move dir;
-	private Game game;
+    public UCMLaser(int row, int column, Move dir) {
+        this.row = row;
+        this.column = column;
+        this.life = 1;
+        this.dir = dir;
+    }
 
-	public UCMLaser(int row, int column, Move dir) {
-		this.row = row;
-		this.column = column;
-		this.life = 1;
-		this.dir = dir;
-	}
+    public int getRow() {
+        return row;
+    }
 
-	public int getRow() {
-		return row;
-	}
+    public void setRow(int row) {
+        this.row = row;
+    }
 
-	public void setRow(int row) {
-		this.row = row;
-	}
+    public int getColumn() {
+        return column;
+    }
 
-	public int getColumn() {
-		return column;
-	}
+    public void setColumn(int column) {
+        this.column = column;
+    }
 
-	public void setColumn(int column) {
-		this.column = column;
-	}
+    public int getLife() {
+        return life;
+    }
 
-	public int getLife() {
-		return life;
-	}
+    public void setLife(int life) {
+        this.life = life;
+    }
 
-	public void setLife(int life) {
-		this.life = life;
-	}
+    public Move getDir() {
+        return dir;
+    }
 
-	public Move getDir() {
-		return dir;
-	}
+    public void setDir(Move dir) {
+        this.dir = dir;
+    }
 
-	public void setDir(Move dir) {
-		this.dir = dir;
-	}
+    public Game getGame() {
+        return game;
+    }
 
-	public Game getGame() {
-		return game;
-	}
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
-	public void setGame(Game game) {
-		this.game = game;
-	}
+    /**
+     * Method called when the laser disappears from the board
+     */
+    public void onDelete() {
+        game.enableLaser();
+    }
 
-	/**
-	 *  Method called when the laser disappears from the board
-	 */
-	public void onDelete() {
-		game.enableLaser();
-	}
+    /**
+     * Implements the automatic movement of the laser
+     */
 
-	/**
-	 *  Implements the automatic movement of the laser	
-	 */
-
-	public void performLaserMovement() {
-		switch (dir) {
-			case UP:
-				if (getRow() > 0) {
-					setRow(getRow() - 1);
-				}
-				break;
-			// Add more cases for other directions if needed
-		}
-	}
+    public void performLaserMovement() {
+        if (getRow() >= 0) {
+            setRow(getRow() - 1);
+        }
+    }
 
 //	public void automaticMove () {
 //		performLaserMovement(dir);
@@ -93,32 +85,30 @@ public class UCMLaser {
 //		}
 //	}
 
-	
-	// PERFORM ATTACK METHODS
-	
-	
-	
-	
-//	private void die() {
+
+    // PERFORM ATTACK METHODS
+
+
+    //	private void die() {
 //		//TODO fill your code
 //	}
 //
-	public boolean isOut() { //to check if its exiting the board after not hitting any1
-		return (row <= 0);
-	}
+    public boolean isOut() { //to check if its exiting the board after not hitting any1
+        return (row < 0);
+    }
 
-	//private void performMovement(Move dir) {
-	//}
+    //private void performMovement(Move dir) {
+    //}
 
-	//performMovement in game class.
+    //performMovement in game class.
 
-	/**
-	 * Method that implements the attack by the laser to a regular alien.
-	 * It checks whether both objects are alive and in the same position.
-	 * If so call the "actual" attack method {@link weaponAttack}.
-	 * @param other the regular alien possibly under attack
-	 * @return <code>true</code> if the alien has been attacked by the laser.
-	 */
+    /**
+     * Method that implements the attack by the laser to a regular alien.
+     * It checks whether both objects are alive and in the same position.
+     * If so call the "actual" attack method {@link weaponAttack}.
+     * @param other the regular alien possibly under attack
+     * @return <code>true</code> if the alien has been attacked by the laser.
+     */
 //	public boolean performAttack(RegularAlien other) {
 //		if (other.getColumn() == this.getColumn() && other.getRow() == this.getRow()) {
 //			return weaponAttack(other);
@@ -126,38 +116,37 @@ public class UCMLaser {
 //		return false;
 //	}
 
-	/**
-	 * Method that implements the attack by the laser to a destroyer alien.
-	 * It checks whether both objects are alive and in the same position.
-	 * If so call the "actual" attack method {@link weaponAttack}.
-	 * @param other the destroyer alien possibly under attack
-	 * @return <code>true</code> if the alien has been attacked by the laser.
-	 */
+    /**
+     * Method that implements the attack by the laser to a destroyer alien.
+     * It checks whether both objects are alive and in the same position.
+     * If so call the "actual" attack method {@link weaponAttack}.
+     * @param other the destroyer alien possibly under attack
+     * @return <code>true</code> if the alien has been attacked by the laser.
+     */
 
 
+    //ACTUAL ATTACK METHODS
 
-	//ACTUAL ATTACK METHODS
-	
 
-	/**
-	 * 
-	 * @param other regular alien under attack by the laser
-	 * @return always returns <code>true</code>
-	 */
+    /**
+     *
+     * @param other regular alien under attack by the laser
+     * @return always returns <code>true</code>
+     */
 //	private boolean weaponAttack(RegularAlien other) {
 //		return other.receiveAttack(this);
 //	}
 
-	//TODO fill your code
+    //TODO fill your code
 
 
-	// RECEIVE ATTACK METHODS
-	
-	/**
-	 * Method to implement the effect of bomb attack on a laser
-	 * @param weapon the received bomb
-	 * @return always returns <code>true</code>
-	 */
+    // RECEIVE ATTACK METHODS
+
+    /**
+     * Method to implement the effect of bomb attack on a laser
+     * @param weapon the received bomb
+     * @return always returns <code>true</code>
+     */
 	/*
 	public boolean receiveAttack(Bomb weapon) {
 		receiveDamage(weapon.getDamage());

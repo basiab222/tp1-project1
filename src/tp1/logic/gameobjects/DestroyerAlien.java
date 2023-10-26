@@ -1,6 +1,7 @@
 package tp1.logic.gameobjects;
 
 import tp1.logic.AlienManager;
+import tp1.logic.Game;
 import tp1.logic.Move;
 
 public class DestroyerAlien {
@@ -15,6 +16,7 @@ public class DestroyerAlien {
     private int speed;
     private Move dir;
     private AlienManager alienManager;
+    private Game game;
     private Bomb bomb;
     private boolean isBombAvailable;
 
@@ -24,6 +26,7 @@ public class DestroyerAlien {
         this.resistance = 1;
         this.damage = 1;
         this.points = 10;
+        this.isBombAvailable = false;
     }
 
     public int getPoints() {
@@ -105,6 +108,13 @@ public class DestroyerAlien {
         this.setRow(this.getRow() + 1);
     }
 
+//    public void shootBomb(){
+//        if (!isBombAvailable()){
+//            this.isBombAvailable = true;
+//            bomb = new Bomb(this.row + 1, this.getColumn());
+//        }
+//    }
+
 
     public void receiveAttack() {
         if (this.resistance > 0) {
@@ -130,5 +140,9 @@ public class DestroyerAlien {
         if (this.getResistance() > 0) {
             this.setColumn(this.getColumn() + 1);
         }
+    }
+
+    public boolean canDropBomb(){
+        return game.getRandom().nextDouble() < game.getLevel().getShootFrequency();
     }
 }

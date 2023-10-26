@@ -84,16 +84,19 @@ public class Game {
         }
     }
 
-    public void dropBomb() {
-        if (destroyerAlien.isBombAvailable()){
+//    public void shootBomb(){
+//        if (!destroyerAlien.isBombAvailable()){
+//            destroyerAlien.setBombAvailable(true);
+//            bomb = new Bomb(destroyerAlien.getRow() + 1, destroyerAlien.getColumn());
+//        }
+//    }
 
-        }
-    }
+
 
 
     // Method to check if a position is within the game board boundaries
     boolean isValidPosition(int column, int row) {
-        return column >= 0 && column < DIM_X && row > 0 && row < DIM_Y;
+        return column >= 0 && column < DIM_X && row >= 0 && row < DIM_Y;
     }
 
     public void displayHelp() {
@@ -142,6 +145,10 @@ public class Game {
                 return String.format(Messages.GAME_OBJECT_STATUS, Messages.DESTROYER_ALIEN_SYMBOL, destroyerAlien.getResistance());
             }
 
+            if (bomb != null && !bomb.isOut() && bomb.getRow() == row && bomb.getColumn() == col && destroyerAlien.isBombAvailable()) {
+                return Messages.BOMB_SYMBOL;
+            }
+
             return " "; // Empty cells
         }
     }
@@ -169,8 +176,12 @@ public class Game {
 
     public void updateGame(){
         incrementCycles();
-        if (ucmLaser != null && !laserShotObject ) //only call this when there is a laser on screen, so can move before that
+        if (ucmLaser != null && !laserShotObject && !ucmLaser.isOut()) //only call this when there is a laser on screen, so can move before that
             enableLaser();
+
+        if (bomb != null && !bomb.isOut()){
+            alienManager.shootDestroyerBombs();
+        }
 
         if (ucmShip.getLaserAvailable())
             alienIsShot();
@@ -184,9 +195,7 @@ public class Game {
     }
 
     public Random getRandom() {
-        double probability = level.getShootFrequency();
-        Random random = new Random(seed);
-        return random;
+        return new Random(seed);
     }
 
     public Level getLevel() {

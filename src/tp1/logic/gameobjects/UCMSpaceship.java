@@ -1,12 +1,10 @@
 package tp1.logic.gameobjects;
 
-import tp1.logic.Move;
-
 public class UCMSpaceship {
     private int column;
     private int row;
     private int resistance;
-    private boolean laserAvailable;
+    private boolean isLaserAvailable;
     private boolean shockwaveAvailable;
 
 
@@ -15,7 +13,7 @@ public class UCMSpaceship {
         this.column = initialColumn;
         this.row = initialRow;
         this.resistance = 3;
-        laserAvailable = false;
+        isLaserAvailable = false;
         shockwaveAvailable = false;
     }
 
@@ -41,7 +39,7 @@ public class UCMSpaceship {
     }
 
     public boolean getLaserAvailable() {
-        return laserAvailable;
+        return isLaserAvailable;
     }
 
     public boolean getShockwave(){
@@ -49,7 +47,7 @@ public class UCMSpaceship {
     }
 
     public void setLaserAvailable(boolean laserAvailable) {
-        this.laserAvailable = laserAvailable;
+        this.isLaserAvailable = laserAvailable;
     }
 
     public void setShockwaveAvailable(boolean shockwaveAvailable){

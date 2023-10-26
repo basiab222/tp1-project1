@@ -1,5 +1,6 @@
 package tp1.logic;
 
+import tp1.logic.gameobjects.Bomb;
 import tp1.logic.gameobjects.DestroyerAlien;
 import tp1.logic.gameobjects.RegularAlien;
 import tp1.logic.lists.DestroyerAlienList;
@@ -166,11 +167,21 @@ public class AlienManager {
 
 	public void alienIsShot(UCMLaser ucmLaser){
 		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
-		for (RegularAlien regularAlien: regularAliens ){
+		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
+
+		for (RegularAlien regularAlien : regularAliens ){
 			if (regularAlien.getResistance() > 0 && ucmLaser.getRow() == regularAlien.getRow() && ucmLaser.getColumn() == regularAlien.getColumn()){
 				regularAlien.receiveAttack();
 				game.getUcmShip().setLaserAvailable(false); //check
-				game.laserShotObject = true;
+				Game.laserShotObject = true;
+			}
+		}
+
+		for (DestroyerAlien destroyerAlien : destroyerAliens ){
+			if (destroyerAlien.getResistance() > 0 && ucmLaser.getRow() == destroyerAlien.getRow() && ucmLaser.getColumn() == destroyerAlien.getColumn()){
+				destroyerAlien.receiveAttack();
+				game.getUcmShip().setLaserAvailable(false); //check
+				Game.laserShotObject = true;
 			}
 		}
 	}
@@ -181,7 +192,7 @@ public class AlienManager {
 			if (ucmLaser.isOut()){
 				game.getUcmShip().setLaserAvailable(false);
 			}
-			game.laserShotObject = false;
+			Game.laserShotObject = false;
 		} else {
 			game.getUcmShip().setLaserAvailable(true);
 		}
@@ -282,5 +293,28 @@ public class AlienManager {
 		}
 	}
 
+	public void shootDestroyerBombs(){
+		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
+		for (DestroyerAlien destroyerAlien : destroyerAliens) {
+			if (destroyerAlien.canDropBomb())
+
+				if (!destroyerAlien.isBombAvailable()){
+					destroyerAlien.setBombAvailable(true);
+					Bomb bomb = new Bomb(destroyerAlien.getRow() + 1, destroyerAlien.getColumn());
+				}
+		}
+	}
+
+//	public void enableBomb(Bomb bomb){
+//		if (game.isValidPosition(bomb.getColumn(), bomb.getRow())) {
+//			bomb.performBombMovement();
+//			if (bomb.isOut()){
+//				game.getUcmShip().setLaserAvailable(false);
+//			}
+//			Game.laserShotObject = false;
+//		} else {
+//			game.getUcmShip().setLaserAvailable(true);
+//		}
+//	}
 
 }
