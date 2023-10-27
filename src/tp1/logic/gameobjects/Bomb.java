@@ -35,4 +35,6 @@ public class Bomb {
     public boolean isOut() { //to check if its exiting the board after not hitting any1
         return (row >= 8);
     }
+
+    //a
 }

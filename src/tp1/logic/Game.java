@@ -29,6 +29,7 @@ public class Game {
         alienManager = new AlienManager(this, level);
         alienManager.initializeRegularAliens();
         //initialize D.aliens
+        //initialize BombList
         cycles = 0; //initialise cycles to 0
     }
 
@@ -87,9 +88,6 @@ public class Game {
 //            bomb = new Bomb(destroyerAlien.getRow() + 1, destroyerAlien.getColumn());
 //        }
 //    }
-
-
-
 
     // Method to check if a position is within the game board boundaries
     boolean isValidPosition(int column, int row) {

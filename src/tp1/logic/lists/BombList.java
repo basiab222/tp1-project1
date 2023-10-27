@@ -16,6 +16,8 @@ public class BombList {
             counter++;
     }
 
+    //maybe deleteBomb method too
+
     public Bomb[] getBombList() {
         return bombList;
     }
