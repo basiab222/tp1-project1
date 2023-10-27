@@ -26,7 +26,7 @@ public class Game {
         this.level = level;
         this.seed = seed;
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
-        alienManager = new AlienManager(this, level);
+        alienManager = new AlienManager(this, level,ucmShip);
         alienManager.initializeRegularAliens();
         //initialize D.aliens
         //initialize BombList
@@ -51,7 +51,7 @@ public class Game {
 
     public String stateToString() {
         return "Life: " + ucmShip.getResistance() + "\n" +
-                "Points: " //+ ucmShip.getPoints()
+                "Points: " + ucmShip.getPoints()
                  + "\n" +
                 "shockWave: " //+ (ucmShip.isShockWaveEnabled() ? "ON" : "OFF")
                 + "\n";

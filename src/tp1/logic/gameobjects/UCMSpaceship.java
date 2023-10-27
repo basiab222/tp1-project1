@@ -6,6 +6,7 @@ public class UCMSpaceship {
     private int resistance;
     private boolean isLaserAvailable;
     private boolean shockwaveAvailable;
+    private int points;
 
 
     // Constructor
@@ -13,8 +14,25 @@ public class UCMSpaceship {
         this.column = initialColumn;
         this.row = initialRow;
         this.resistance = 3;
-        isLaserAvailable = false;
-        shockwaveAvailable = false;
+        this.isLaserAvailable = false;
+        this.shockwaveAvailable = false;
+        this.points = 0;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public boolean isLaserAvailable() {
+        return isLaserAvailable;
+    }
+
+    public boolean isShockwaveAvailable() {
+        return shockwaveAvailable;
     }
 
     // Getter

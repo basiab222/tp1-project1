@@ -1,11 +1,8 @@
 package tp1.logic;
 
-import tp1.logic.gameobjects.Bomb;
-import tp1.logic.gameobjects.DestroyerAlien;
-import tp1.logic.gameobjects.RegularAlien;
+import tp1.logic.gameobjects.*;
 import tp1.logic.lists.DestroyerAlienList;
 import tp1.logic.lists.RegularAlienList;
-import tp1.logic.gameobjects.UCMLaser;
 
 /**
  * 
@@ -18,32 +15,26 @@ public class AlienManager {
 	private Level level;
 	private Game game;
 	private int remainingAliens;
-	
 	private boolean squadInFinalRow;
 	private int shipsOnBorder;
 	private boolean onBorder;
-
 	private boolean shouldDescend;
-
 	private RegularAlienList regularAlienList;
-
 	private DestroyerAlienList destroyerAlienList;
-
+	private UCMSpaceship ucmSpaceship;
 	private int destroyerAlienGroupRow;
 	private int destroyerAlienGroupColumn;
-
 	private Move dir;
 
-	public AlienManager(Game game, Level level) {
+	public AlienManager(Game game, Level level, UCMSpaceship ucmSpaceship) {
 		this.level = level;
 		this.game = game;
+		this.ucmSpaceship = ucmSpaceship;
 		this.remainingAliens = 0;
 		regularAlienList = initializeRegularAliens();
 		destroyerAlienList = initializeDestroyerAliens();
-
 		destroyerAlienGroupRow = level.getNumRowsRegularAliens() + 1;
 		destroyerAlienGroupColumn = Game.DIM_X / 2;
-
 		dir = Move.LEFT;
 	}
 		
@@ -179,6 +170,7 @@ public class AlienManager {
 				regularAlien.receiveAttack();
 				game.getUcmShip().setLaserAvailable(false); //check
 				Game.laserShotObject = true;
+				ucmSpaceship.setPoints(ucmSpaceship.getPoints() + regularAlien.getPoints());
 			}
 		}
 		//check if any destroyer has been shot
@@ -187,6 +179,7 @@ public class AlienManager {
 				destroyerAlien.receiveAttack();
 				game.getUcmShip().setLaserAvailable(false); //check
 				Game.laserShotObject = true;
+				ucmSpaceship.setPoints(ucmSpaceship.getPoints() + destroyerAlien.getPoints());
 			}
 		}
 	}
