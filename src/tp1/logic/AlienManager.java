@@ -111,44 +111,49 @@ public class AlienManager {
 	}
 
 	public void moveAlienList() {
-		checkOnBorder(); //make sure that the whole list is inside the border
+		int cycle = game.getCycle();
+		int numCyclesToMoveOneCell = level.getNumCyclesToMoveOneCell();
 
-		if (shouldDescend) {
-			moveAllDown(); // Descend in this  cycle
-			shouldDescend = false; // Reset for the next cycle so that it doesnt keep moving down
-		} else {
-			if (dir == Move.LEFT) {
-				// move to left
-				for (RegularAlien regularAlien : regularAlienList.getRegularAliens()) {
-					regularAlien.moveLeft(); // move all the regular aliens to the left
-				}
+		if (cycle % numCyclesToMoveOneCell == 0) {
+			checkOnBorder(); //make sure that the whole list is inside the border
 
-				for (DestroyerAlien destroyerAlien : destroyerAlienList.getDestroyerAliens()) {
-					destroyerAlien.moveLeft(); //move all the destroyer aliens to the left
-				}
-
-			} else if (dir == Move.RIGHT) {
-				// move to  right
-				for (RegularAlien regularAlien : regularAlienList.getRegularAliens()) {
-					regularAlien.moveRight();
-				}
-
-				for (DestroyerAlien destroyerAlien : destroyerAlienList.getDestroyerAliens()) {
-					destroyerAlien.moveRight();
-				}
-			}
-
-			// After moving, switch dir if needed
-			if (onBorder()) {
-				shouldDescend = true; // Set to descend in the next cycle
+			if (shouldDescend) {
+				moveAllDown(); // Descend in this  cycle
+				shouldDescend = false; // Reset for the next cycle so that it doesnt keep moving down
+			} else {
 				if (dir == Move.LEFT) {
-					dir = Move.RIGHT; // Move to the right or left after descending
-				} else {
-					dir = Move.LEFT;
-				}
-			}
+					// move to left
+					for (RegularAlien regularAlien : regularAlienList.getRegularAliens()) {
+						regularAlien.moveLeft(); // move all the regular aliens to the left
+					}
 
-			onBorder = false;
+					for (DestroyerAlien destroyerAlien : destroyerAlienList.getDestroyerAliens()) {
+						destroyerAlien.moveLeft(); //move all the destroyer aliens to the left
+					}
+
+				} else if (dir == Move.RIGHT) {
+					// move to  right
+					for (RegularAlien regularAlien : regularAlienList.getRegularAliens()) {
+						regularAlien.moveRight();
+					}
+
+					for (DestroyerAlien destroyerAlien : destroyerAlienList.getDestroyerAliens()) {
+						destroyerAlien.moveRight();
+					}
+				}
+
+				// After moving, switch dir if needed
+				if (onBorder()) {
+					shouldDescend = true; // Set to descend in the next cycle
+					if (dir == Move.LEFT) {
+						dir = Move.RIGHT; // Move to the right or left after descending
+					} else {
+						dir = Move.LEFT;
+					}
+				}
+
+				onBorder = false;
+			}
 		}
 	}
 

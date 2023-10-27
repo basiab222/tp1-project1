@@ -73,9 +73,9 @@ public class Controller {
 								game.updateGame();
 							}
 							game.moveUCMShip(move.getX(), move.getY());
-
 						}
 						break;
+					case "":
 					case "n":
 						game.updateGame();
 						break;
@@ -93,9 +93,17 @@ public class Controller {
 					case "h":
 						game.displayHelp();
 						break;
+					case "l":
+						System.out.println(String.format(Messages.UCM_DESCRIPTION,Messages.UCMSHIP_DESCRIPTION,1,3));
+						System.out.println(String.format(Messages.ALIEN_DESCRIPTION,Messages.REGULAR_ALIEN_DESCRIPTION,5,0,2));
+						System.out.println(String.format(Messages.ALIEN_DESCRIPTION,Messages.DESTROYER_ALIEN_DESCRIPTION,10,1,1));
+						System.out.println(String.format(Messages.ALIEN_DESCRIPTION,Messages.UFO_DESCRIPTION,25,0,1));
+						break;
 					case "r":
 						game.reset();
 						break;
+					default:
+						System.out.println(Messages.UNKNOWN_COMMAND);
 				}
 			}
 			if (game.aliensWin()){

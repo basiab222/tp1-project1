@@ -6,6 +6,7 @@ public class Bomb {
     private int row;
     private int column;
     private Game game;
+    private DestroyerAlien destroyerAlien;
 
     public Bomb(int row, int column) {
         this.row = row;
