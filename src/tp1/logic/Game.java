@@ -1,6 +1,7 @@
 package tp1.logic;
 
 import tp1.logic.gameobjects.*;
+import tp1.logic.lists.BombList;
 import tp1.logic.lists.RegularAlienList;
 import tp1.view.Messages;
 
@@ -14,14 +15,10 @@ public class Game {
     private long seed;
     private UCMSpaceship ucmShip;
     private UCMLaser ucmLaser;
-    private RegularAlien regularAlien;
-   private DestroyerAlien destroyerAlien;
+    private BombList bombList;
 
     private AlienManager alienManager;
-    private Bomb bomb;
-    private RegularAlienList regularAlienList;
-
-    private RegularAlien[] regularAliensArray;
+    private Bomb bomb; //check uses of bomb
     private int cycles;
     public static boolean laserShotObject = false;
 
@@ -108,6 +105,7 @@ public class Game {
                 "[h]elp: Prints this help message.\r\n" +
                 "[e]xit: Terminates the program. \r\n" +
                 "[n]one: Skips one cycle.");
+        System.out.println();
 
     }
 
@@ -179,9 +177,9 @@ public class Game {
         if (ucmLaser != null && !laserShotObject && !ucmLaser.isOut()) //only call this when there is a laser on screen, so can move before that
             enableLaser();
 
-        if (bomb != null && !bomb.isOut()){
+        /*if (bomb != null && !bomb.isOut()){
             alienManager.shootDestroyerBombs();
-        }
+        }*/
 
         if (ucmShip.getLaserAvailable())
             alienIsShot();

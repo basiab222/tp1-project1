@@ -82,7 +82,7 @@ public class DestroyerAlien {
         return (col == 0 || col == 8 || row == 8);
     }
 
-    public void automaticMove() {
+    /*public void automaticMove() {
         if (!shouldDescend) {
             if (movingLeft) {
                 this.setColumn(this.getColumn() - 1);
@@ -102,7 +102,7 @@ public class DestroyerAlien {
             shouldDescend = false; // Reset the flag for the next cycle
         }
 
-    }
+    }*/
 
     private void descent() {
         this.setRow(this.getRow() + 1);

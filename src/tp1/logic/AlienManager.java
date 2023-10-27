@@ -111,7 +111,7 @@ public class AlienManager {
 	}
 
 	public void moveAlienList() {
-		checkOnBorder();
+		checkOnBorder(); //make sure that the whole list is inside the border
 
 		if (shouldDescend) {
 			moveAllDown(); // Descend in this  cycle
@@ -120,11 +120,11 @@ public class AlienManager {
 			if (dir == Move.LEFT) {
 				// move to left
 				for (RegularAlien regularAlien : regularAlienList.getRegularAliens()) {
-					regularAlien.moveLeft();
+					regularAlien.moveLeft(); // move all the regular aliens to the left
 				}
 
 				for (DestroyerAlien destroyerAlien : destroyerAlienList.getDestroyerAliens()) {
-					destroyerAlien.moveLeft();
+					destroyerAlien.moveLeft(); //move all the destroyer aliens to the left
 				}
 
 			} else if (dir == Move.RIGHT) {
@@ -153,7 +153,7 @@ public class AlienManager {
 	}
 
 
-	private void moveRegAliensList() {
+	/*private void moveRegAliensList() {
 		for (RegularAlien regularAlien : regularAlienList.getRegularAliens()) {
 			if (regularAlien.getResistance() > 0) {
 				if (dir == Move.LEFT) {
@@ -163,12 +163,12 @@ public class AlienManager {
 				}
 			}
 		}
-	}
+	}*/
 
 	public void alienIsShot(UCMLaser ucmLaser){
 		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
 		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
-
+		//check if regular aliens been shot
 		for (RegularAlien regularAlien : regularAliens ){
 			if (regularAlien.getResistance() > 0 && ucmLaser.getRow() == regularAlien.getRow() && ucmLaser.getColumn() == regularAlien.getColumn()){
 				regularAlien.receiveAttack();
@@ -176,7 +176,7 @@ public class AlienManager {
 				Game.laserShotObject = true;
 			}
 		}
-
+		//check if any destroyer has been shot
 		for (DestroyerAlien destroyerAlien : destroyerAliens ){
 			if (destroyerAlien.getResistance() > 0 && ucmLaser.getRow() == destroyerAlien.getRow() && ucmLaser.getColumn() == destroyerAlien.getColumn()){
 				destroyerAlien.receiveAttack();
@@ -271,7 +271,7 @@ public class AlienManager {
 
 	}
 
-	public boolean checkLaserCollision(UCMLaser laser) {
+	/*public boolean checkLaserCollision(UCMLaser laser) {
 		for (RegularAlien regularAlien : regularAlienList.getRegularAliens()) {
 			if (regularAlien.getRow() == laser.getRow() && regularAlien.getColumn() == laser.getColumn()) {
 				// Handle collision and damage to the alien
@@ -291,9 +291,9 @@ public class AlienManager {
 				destroyerAlien.setColumn(destroyerAlienGroupColumn);
 			}
 		}
-	}
+	}*/
 
-	public void shootDestroyerBombs(){
+	/*public void shootDestroyerBombs(){
 		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
 		for (DestroyerAlien destroyerAlien : destroyerAliens) {
 			if (destroyerAlien.canDropBomb())
@@ -303,7 +303,7 @@ public class AlienManager {
 					Bomb bomb = new Bomb(destroyerAlien.getRow() + 1, destroyerAlien.getColumn());
 				}
 		}
-	}
+	}*/
 
 //	public void enableBomb(Bomb bomb){
 //		if (game.isValidPosition(bomb.getColumn(), bomb.getRow())) {

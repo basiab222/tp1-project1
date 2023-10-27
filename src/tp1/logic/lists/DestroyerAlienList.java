@@ -19,7 +19,7 @@ public class DestroyerAlienList {
         counter++;
     }
 
-    public void removeDestroyerAlien(int row, int col) {
+    /*public void removeDestroyerAlien(int row, int col) {
         if (counter > 0) { // if there are objects
             int i = 0, j;
             while (i < counter){
@@ -35,7 +35,7 @@ public class DestroyerAlienList {
             }
 
         }
-    }
+    }*/
 
     public DestroyerAlien[] getDestroyerAliens() {
         return destroyerAliens;
