@@ -226,6 +226,18 @@ public class Game {
     public void ComputerActions() {
     	//alienManager.computerAction();
     	ufo.computerAction();
+        ufoIsShot();
+    }
+
+    public void ufoIsShot() {
+        if (ufo.isEnabled() && ufo.getRow() == ucmLaser.getRow() && ufo.getColumn() == ucmLaser.getColumn()) {
+            ufo.onDelete();
+            ucmLaser.onDelete();
+            ucmShip.setPoints(ucmShip.getPoints() + ufo.getPoints());
+            if (!ucmShip.getShockwave()){
+                ucmShip.setShockwaveAvailable(true);
+            }
+        }
     }
 
 

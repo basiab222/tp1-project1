@@ -14,12 +14,15 @@ public class Ufo {
 
     private boolean enabled;
     private Game game;
+
+    private int points;
     // Constructor
     public Ufo(int initialColumn, int initialRow) {
         this.column = initialColumn;
         this.row = initialRow;
         this.resistance = 1;
         this.enabled = false;
+        this.points = 25;
     }
 
     // Getter methods
@@ -89,5 +92,8 @@ public class Ufo {
 
         return false;
 	}
-	
+
+    public int getPoints() {
+        return points;
+    }
 }

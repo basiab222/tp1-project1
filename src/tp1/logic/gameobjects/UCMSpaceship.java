@@ -71,19 +71,7 @@ public class UCMSpaceship {
     public void setShockwaveAvailable(boolean shockwaveAvailable){
         this.shockwaveAvailable = shockwaveAvailable;
     }
-    // Other methods (add more)
 
-    public void moveHorizontally(int amount) {
-        // Implement horizontal movement logic
-    }
-
-
-
-    public void fireLaser() {
-        int laserRow = this.row - 1;
-        int laserCol = this.column;
-
-    }
 
     public int getResistance() {
         return resistance;
