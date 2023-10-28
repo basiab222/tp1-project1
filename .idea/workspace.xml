@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_10_2023__11_45__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_10_2023__11_45__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_10_2023__11_48__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_10_2023__11_48__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMSpaceship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMSpaceship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Ufo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Ufo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/lists/BombList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/lists/BombList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +73,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
@@ -73,7 +82,7 @@
     <configuration name="Test" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tp1.Main" />
       <module name="tp1-project1" />
-      <option name="PROGRAM_PARAMETERS" value="EASY 123" />
+      <option name="PROGRAM_PARAMETERS" value="EASY 25" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -96,6 +105,7 @@
       <workItem from="1697539572291" duration="3282000" />
       <workItem from="1697638723966" duration="5062000" />
       <workItem from="1698423073487" duration="4877000" />
+      <workItem from="1698448888674" duration="6144000" />
     </task>
     <task id="LOCAL-00001" summary="board game">
       <created>1696433074166</created>

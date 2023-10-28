@@ -78,7 +78,6 @@ public class AlienManager {
 				remainingAliens++;
 			}
 		}
-
 		return destroyerAlienList;
 	}
 
@@ -314,5 +313,17 @@ public class AlienManager {
 //			game.getUcmShip().setLaserAvailable(true);
 //		}
 //	}
+
+	public void aliensShoot(){
+		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
+
+		for (DestroyerAlien destroyerAlien : destroyerAliens) {
+			if (destroyerAlien.getResistance() > 0) {
+				if (destroyerAlien.canDropBomb()) {
+					destroyerAlien.computerAction();
+				}
+			}
+		}
+	}
 
 }

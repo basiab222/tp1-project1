@@ -5,6 +5,7 @@ import tp1.logic.lists.BombList;
 import tp1.logic.lists.RegularAlienList;
 import tp1.view.Messages;
 
+import java.util.Calendar;
 import java.util.Random;
 
 // TODO implementarlo
@@ -20,16 +21,25 @@ public class Game {
     private AlienManager alienManager;
     private Bomb bomb; //check uses of bomb
     private int cycles;
+
+    private Random random;
+    private Ufo ufo;
     public static boolean laserShotObject = false;
 
     public Game(Level level, long seed) {
         this.level = level;
         this.seed = seed;
+        this.random = new Random(seed);
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
         alienManager = new AlienManager(this, level,ucmShip);
         alienManager.initializeRegularAliens();
+
         //initialize D.aliens
-        //initialize BombList
+        bombList = new BombList(level.getNumDestroyerAliens());
+
+        ufo = new Ufo(8,0);
+        ufo.setGame(this);
+        //ufo.setEnabled(true);
         cycles = 0; //initialise cycles to 0
     }
 
@@ -123,7 +133,10 @@ public class Game {
                 return Messages.UCMSHIP_SYMBOL;
             else
                 return Messages.UCMSHIP_DEAD_SYMBOL; // Display the spaceship symbol
-        } else {
+        } else if (ufo.isEnabled() && ufo.getRow() == row && ufo.getColumn() == col) {
+            return String.format(Messages.GAME_OBJECT_STATUS, Messages.UFO_SYMBOL, ufo.getResistance());
+        }
+        else {
             // Check if there's a regular alien at the specified position
             RegularAlien regularAlien = alienManager.getRegularAlienAtPosition(row, col);
             if (regularAlien != null && regularAlien.getResistance() > 0) {
@@ -172,12 +185,14 @@ public class Game {
 
     public void updateGame(){
         incrementCycles();
+
+        ComputerActions();
+
         if (ucmLaser != null && !laserShotObject && !ucmLaser.isOut()) //only call this when there is a laser on screen, so can move before that
             enableLaser();
 
-        /*if (bomb != null && !bomb.isOut()){
-            alienManager.shootDestroyerBombs();
-        }*/
+        if (bomb != null && !bomb.isOut())
+            alienManager.aliensShoot();
 
         if (ucmShip.getLaserAvailable())
             alienIsShot();
@@ -188,13 +203,30 @@ public class Game {
         else{
             moveAliens();
         }
+
+        if (ufo.getRow() >= DIM_Y) {
+            ufo.onDelete(); // UFO goes out of bounds, disable it
+        }
+
+
     }
 
     public Random getRandom() {
-        return new Random(seed);
+        return random;
     }
 
     public Level getLevel() {
         return level;
     }
+
+    public BombList getBombList() {
+        return bombList;
+    }
+
+    public void ComputerActions() {
+    	//alienManager.computerAction();
+    	ufo.computerAction();
+    }
+
+
 }

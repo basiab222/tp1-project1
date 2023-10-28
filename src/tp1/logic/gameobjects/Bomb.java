@@ -8,9 +8,10 @@ public class Bomb {
     private Game game;
     private DestroyerAlien destroyerAlien;
 
-    public Bomb(int row, int column) {
+    public Bomb(int row, int column, DestroyerAlien destroyerAlien) {
         this.row = row;
         this.column = column;
+        this.destroyerAlien = destroyerAlien;
     }
 
     public int getRow() {
@@ -30,11 +31,12 @@ public class Bomb {
     }
 
     public void performBombMovement(){
-        this.setRow(this.getRow()+1);
+        if (!isOut())
+            this.setRow(this.getRow()+1);
     }
 
     public boolean isOut() { //to check if its exiting the board after not hitting any1
-        return (row >= 8);
+        return (row >= Game.DIM_Y);
     }
 
     //a

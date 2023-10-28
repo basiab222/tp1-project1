@@ -12,11 +12,14 @@ public class Ufo {
     private int row;
     private int resistance;
 
+    private boolean enabled;
+    private Game game;
     // Constructor
     public Ufo(int initialColumn, int initialRow) {
         this.column = initialColumn;
         this.row = initialRow;
         this.resistance = 1;
+        this.enabled = false;
     }
 
     // Getter methods
@@ -30,38 +33,61 @@ public class Ufo {
 
     // Other methods
     public void moveHorizontally(int amount) {
-        // Implement horizontal movement logic
+        if (enabled)
+            column += amount;
     }
 
     public int getResistance() {
         return resistance;
     }
-	private boolean enabled;
-	private Game game;
+
+    public Game setGame(Game game) {
+        return this.game = game;
+    }
 	
 	//TODO fill your code
 
 	public void computerAction() {
 		if(!enabled && canGenerateRandomUfo()) {
-			enable();
+            setEnabled(true);
 		}
+        else if(enabled)
+            moveHorizontally(-1);
+            if (isOut()){
+                setEnabled(false);
+            }
 	}
-	
-	private void enable() {
-		//TODO fill your code
-	}
+
 
 	public void onDelete() {
-		//TODO fill your code
+		enabled = false;
 	}
 
-	/**
-	 * Checks if the game should generate an ufo.
-	 * 
-	 * @return <code>true</code> if an ufo should be generated.
-	 */
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+    	this.enabled = enabled;
+    }
+
+    public boolean isOut(){
+        return column < 0 || column >= Game.DIM_X;
+    }
+
 	private boolean canGenerateRandomUfo(){
-		return game.getRandom().nextDouble() < game.getLevel().getUfoFrequency();
+
+        if (!enabled){
+            double frequency = game.getLevel().getUfoFrequency();
+            boolean canGenerate = game.getRandom().nextDouble() < frequency;
+
+            if (canGenerate)
+                setEnabled(true);
+
+            return canGenerate;
+        }
+
+        return false;
 	}
 	
 }
