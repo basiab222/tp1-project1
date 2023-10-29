@@ -98,5 +98,6 @@ public class Ufo {
     }
 
     public void setResistance(int newResistance) {
+        this.resistance = newResistance;
     }
 }

@@ -249,6 +249,10 @@ public class Game {
         }
     }
 
+    public void shockWave(){
+        alienManager.dealShockwaveDamage();
+        ucmShip.setShockwaveAvailable(false);
+    }
 
 
 }

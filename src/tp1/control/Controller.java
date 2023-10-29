@@ -83,6 +83,10 @@ public class Controller {
 					case "e":
 						gameRunning = false; // Exit the game
 						break;
+					case "w":
+						game.shockWave();
+						game.updateGame();
+						break;
 					case "s":
 						game.incrementCycles();
 						laserIsEnabled = true;

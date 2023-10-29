@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_10_2023__11_45__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_10_2023__11_45__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_10_2023__11_48__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_10_2023__11_48__Changes_.xml" afterDir="false" />
+    <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="-UFO qol changes&#10;-sets up shockwave as enabled, need to implement it still.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/control/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/control/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Ufo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Ufo.java" afterDir="false" />
     </list>
@@ -105,7 +101,7 @@
       <workItem from="1697638723966" duration="5062000" />
       <workItem from="1698423073487" duration="4877000" />
       <workItem from="1698448888674" duration="6144000" />
-      <workItem from="1698584314899" duration="1729000" />
+      <workItem from="1698584314899" duration="5330000" />
     </task>
     <task id="LOCAL-00001" summary="board game">
       <created>1696433074166</created>
@@ -142,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698427454621</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="-UFO qol changes&#10;-sets up shockwave as enabled, need to implement it still.">
+      <option name="closed" value="true" />
+      <created>1698586130790</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698586130790</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +169,8 @@
     <MESSAGE value="alien moving but not right" />
     <MESSAGE value="added bomb and DestroyerAlien class" />
     <MESSAGE value="- list of ships and their description&#10;- speed of alien ships" />
-    <option name="LAST_COMMIT_MESSAGE" value="- list of ships and their description&#10;- speed of alien ships" />
+    <MESSAGE value="-UFO qol changes&#10;-sets up shockwave as enabled, need to implement it still." />
+    <option name="LAST_COMMIT_MESSAGE" value="-UFO qol changes&#10;-sets up shockwave as enabled, need to implement it still." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

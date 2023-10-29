@@ -268,27 +268,23 @@ public class AlienManager {
 
 	}
 
-	/*public boolean checkLaserCollision(UCMLaser laser) {
-		for (RegularAlien regularAlien : regularAlienList.getRegularAliens()) {
-			if (regularAlien.getRow() == laser.getRow() && regularAlien.getColumn() == laser.getColumn()) {
-				// Handle collision and damage to the alien
-				regularAlien.receiveAttack();
-				return true; // Collision occurred
-			}
-		}
-		return false; // No collision
-	}
-
-	private void moveDestroyerAliens() {
+	public void dealShockwaveDamage(){
+		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
 		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
-		for (DestroyerAlien destroyerAlien : destroyerAliens) {
-			if (destroyerAlien.getResistance() > 0) {
-				// Move Destroyer Aliens as a synchronized group
-				destroyerAlien.setRow(destroyerAlienGroupRow);
-				destroyerAlien.setColumn(destroyerAlienGroupColumn);
+
+		for (RegularAlien regularAlien : regularAliens){
+			if (regularAlien.getResistance() > 0){
+				regularAlien.receiveAttack();
 			}
 		}
-	}*/
+
+		for (DestroyerAlien destroyerAlien : destroyerAliens){
+			if (destroyerAlien.getResistance() > 0){
+				destroyerAlien.receiveAttack();
+			}
+		}
+
+	}
 
 	/*public void shootDestroyerBombs(){
 		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
