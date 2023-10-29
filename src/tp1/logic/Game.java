@@ -37,7 +37,7 @@ public class Game {
         //initialize D.aliens
         bombList = new BombList(level.getNumDestroyerAliens());
 
-        ufo = new Ufo(8,0);
+        ufo = new Ufo(8,5);
         ufo.setGame(this);
         //ufo.setEnabled(true);
         cycles = 0; //initialise cycles to 0
@@ -63,7 +63,7 @@ public class Game {
         return "Life: " + ucmShip.getResistance() + "\n" +
                 "Points: " + ucmShip.getPoints()
                  + "\n" +
-                "shockWave: " //+ (ucmShip.isShockWaveEnabled() ? "ON" : "OFF")
+                "shockWave: " + (ucmShip.isShockwaveAvailable() ? "ON" : "OFF")
                 + "\n";
     }
 
@@ -186,10 +186,11 @@ public class Game {
     public void updateGame(){
         incrementCycles();
 
-        ComputerActions();
+        UFOComputerActions();
 
-        if (ucmLaser != null && !laserShotObject && !ucmLaser.isOut()) //only call this when there is a laser on screen, so can move before that
+        if (ucmLaser != null && !laserShotObject && !ucmLaser.isOut()){
             enableLaser();
+        } //only call this when there is a laser on screen, so can move before that
 
         if (bomb != null && !bomb.isOut())
             alienManager.aliensShoot();
@@ -208,7 +209,6 @@ public class Game {
             ufo.onDelete(); // UFO goes out of bounds, disable it
         }
 
-
     }
 
     public Random getRandom() {
@@ -223,22 +223,32 @@ public class Game {
         return bombList;
     }
 
-    public void ComputerActions() {
+    public void UFOComputerActions() {
     	//alienManager.computerAction();
     	ufo.computerAction();
         ufoIsShot();
     }
 
     public void ufoIsShot() {
-        if (ufo.isEnabled() && ufo.getRow() == ucmLaser.getRow() && ufo.getColumn() == ucmLaser.getColumn()) {
-            ufo.onDelete();
-            ucmLaser.onDelete();
+        if (ufo.isEnabled() && ucmLaser != null && ufo.getRow() == ucmLaser.getRow() && ufo.getColumn() == ucmLaser.getColumn()) {
+            int newResistance = ufo.getResistance() - 1; // Deduct 1 from UFO's resistance
+            ufo.setResistance(newResistance); // Update UFO's resistance
+
+            if (newResistance <= 0) {
+                ufo.onDelete();
+            }
+
             ucmShip.setPoints(ucmShip.getPoints() + ufo.getPoints());
-            if (!ucmShip.getShockwave()){
+
+            if (!ucmShip.getShockwave()) {
                 ucmShip.setShockwaveAvailable(true);
             }
+
+            // Remove the laser
+            ucmShip.setLaserAvailable(false);
         }
     }
+
 
 
 }

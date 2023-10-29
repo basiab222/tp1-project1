@@ -12,12 +12,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_10_2023__11_45__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_10_2023__11_45__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_10_2023__11_48__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_10_2023__11_48__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Bomb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Ufo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Ufo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/lists/BombList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/lists/BombList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +44,9 @@
   <component name="PerforceDirect.Settings">
     <option name="ENABLED" value="false" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -59,25 +58,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.CodyProjectSettingsMigration": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/basia/Downloads/tp1-project1",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/basia/Downloads/tp1-project1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Test" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tp1.Main" />
@@ -106,6 +105,7 @@
       <workItem from="1697638723966" duration="5062000" />
       <workItem from="1698423073487" duration="4877000" />
       <workItem from="1698448888674" duration="6144000" />
+      <workItem from="1698584314899" duration="1729000" />
     </task>
     <task id="LOCAL-00001" summary="board game">
       <created>1696433074166</created>

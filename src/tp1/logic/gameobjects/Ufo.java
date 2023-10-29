@@ -96,4 +96,7 @@ public class Ufo {
     public int getPoints() {
         return points;
     }
+
+    public void setResistance(int newResistance) {
+    }
 }
