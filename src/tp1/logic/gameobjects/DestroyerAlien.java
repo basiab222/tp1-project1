@@ -82,27 +82,6 @@ public class DestroyerAlien {
         return (col == 0 || col == 8 || row == 8);
     }
 
-    /*public void automaticMove() {
-        if (!shouldDescend) {
-            if (movingLeft) {
-                this.setColumn(this.getColumn() - 1);
-                if (isInBorder()) {
-                    movingLeft = false;
-                    shouldDescend = true; // Set the flag to descend in the next cycle
-                }
-            } else {
-                this.setColumn(this.getColumn() + 1);
-                if (isInBorder()) {
-                    movingLeft = true;
-                    shouldDescend = true; // Set the flag to descend in the next cycle
-                }
-            }
-        } else {
-            descent(); // Descend in the current cycle
-            shouldDescend = false; // Reset the flag for the next cycle
-        }
-
-    }*/
 
     private void descent() {
         this.setRow(this.getRow() + 1);
@@ -114,6 +93,7 @@ public class DestroyerAlien {
 //            bomb = new Bomb(this.row + 1, this.getColumn());
 //        }
 //    }
+
     public void computerAction(){
         if (canDropBomb() && !isBombAvailable()) {
             Bomb bomb = new Bomb(this.row + 1, this.getColumn(), this);

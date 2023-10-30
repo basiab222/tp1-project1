@@ -119,7 +119,6 @@ public class RegularAlien {
 		}
 	}
 
-
 	private void descent() {
 		this.setRow(this.getRow() + 1);
 	}

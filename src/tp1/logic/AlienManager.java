@@ -91,9 +91,9 @@ public class AlienManager {
 		}
 	}
 
-	public boolean onBorder() {
+	public boolean onBorder() { //check if any alien is on the border
 		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
-		for (RegularAlien regularAlien : regularAliens) {
+		for (RegularAlien regularAlien : regularAliens) { //either condition is met, they are in the border.
 			if (regularAlien.getColumn() == 0 || regularAlien.getColumn() == 8 || regularAlien.getRow() == 8)
 				return true;
 		}
@@ -108,8 +108,8 @@ public class AlienManager {
 			checkOnBorder(); //make sure that the whole list is inside the border
 
 			if (shouldDescend) {
-				moveAllDown(); // Descend in this  cycle
-				shouldDescend = false; // Reset for the next cycle so that it doesnt keep moving down
+				moveAllDown(); // move down in this  cycle
+				shouldDescend = false; // reset for  next cycle so that it doesnt keep moving down
 			} else {
 				if (dir == Move.LEFT) {
 					// move to left
@@ -122,7 +122,7 @@ public class AlienManager {
 					}
 
 				} else if (dir == Move.RIGHT) {
-					// move to  right
+					// move everything to the right
 					for (RegularAlien regularAlien : regularAlienList.getRegularAliens()) {
 						regularAlien.moveRight();
 					}
@@ -132,33 +132,20 @@ public class AlienManager {
 					}
 				}
 
-				// After moving, switch dir if needed
+				// after moving, switch direction if needed
 				if (onBorder()) {
-					shouldDescend = true; // Set to descend in the next cycle
+					shouldDescend = true; // put so that they descend in the next cycle
 					if (dir == Move.LEFT) {
-						dir = Move.RIGHT; // Move to the right or left after descending
+						dir = Move.RIGHT; // move to  right or left after descending
 					} else {
 						dir = Move.LEFT;
 					}
 				}
-
 				onBorder = false;
 			}
 		}
 	}
 
-
-	/*private void moveRegAliensList() {
-		for (RegularAlien regularAlien : regularAlienList.getRegularAliens()) {
-			if (regularAlien.getResistance() > 0) {
-				if (dir == Move.LEFT) {
-					regularAlien.setColumn(regularAlien.getColumn() - 1);
-				} else {
-					regularAlien.setColumn(regularAlien.getColumn() + 1);
-				}
-			}
-		}
-	}*/
 
 	public void alienIsShot(UCMLaser ucmLaser){
 		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
@@ -183,7 +170,7 @@ public class AlienManager {
 		}
 	}
 
-	public void enableLaser(UCMLaser ucmLaser){
+	public void enableLaser(UCMLaser ucmLaser){ //check if the laser is available
 		if (game.isValidPosition(ucmLaser.getColumn(), ucmLaser.getRow()) && game.getUcmShip().getLaserAvailable()) {
 			ucmLaser.performLaserMovement();
 			if (ucmLaser.isOut()){
@@ -195,31 +182,59 @@ public class AlienManager {
 		}
 	}
 
-	public void reset(){
+	public void reset(){ //reset the aliens positions, put them back as start
 		remainingAliens = 0;
 		regularAlienList = initializeRegularAliens();
 		destroyerAlienList = initializeDestroyerAliens();
 	}
 
 	public boolean aliensWin() {
-		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
+		boolean regularBottomRow = false, destroyerBottomRow = false;
+
+		RegularAlien[] regularAliens = regularAlienList.getRegularAliens(); //check if regular aliens are in the bottom row
 		for (RegularAlien regularAlien : regularAliens) {
 			if (regularAlien.getResistance() > 0 && regularAlien.getRow() == game.getUcmShip().getRow()) {
 				game.getUcmShip().setResistance(0);
-				return true;
+				regularBottomRow = true;
 			}
 		}
-		return false;
-	}
 
-	public boolean playerWin() {
+		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens(); //check if destroyers are in bottom row
+		for (DestroyerAlien destroyerAlien : destroyerAliens) {
+			if (destroyerAlien.getResistance() > 0 && destroyerAlien.getRow() == game.getUcmShip().getRow()) {
+				game.getUcmShip().setResistance(0);
+				destroyerBottomRow = true;
+			}
+		}
+
+        return regularBottomRow || destroyerBottomRow || game.getUcmShip().getResistance() == 0; //if either condition is met, aliens win
+    }
+
+	public boolean playerWin() { //check if all aliens are dead
+		boolean regularDead = true, destroyerDead = true;
+
+		//check if all regular and destroyer aliens are dead, if they are, set it to true
 		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
 		for (RegularAlien regularAlien : regularAliens) {
-			if (regularAlien.getResistance() > 0) {
-				return false;
-			}
+            if (regularAlien.getResistance() > 0) {
+                regularDead = false;
+                break;
+            }
 		}
-		return true;
+
+		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
+		for (DestroyerAlien destroyerAlien : destroyerAliens){
+            if (destroyerAlien.getResistance() > 0) {
+                destroyerDead = false;
+                break;
+            }
+		}
+
+		if (regularDead && destroyerDead){
+			return true;
+		}
+
+		return false;
 	}
 
 	public RegularAlien getRegularAlienAtPosition(int row, int col) {
@@ -229,7 +244,7 @@ public class AlienManager {
 				return regularAlien;
 			}
 		}
-		return null; // No regular alien found at the specified position
+		return null; // No regular alien found there
 	}
 
 	public DestroyerAlien getDestroyerAlienAtPosition(int row, int col) {
@@ -239,10 +254,10 @@ public class AlienManager {
 				return destroyerAlien;
 			}
 		}
-		return null;
+		return null; // destroyer alien not found at position
 	}
 
-	public void checkOnBorder() {
+	public void checkOnBorder() { //check if any alien is on the border
 		for (RegularAlien regularAlien : regularAlienList.getRegularAliens()) {
 			if (regularAlien.getResistance() > 0
 					&& (regularAlien.getRow() + 1 == Game.DIM_Y || regularAlien.getRow() == 0
@@ -268,7 +283,7 @@ public class AlienManager {
 
 	}
 
-	public void dealShockwaveDamage(){
+	public void dealShockwaveDamage(){ // for all aliens make them receive 1 point of damage if they are alive
 		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
 		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
 

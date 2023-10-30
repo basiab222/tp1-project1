@@ -72,7 +72,6 @@ public class UCMSpaceship {
         this.shockwaveAvailable = shockwaveAvailable;
     }
 
-
     public int getResistance() {
         return resistance;
     }

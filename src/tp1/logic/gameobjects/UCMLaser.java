@@ -37,22 +37,6 @@ public class UCMLaser {
         this.column = column;
     }
 
-    public int getLife() {
-        return life;
-    }
-
-    public void setLife(int life) {
-        this.life = life;
-    }
-
-    public Move getDir() {
-        return dir;
-    }
-
-    public void setDir(Move dir) {
-        this.dir = dir;
-    }
-
     public Game getGame() {
         return game;
     }

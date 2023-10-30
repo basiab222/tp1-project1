@@ -16,8 +16,8 @@ public class Game {
     private long seed;
     private UCMSpaceship ucmShip;
     private UCMLaser ucmLaser;
-    private BombList bombList;
 
+    /*private BombList bombList;*/
     private AlienManager alienManager;
     private Bomb bomb; //check uses of bomb
     private int cycles;
@@ -26,7 +26,7 @@ public class Game {
     private Ufo ufo;
     public static boolean laserShotObject = false;
 
-    public Game(Level level, long seed) {
+    public Game(Level level, long seed) { //initialize everything
         this.level = level;
         this.seed = seed;
         this.random = new Random(seed);
@@ -43,13 +43,13 @@ public class Game {
     }
 
     public void reset() {
-        // Reset game state to initial values (destroy all objects, clear lists, reset game cycle, etc.)
+        // reset game state to all the initial values (destroy all objects, clear lists, reset game cycle....)
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
         ucmLaser = null;
         bomb = null;
         laserShotObject = false;
 
-        cycles = 0; // Reset the cycles
+        cycles = 0;
         alienManager.reset();
     }
 
@@ -58,12 +58,11 @@ public class Game {
         ufo.setGame(this);
     }
 
-
     public UCMSpaceship getUcmShip() {
         return ucmShip;
     }
 
-    public String stateToString() {
+    public String stateToString() { //to display state of game
         return "Life: " + ucmShip.getResistance() + "\n" +
                 "Points: " + ucmShip.getPoints()
                  + "\n" +
@@ -76,7 +75,7 @@ public class Game {
         int newColumn = ucmShip.getColumn() + x;
         int newRow = ucmShip.getRow() + y;
 
-        // Check if the new position is within the game board boundaries
+        // check if new position is within the game board boundaries
         if (isValidPosition(newColumn, newRow)) {
             ucmShip.setColumn(newColumn);
             ucmShip.setRow(newRow);
@@ -131,7 +130,7 @@ public class Game {
         return 0;
     }
 
-    public String positionToString(int col, int row) {
+    public String positionToString(int col, int row) { //to display each game object on board
         if (ucmShip.getRow() == row && ucmShip.getColumn() == col) {
             if (ucmShip.getResistance() > 0)
                 return Messages.UCMSHIP_SYMBOL;
@@ -166,7 +165,6 @@ public class Game {
         }
     }
 
-
     public boolean playerWin() {
         return alienManager.playerWin();
     }
@@ -187,7 +185,7 @@ public class Game {
         cycles++;
     }
 
-    public void updateGame(){
+    public void updateGame(){ //do all the update per cycle logic here
         incrementCycles();
 
         UFOComputerActions();
@@ -235,27 +233,27 @@ public class Game {
         ufoIsShot();
     }
 
-    public void ufoIsShot() {
+    public void ufoIsShot() { //ufo laser collision logic
         if (ufo.isEnabled() && ucmLaser != null && ufo.getRow() == ucmLaser.getRow() && ufo.getColumn() == ucmLaser.getColumn()) {
             int newResistance = ufo.getResistance() - 1; // Deduct 1 from UFO's resistance
             ufo.setResistance(newResistance); // Update UFO's resistance
 
-            if (newResistance <= 0) {
+            if (newResistance <= 0) { //delete ufo if dead
                 ufo.onDelete();
             }
 
             ucmShip.setPoints(ucmShip.getPoints() + ufo.getPoints());
 
-            if (!ucmShip.getShockwave()) {
+            if (!ucmShip.getShockwave()) { //once its dead enable the shockwave
                 ucmShip.setShockwaveAvailable(true);
             }
 
-            // Remove the laser
+            // get rid of laser
             ucmShip.setLaserAvailable(false);
         }
     }
 
-    public void shockWave(){
+    public void shockWave(){ //shockwave logic, after used set it to "off" again
         alienManager.dealShockwaveDamage();
         ucmShip.setShockwaveAvailable(false);
     }
