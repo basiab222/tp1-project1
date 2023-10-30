@@ -4,7 +4,7 @@ import tp1.logic.gameobjects.Bomb;
 import tp1.logic.gameobjects.DestroyerAlien;
 
 public class BombList {
-    private Bomb[] bombList;
+   /* private Bomb[] bombList;
 
     private DestroyerAlien[] destroyerAliensThatShoot;
     private int counter;
@@ -48,4 +48,8 @@ public class BombList {
     public DestroyerAlien[] getDestroyerAliensThatShoot() {
         return destroyerAliensThatShoot;
     }
+}
+
+
+        */
 }

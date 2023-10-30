@@ -115,12 +115,11 @@ public class DestroyerAlien {
 //        }
 //    }
     public void computerAction(){
-        if (canDropBomb()) {
-            int row = this.getRow() + 1;
-            int col = this.getColumn();
-            Bomb bomb = new Bomb(row, col, this);
-            game.getBombList().addBomb(bomb, this);
-            isBombAvailable = true;
+        if (canDropBomb() && !isBombAvailable()) {
+            Bomb bomb = new Bomb(this.row + 1, this.getColumn(), this);
+        }
+        else if (isBombAvailable()){
+            bomb.performBombMovement();
         }
     }
 

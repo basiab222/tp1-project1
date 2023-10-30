@@ -11,7 +11,6 @@ public class Ufo {
     private int column;
     private int row;
     private int resistance;
-
     private boolean enabled;
     private Game game;
 
@@ -58,6 +57,8 @@ public class Ufo {
             moveHorizontally(-1);
             if (isOut()){
                 setEnabled(false);
+                if (canGenerateRandomUfo())
+                    game.restartUFO();
             }
 	}
 

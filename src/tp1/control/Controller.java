@@ -75,7 +75,6 @@ public class Controller {
 							game.moveUCMShip(move.getX(), move.getY());
 						}
 						break;
-					case "":
 					case "n":
 						game.updateGame();
 						break;

@@ -33,9 +33,8 @@ public class Game {
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
         alienManager = new AlienManager(this, level,ucmShip);
         alienManager.initializeRegularAliens();
-
+        alienManager.initializeDestroyerAliens();
         //initialize D.aliens
-        bombList = new BombList(level.getNumDestroyerAliens());
 
         ufo = new Ufo(8,5);
         ufo.setGame(this);
@@ -52,6 +51,11 @@ public class Game {
 
         cycles = 0; // Reset the cycles
         alienManager.reset();
+    }
+
+    public void restartUFO(){
+        ufo = new Ufo(8,5);
+        ufo.setGame(this);
     }
 
 
@@ -99,7 +103,7 @@ public class Game {
 //        }
 //    }
 
-    // Method to check if a position is within the game board boundaries
+    // check if it is a valid board position.
     boolean isValidPosition(int column, int row) {
         return column >= 0 && column < DIM_X && row >= 0 && row < DIM_Y;
     }
@@ -133,7 +137,7 @@ public class Game {
                 return Messages.UCMSHIP_SYMBOL;
             else
                 return Messages.UCMSHIP_DEAD_SYMBOL; // Display the spaceship symbol
-        } else if (ufo.isEnabled() && ufo.getRow() == row && ufo.getColumn() == col) {
+        } else if (ufo.isEnabled() && ufo.getRow() == row && ufo.getColumn() == col && ufo.getResistance() > 0) {
             return String.format(Messages.GAME_OBJECT_STATUS, Messages.UFO_SYMBOL, ufo.getResistance());
         }
         else {
@@ -188,12 +192,14 @@ public class Game {
 
         UFOComputerActions();
 
+        if (bomb != null) {
+            ShootingComputerActions();
+        }
+
         if (ucmLaser != null && !laserShotObject && !ucmLaser.isOut()){
             enableLaser();
         } //only call this when there is a laser on screen, so can move before that
 
-        if (bomb != null && !bomb.isOut())
-            alienManager.aliensShoot();
 
         if (ucmShip.getLaserAvailable())
             alienIsShot();
@@ -211,16 +217,16 @@ public class Game {
 
     }
 
+    public void ShootingComputerActions(){
+        alienManager.aliensShoot();
+    }
+
     public Random getRandom() {
         return random;
     }
 
     public Level getLevel() {
         return level;
-    }
-
-    public BombList getBombList() {
-        return bombList;
     }
 
     public void UFOComputerActions() {

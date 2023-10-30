@@ -315,9 +315,7 @@ public class AlienManager {
 
 		for (DestroyerAlien destroyerAlien : destroyerAliens) {
 			if (destroyerAlien.getResistance() > 0) {
-				if (destroyerAlien.canDropBomb()) {
-					destroyerAlien.computerAction();
-				}
+				destroyerAlien.computerAction();
 			}
 		}
 	}
