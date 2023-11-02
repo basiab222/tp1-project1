@@ -66,17 +66,48 @@ public class AlienManager {
 	protected DestroyerAlienList initializeDestroyerAliens() {
 		DestroyerAlienList destroyerAlienList = new DestroyerAlienList(level.getNumDestroyerAliens());
 
-		int rows = level.getNumRowsRegularAliens();
-		int cols = level.getNumDestroyerAliens() / rows;
+		int startRow;
+		int startCol; // Put destroyer aliens in the center of the 4 spaceships
 
-		int startRow = rows + 1; // put  the destroyers in the row below Regular Aliens lists
-		int startCol = (cols / 2) + 2; // put destroyers aliens in the center of the 4 spaceships
+		if (game.getLevel() == Level.HARD) {
+			int rows = level.getNumRowsRegularAliens();
+			int cols = level.getNumDestroyerAliens() / rows;
+			startRow = level.getNumRowsRegularAliens() + 1;
+			startCol = (level.getNumDestroyerAliens() / 2) + 2;
 
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < cols; j++) {
-				destroyerAlienList.addDestroyerAlien(startRow + i, startCol + j);
-				remainingAliens++;
+			for (int i = 0; i < cols; i++) {
+				for (int j = 0; j < rows; j++) {
+					destroyerAlienList.addDestroyerAlien(startRow + i, startCol + j);
+					remainingAliens++;
+				}
 			}
+
+		} else if (game.getLevel() == Level.INSANE) {
+			int rows = 4;
+			int cols = level.getNumDestroyerAliens() / rows;
+			startRow = level.getNumRowsRegularAliens() + 1;
+			startCol = 2;
+
+			for (int i = 0; i < cols; i++) {
+				for (int j = 0; j < rows; j++) {
+					destroyerAlienList.addDestroyerAlien(startRow + i, startCol + j);
+					remainingAliens++;
+				}
+			}
+
+		} else if (game.getLevel() == Level.EASY){
+			int rows = level.getNumRowsRegularAliens();
+			int cols = level.getNumDestroyerAliens() / rows;
+
+			startRow = rows + 1;
+			startCol = (cols / 2) + 2;
+			for (int i = 0; i < rows; i++) {
+				for (int j = 0; j < cols; j++) {
+					destroyerAlienList.addDestroyerAlien(startRow + i, startCol + j);
+					remainingAliens++;
+				}
+			}
+
 		}
 		return destroyerAlienList;
 	}
