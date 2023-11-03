@@ -13,7 +13,6 @@ public class Ufo {
     private int resistance;
     private boolean enabled;
     private Game game;
-
     private int points;
     // Constructor
     public Ufo(int initialColumn, int initialRow) {

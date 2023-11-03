@@ -10,13 +10,6 @@ public class DestroyerAlien {
     private int resistance;
     private int damage;
     private int points;
-    public static boolean movingLeft = true;
-    private	boolean shouldDescend = false;
-    private int cyclesToMove;
-    private int speed;
-    private Move dir;
-    private AlienManager alienManager;
-    private Game game;
     private Bomb bomb;
     private boolean isBombAvailable;
 
@@ -81,26 +74,13 @@ public class DestroyerAlien {
     private boolean isInBorder() {
         return (col == 0 || col == 8 || row == 8);
     }
-
-
     private void descent() {
         this.setRow(this.getRow() + 1);
     }
-
-//    public void shootBomb(){
-//        if (!isBombAvailable()){
-//            this.isBombAvailable = true;
-//            bomb = new Bomb(this.row + 1, this.getColumn());
-//        }
-//    }
-
-    public void computerAction(){
-        if (canDropBomb() && !isBombAvailable()) {
-            Bomb bomb = new Bomb(this.row + 1, this.getColumn(), this);
-        }
-        else if (isBombAvailable()){
-            bomb.performBombMovement();
-        }
+    public void enableBomb(){
+        if (bomb != null) return;
+        setBombAvailable(true);
+        bomb = new Bomb(this.row + 1, this.col, this);
     }
 
     public void receiveAttack() {
@@ -129,7 +109,16 @@ public class DestroyerAlien {
         }
     }
 
-    public boolean canDropBomb(){
-        return game.getRandom().nextDouble() < game.getLevel().getShootFrequency();
+    public void moveBomb() {
+        if (bomb != null)
+            bomb.performBombMovement();
+    }
+
+    public Bomb getBomb() {
+        return bomb;
+    }
+
+    public void setBomb(Bomb bomb) {
+        this.bomb = bomb;
     }
 }

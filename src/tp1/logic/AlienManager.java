@@ -177,6 +177,15 @@ public class AlienManager {
 		}
 	}
 
+	public void tryShooting() {
+		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
+		for (DestroyerAlien da : destroyerAliens) {
+			da.moveBomb();
+			if (game.shootChance())
+				da.enableBomb();
+		}
+	}
+
 
 	public void alienIsShot(UCMLaser ucmLaser){
 		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
@@ -311,8 +320,8 @@ public class AlienManager {
 				destroyerAlien.setRow(destroyerAlien.getRow() + 1);
 			}
 		}
-
 	}
+
 
 	public void dealShockwaveDamage(){ // for all aliens make them receive 1 point of damage if they are alive
 		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
@@ -332,38 +341,5 @@ public class AlienManager {
 
 	}
 
-	/*public void shootDestroyerBombs(){
-		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
-		for (DestroyerAlien destroyerAlien : destroyerAliens) {
-			if (destroyerAlien.canDropBomb())
-
-				if (!destroyerAlien.isBombAvailable()){
-					destroyerAlien.setBombAvailable(true);
-					Bomb bomb = new Bomb(destroyerAlien.getRow() + 1, destroyerAlien.getColumn());
-				}
-		}
-	}*/
-
-//	public void enableBomb(Bomb bomb){
-//		if (game.isValidPosition(bomb.getColumn(), bomb.getRow())) {
-//			bomb.performBombMovement();
-//			if (bomb.isOut()){
-//				game.getUcmShip().setLaserAvailable(false);
-//			}
-//			Game.laserShotObject = false;
-//		} else {
-//			game.getUcmShip().setLaserAvailable(true);
-//		}
-//	}
-
-	public void aliensShoot(){
-		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
-
-		for (DestroyerAlien destroyerAlien : destroyerAliens) {
-			if (destroyerAlien.getResistance() > 0) {
-				destroyerAlien.computerAction();
-			}
-		}
-	}
 
 }

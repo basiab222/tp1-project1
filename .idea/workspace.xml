@@ -14,7 +14,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/UCMLaser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/gameobjects/DestroyerAlien.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/lists/BombList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/lists/BombList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +84,7 @@
     <configuration name="Test" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tp1.Main" />
       <module name="tp1-project1" />
-      <option name="PROGRAM_PARAMETERS" value="INSANE 25" />
+      <option name="PROGRAM_PARAMETERS" value="EASY 25" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -109,6 +111,7 @@
       <workItem from="1698584314899" duration="5330000" />
       <workItem from="1698660847938" duration="4209000" />
       <workItem from="1698688945217" duration="8168000" />
+      <workItem from="1699023134020" duration="3874000" />
     </task>
     <task id="LOCAL-00001" summary="board game">
       <created>1696433074166</created>
@@ -178,6 +181,17 @@
     <MESSAGE value="- list of ships and their description&#10;- speed of alien ships" />
     <MESSAGE value="-UFO qol changes&#10;-sets up shockwave as enabled, need to implement it still." />
     <option name="LAST_COMMIT_MESSAGE" value="-UFO qol changes&#10;-sets up shockwave as enabled, need to implement it still." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/tp1/logic/Game.java</url>
+          <line>156</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

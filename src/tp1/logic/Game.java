@@ -19,9 +19,7 @@ public class Game {
 
     /*private BombList bombList;*/
     private AlienManager alienManager;
-    private Bomb bomb; //check uses of bomb
     private int cycles;
-
     private Random random;
     private Ufo ufo;
     public static boolean laserShotObject = false;
@@ -46,7 +44,6 @@ public class Game {
         // reset game state to all the initial values (destroy all objects, clear lists, reset game cycle....)
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
         ucmLaser = null;
-        bomb = null;
         laserShotObject = false;
 
         cycles = 0;
@@ -157,13 +154,18 @@ public class Game {
                 return String.format(Messages.GAME_OBJECT_STATUS, Messages.DESTROYER_ALIEN_SYMBOL, destroyerAlien.getResistance());
             }
 
-            if (bomb != null && !bomb.isOut() && bomb.getRow() == row && bomb.getColumn() == col && destroyerAlien.isBombAvailable()) {
-                return Messages.BOMB_SYMBOL;
+            DestroyerAlien[] destroyerAliens = alienManager.initializeDestroyerAliens().getDestroyerAliens();
+
+            for (DestroyerAlien da : destroyerAliens) {
+                if (da.isBombAvailable() && da.getBomb().getColumn() == col && da.getBomb().getRow() == row) {
+                    return Messages.BOMB_SYMBOL;
+                }
             }
 
             return " "; // Empty cells
         }
     }
+
 
     public boolean playerWin() {
         return alienManager.playerWin();
@@ -189,10 +191,7 @@ public class Game {
         incrementCycles();
 
         UFOComputerActions();
-
-        if (bomb != null) {
-            ShootingComputerActions();
-        }
+        alienManager.tryShooting();
 
         if (ucmLaser != null && !laserShotObject && !ucmLaser.isOut()){
             enableLaser();
@@ -213,10 +212,6 @@ public class Game {
             ufo.onDelete(); // UFO goes out of bounds, disable it
         }
 
-    }
-
-    public void ShootingComputerActions(){
-        alienManager.aliensShoot();
     }
 
     public Random getRandom() {
@@ -258,5 +253,8 @@ public class Game {
         ucmShip.setShockwaveAvailable(false);
     }
 
+    public boolean shootChance(){
+        return this.getRandom().nextDouble() < this.getLevel().getShootFrequency();
+    }
 
 }

@@ -36,7 +36,6 @@ public class DestroyerAlienList {
 
         }
     }*/
-
     public DestroyerAlien[] getDestroyerAliens() {
         return destroyerAliens;
     }
