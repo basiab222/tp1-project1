@@ -194,6 +194,18 @@ public class AlienManager {
 		}
 	}
 
+	public void bombCollisionLaser(UCMLaser laser){
+		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
+		for (DestroyerAlien da : destroyerAliens) {
+			if (da.getBomb() != null && da.getBomb().getRow() == laser.getRow() && da.getBomb().getColumn() == laser.getColumn()) {
+				da.setBomb(null);
+				da.setBombAvailable(false);
+				game.getUcmShip().setLaserAvailable(false);
+				Game.laserShotObject = true;
+			}
+		}
+	}
+
 	public void alienIsShot(UCMLaser ucmLaser){
 		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
 		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();

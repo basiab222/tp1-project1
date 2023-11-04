@@ -196,9 +196,10 @@ public class Game {
         } //only call this when there is a laser on screen, so can move before that
 
 
-        if (ucmShip.getLaserAvailable())
+        if (ucmShip.getLaserAvailable()) {
+            alienManager.bombCollisionLaser(ucmLaser);
             alienIsShot();
-
+        }
         if (alienManager.onBorder()){
             alienManager.moveAlienList();
         }
