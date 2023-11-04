@@ -67,53 +67,19 @@ public class AlienManager {
 	 * Initializes the list of destroyer aliens
 	 * @return the initial list of destroyer aliens according to the current level
 	 */
-	protected DestroyerAlienList initializeDestroyerAliens() {
-		DestroyerAlienList destroyerAlienList = new DestroyerAlienList(level.getNumDestroyerAliens());
+	protected DestroyerAlienList initializeDestroyerAliens() { //optimized destroyerAlien initialization for each level of difficulty
+		DestroyerAlienList list = new DestroyerAlienList(level.getNumDestroyerAliens());
+		for (int i=0; i< level.getNumDestroyerAliens(); i++){
+			int centering = (Game.DIM_X / 2) - (level.getNumDestroyerAliens() / 2);
+			int numAliensPerRow = 2;
+			if (game.getLevel() == Level.INSANE)
+				numAliensPerRow = 4;
 
-		int startRow;
-		int startCol; // Put destroyer aliens in the center of the 4 spaceships
-
-		if (game.getLevel() == Level.HARD) {
-			int rows = level.getNumRowsRegularAliens();
-			int cols = level.getNumDestroyerAliens() / rows;
-			startRow = level.getNumRowsRegularAliens() + 1;
-			startCol = (level.getNumDestroyerAliens() / 2) + 2;
-
-			for (int i = 0; i < cols; i++) {
-				for (int j = 0; j < rows; j++) {
-					destroyerAlienList.addDestroyerAlien(startRow + i, startCol + j);
-					remainingAliens++;
-				}
-			}
-
-		} else if (game.getLevel() == Level.INSANE) {
-			int rows = 4;
-			int cols = level.getNumDestroyerAliens() / rows;
-			startRow = level.getNumRowsRegularAliens() + 1;
-			startCol = 2;
-
-			for (int i = 0; i < cols; i++) {
-				for (int j = 0; j < rows; j++) {
-					destroyerAlienList.addDestroyerAlien(startRow + i, startCol + j);
-					remainingAliens++;
-				}
-			}
-
-		} else if (game.getLevel() == Level.EASY){
-			int rows = level.getNumRowsRegularAliens();
-			int cols = level.getNumDestroyerAliens() / rows;
-
-			startRow = rows + 1;
-			startCol = (cols / 2) + 2;
-			for (int i = 0; i < rows; i++) {
-				for (int j = 0; j < cols; j++) {
-					destroyerAlienList.addDestroyerAlien(startRow + i, startCol + j);
-					remainingAliens++;
-				}
-			}
-
+			int colPlacement = centering + (numAliensPerRow / level.getNumDestroyerAliens()) - 1;
+			list.addDestroyerAlien(level.getNumRowsRegularAliens() + 1, colPlacement + i);
 		}
-		return destroyerAlienList;
+
+		return list;
 	}
 
 	
