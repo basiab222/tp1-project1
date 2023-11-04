@@ -112,6 +112,10 @@
       <workItem from="1698660847938" duration="4209000" />
       <workItem from="1698688945217" duration="8168000" />
       <workItem from="1699023134020" duration="3874000" />
+      <workItem from="1699037257795" duration="5012000" />
+      <workItem from="1699044050104" duration="567000" />
+      <workItem from="1699044635257" duration="935000" />
+      <workItem from="1699092184343" duration="666000" />
     </task>
     <task id="LOCAL-00001" summary="board game">
       <created>1696433074166</created>
@@ -181,17 +185,6 @@
     <MESSAGE value="- list of ships and their description&#10;- speed of alien ships" />
     <MESSAGE value="-UFO qol changes&#10;-sets up shockwave as enabled, need to implement it still." />
     <option name="LAST_COMMIT_MESSAGE" value="-UFO qol changes&#10;-sets up shockwave as enabled, need to implement it still." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/tp1/logic/Game.java</url>
-          <line>156</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

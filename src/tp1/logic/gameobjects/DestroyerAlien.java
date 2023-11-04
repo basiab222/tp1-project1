@@ -20,6 +20,7 @@ public class DestroyerAlien {
         this.damage = 1;
         this.points = 10;
         this.isBombAvailable = false;
+        this.bomb = null;
     }
 
     public int getPoints() {
@@ -70,13 +71,6 @@ public class DestroyerAlien {
      * Implements the automatic movement of the regular alien
      */
 
-    //new isInBorder to check if it is right in the border, not if its outside or w/e
-    private boolean isInBorder() {
-        return (col == 0 || col == 8 || row == 8);
-    }
-    private void descent() {
-        this.setRow(this.getRow() + 1);
-    }
     public void enableBomb(){
         if (bomb != null) return;
         setBombAvailable(true);
@@ -112,6 +106,10 @@ public class DestroyerAlien {
     public void moveBomb() {
         if (bomb != null)
             bomb.performBombMovement();
+        if (bomb != null && bomb.isOut()) {
+            setBomb(null);
+            setBombAvailable(false);
+        }
     }
 
     public Bomb getBomb() {

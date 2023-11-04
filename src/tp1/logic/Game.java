@@ -45,7 +45,7 @@ public class Game {
         ucmShip = new UCMSpaceship(DIM_X / 2, DIM_Y - 1);
         ucmLaser = null;
         laserShotObject = false;
-
+        restartUFO();
         cycles = 0;
         alienManager.reset();
     }
@@ -154,8 +154,7 @@ public class Game {
                 return String.format(Messages.GAME_OBJECT_STATUS, Messages.DESTROYER_ALIEN_SYMBOL, destroyerAlien.getResistance());
             }
 
-            DestroyerAlien[] destroyerAliens = alienManager.initializeDestroyerAliens().getDestroyerAliens();
-
+            DestroyerAlien[] destroyerAliens = alienManager.getDestroyerAlienList().getDestroyerAliens();
             for (DestroyerAlien da : destroyerAliens) {
                 if (da.isBombAvailable() && da.getBomb().getColumn() == col && da.getBomb().getRow() == row) {
                     return Messages.BOMB_SYMBOL;
@@ -191,7 +190,6 @@ public class Game {
         incrementCycles();
 
         UFOComputerActions();
-        alienManager.tryShooting();
 
         if (ucmLaser != null && !laserShotObject && !ucmLaser.isOut()){
             enableLaser();
@@ -245,16 +243,13 @@ public class Game {
 
             // get rid of laser
             ucmShip.setLaserAvailable(false);
+            ucmLaser = null;
         }
     }
 
     public void shockWave(){ //shockwave logic, after used set it to "off" again
         alienManager.dealShockwaveDamage();
         ucmShip.setShockwaveAvailable(false);
-    }
-
-    public boolean shootChance(){
-        return this.getRandom().nextDouble() < this.getLevel().getShootFrequency();
     }
 
 }

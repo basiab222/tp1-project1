@@ -32,7 +32,7 @@ public class Bomb {
 
     public void performBombMovement(){
         if (!isOut())
-            this.setRow(this.getRow()+1);
+            this.setRow(this.getRow() + 1);
     }
 
     public boolean performAttack(UCMSpaceship ucmShip){
@@ -45,8 +45,7 @@ public class Bomb {
     }
 
     public boolean isOut() { //to check if its exiting the board after not hitting any1
-        return (row >= Game.DIM_Y);
+        return row >= Game.DIM_Y;
     }
 
-    //a
 }

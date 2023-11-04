@@ -1,6 +1,7 @@
 package tp1.logic;
 
 import tp1.logic.gameobjects.*;
+import tp1.logic.lists.BombList;
 import tp1.logic.lists.DestroyerAlienList;
 import tp1.logic.lists.RegularAlienList;
 
@@ -24,10 +25,13 @@ public class AlienManager {
 	private UCMSpaceship ucmSpaceship;
 	private int destroyerAlienGroupRow;
 	private int destroyerAlienGroupColumn;
+
+/*	private BombList bombList;*/
 	private Move dir;
 
 	public AlienManager(Game game, Level level, UCMSpaceship ucmSpaceship) {
 		this.level = level;
+/*		this.bombList = new BombList(level.getNumDestroyerAliens()); */
 		this.game = game;
 		this.ucmSpaceship = ucmSpaceship;
 		this.remainingAliens = 0;
@@ -135,6 +139,8 @@ public class AlienManager {
 		int cycle = game.getCycle();
 		int numCyclesToMoveOneCell = level.getNumCyclesToMoveOneCell();
 
+		tryShooting();
+
 		if (cycle % numCyclesToMoveOneCell == 0) {
 			checkOnBorder(); //make sure that the whole list is inside the border
 
@@ -150,6 +156,7 @@ public class AlienManager {
 
 					for (DestroyerAlien destroyerAlien : destroyerAlienList.getDestroyerAliens()) {
 						destroyerAlien.moveLeft(); //move all the destroyer aliens to the left
+
 					}
 
 				} else if (dir == Move.RIGHT) {
@@ -160,6 +167,7 @@ public class AlienManager {
 
 					for (DestroyerAlien destroyerAlien : destroyerAlienList.getDestroyerAliens()) {
 						destroyerAlien.moveRight();
+
 					}
 				}
 
@@ -181,11 +189,10 @@ public class AlienManager {
 		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
 		for (DestroyerAlien da : destroyerAliens) {
 			da.moveBomb();
-			if (game.shootChance())
+			if (shootChance())
 				da.enableBomb();
 		}
 	}
-
 
 	public void alienIsShot(UCMLaser ucmLaser){
 		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
@@ -341,5 +348,11 @@ public class AlienManager {
 
 	}
 
+	public boolean shootChance(){
+		return game.getRandom().nextDouble() < game.getLevel().getShootFrequency();
+	}
 
+	public DestroyerAlienList getDestroyerAlienList() {
+		return destroyerAlienList;
+	}
 }
