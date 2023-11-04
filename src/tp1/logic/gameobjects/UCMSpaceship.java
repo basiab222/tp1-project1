@@ -4,8 +4,8 @@ public class UCMSpaceship {
     private int column;
     private int row;
     private int resistance;
-    private boolean isLaserAvailable;
-    private boolean shockwaveAvailable;
+    private boolean isLaserEnabled;
+    private boolean shockwaveEnabled;
     private int points;
 
 
@@ -14,8 +14,8 @@ public class UCMSpaceship {
         this.column = initialColumn;
         this.row = initialRow;
         this.resistance = 3;
-        this.isLaserAvailable = false;
-        this.shockwaveAvailable = false;
+        this.isLaserEnabled = false;
+        this.shockwaveEnabled = false;
         this.points = 0;
     }
 
@@ -27,12 +27,12 @@ public class UCMSpaceship {
         this.points = points;
     }
 
-    public boolean isLaserAvailable() {
-        return isLaserAvailable;
+    public boolean isLaserEnabled() {
+        return isLaserEnabled;
     }
 
-    public boolean isShockwaveAvailable() {
-        return shockwaveAvailable;
+    public boolean isShockwaveEnabled() {
+        return shockwaveEnabled;
     }
 
     // Getter
@@ -56,25 +56,24 @@ public class UCMSpaceship {
         this.resistance = resistance;
     }
 
-    public boolean getLaserAvailable() {
-        return isLaserAvailable;
+    public boolean getLaserEnabled() {
+        return isLaserEnabled;
     }
 
     public boolean getShockwave(){
-        return shockwaveAvailable;
+        return shockwaveEnabled;
     }
 
-    public void setLaserAvailable(boolean laserAvailable) {
-        this.isLaserAvailable = laserAvailable;
+    public void setLaserEnabled(boolean laserEnabled) {
+        this.isLaserEnabled = laserEnabled;
     }
 
-    public void setShockwaveAvailable(boolean shockwaveAvailable){
-        this.shockwaveAvailable = shockwaveAvailable;
+    public void setShockwaveEnabled(boolean shockwaveEnabled){
+        this.shockwaveEnabled = shockwaveEnabled;
     }
 
     public int getResistance() {
         return resistance;
     }
 
-    // Other methods specific to UCMShip
 }

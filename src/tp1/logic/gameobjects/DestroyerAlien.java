@@ -1,9 +1,5 @@
 package tp1.logic.gameobjects;
 
-import tp1.logic.AlienManager;
-import tp1.logic.Game;
-import tp1.logic.Move;
-
 public class DestroyerAlien {
     private int row;
     private int col;
@@ -47,25 +43,10 @@ public class DestroyerAlien {
         return this.col = column;
     }
 
-
     public int getResistance() {
         return resistance;
     }
 
-    public void setResistance(int resistance) {
-        this.resistance = resistance;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
-
-    //TODO fill your code
 
     /**
      * Implements the automatic movement of the regular alien

@@ -59,22 +59,28 @@ public class Controller {
 							String direction = input[1].toLowerCase();
 							Move move = Move.NONE; // Default to no movement
 
-							if ("left".equals(direction)) {
-								move = Move.LEFT;
-								game.updateGame();
-							} else if ("lleft".equals(direction)) {
-								move = Move.LLEFT;
-								game.updateGame();
-							} else if ("right".equals(direction)) {
-								move = Move.RIGHT;
-								game.updateGame();
-							} else if ("rright".equals(direction)) {
-								move = Move.RRIGHT;
-								game.updateGame();
+							switch (direction) {
+								case "left" -> {
+									move = Move.LEFT;
+									game.updateGame();
+								}
+								case "lleft" -> {
+									move = Move.LLEFT;
+									game.updateGame();
+								}
+								case "right" -> {
+									move = Move.RIGHT;
+									game.updateGame();
+								}
+								case "rright" -> {
+									move = Move.RRIGHT;
+									game.updateGame();
+								}
 							}
 							game.moveUCMShip(move.getX(), move.getY());
 						}
 						break;
+					case "":
 					case "n":
 						game.updateGame();
 						break;
@@ -123,19 +129,4 @@ public class Controller {
 		}
 
 	}
-
-	/**
-	 * Draw / paint the game
-	 */
-	private void printGame() {
-		System.out.println(printer);
-	}
-	
-	/**
-	 * Prints the final message once the game is finished
-	 */
-	public void printEndMessage() {
-		System.out.println(printer.endMessage());
-	}
-	
 }

@@ -1,9 +1,5 @@
 package tp1.logic;
 
-/**
- * Represents the allowed levels in the game
- *
- */
 public enum Level {
 
 	EASY(4, 1, 2, 0.1, 3, 0.5), HARD(8, 2, 2, 0.3, 2, 0.2), INSANE(8, 2, 4, 0.5, 1, 0.1);
@@ -15,7 +11,7 @@ public enum Level {
 	private double ufoFrequency;
 	private double shootFrequency;
 
-	private Level(int numRegularAliens, int numRowsRegularAliens, 
+	Level(int numRegularAliens, int numRowsRegularAliens,
 			      int numDestroyerAliens, 
 			      double shootFrequency, int numCyclesToMoveOneCell,
 			      double ufoFrequency) {
@@ -27,24 +23,10 @@ public enum Level {
 		this.ufoFrequency = ufoFrequency;
 	}
 
-	
-	//TODO fill your code
-
-	/**
-	 * Returns UFO frequency corresponding the Level
-	 * @return UFO Frequency
-	 */
 	public double getUfoFrequency() {
 		return ufoFrequency;
 	}
-	
 
-	/**
-	 * Parse a string and return any matching level
-	 * 
-	 * @param param string to parse
-	 * @return the parsed {@link Level} or <code>null</code> if none match.
-	 */
 	public static Level valueOfIgnoreCase(String param) {
 		for (Level level : Level.values())
 			if (level.name().equalsIgnoreCase(param))
@@ -52,14 +34,6 @@ public enum Level {
 		return null;
 	}
 
-	/**
-	 * Returns a string representation of all the levels joined with
-	 * <code>separator</code>
-	 * 
-	 * @param separator String used as separator
-	 * @return the string resulted from joining all levels using
-	 *         <code>separator</code>
-	 */
 	public static String all(String separator) {
 		StringBuilder sb = new StringBuilder();
 		for (Level level : Level.values())
@@ -67,9 +41,6 @@ public enum Level {
 		String allLevels = sb.toString();
 		return allLevels.substring(0, allLevels.length() - separator.length());
 	}
-
-	//getters setters
-
 
 	public int getNumRegularAliens() {
 		return numRegularAliens;

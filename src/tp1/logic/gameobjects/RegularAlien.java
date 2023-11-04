@@ -1,10 +1,5 @@
 package tp1.logic.gameobjects;
 
-import tp1.logic.AlienManager;
-import tp1.logic.Game;
-import tp1.logic.Move;
-import tp1.logic.Position;
-
 /**
  * 
  * Class representing a regular alien
@@ -18,10 +13,6 @@ public class RegularAlien {
 	private int points;
 	public static boolean movingLeft = true;
 	private	boolean shouldDescend = false;
-	private int cyclesToMove;
-	private int speed;
-	private Move dir;
-	private AlienManager alienManager;
 
 	public RegularAlien(int row, int col) {
 		this.row = row;
@@ -39,7 +30,6 @@ public class RegularAlien {
 		this.points = points;
 	}
 
-	//TODO fill your code
 	public int getRow() {
 		return row;
 	}
@@ -61,51 +51,10 @@ public class RegularAlien {
 		return resistance;
 	}
 
-	public void setResistance(int resistance) {
-		this.resistance = resistance;
-	}
-
-	public int getDamage() {
-		return damage;
-	}
-
-	public void setDamage(int damage) {
-		this.damage = damage;
-	}
-
-
-	//TODO fill your code
 
 	/**
 	 * Implements the automatic movement of the regular alien
 	 */
-
-	//new isInBorder to check if it is right in the border, not if its outside or w/e
-	private boolean isInBorder() {
-		return (col == 0 || col == 8 || row == 8);
-	}
-
-	public void automaticMove() {
-		if (!shouldDescend) {
-			if (movingLeft) {
-				this.setColumn(this.getColumn() - 1);
-				if (isInBorder()) {
-					movingLeft = false;
-					shouldDescend = true; // Set the flag to descend in the next cycle
-				}
-			} else {
-				this.setColumn(this.getColumn() + 1);
-				if (isInBorder()) {
-					movingLeft = true;
-					shouldDescend = true; // Set the flag to descend in the next cycle
-				}
-			}
-		} else {
-			descent(); // Descend in the current cycle
-			shouldDescend = false; // Reset the flag for the next cycle
-		}
-
-	}
 
 	public void moveRight(){
 		if (this.getResistance() > 0) {
@@ -117,10 +66,6 @@ public class RegularAlien {
 		if (this.getResistance() > 0) {
 			this.setColumn(this.getColumn() - 1);
 		}
-	}
-
-	private void descent() {
-		this.setRow(this.getRow() + 1);
 	}
 
 

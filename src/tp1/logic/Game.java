@@ -1,14 +1,10 @@
 package tp1.logic;
 
 import tp1.logic.gameobjects.*;
-import tp1.logic.lists.BombList;
-import tp1.logic.lists.RegularAlienList;
 import tp1.view.Messages;
 
-import java.util.Calendar;
 import java.util.Random;
 
-// TODO implementarlo
 public class Game {
     public static final int DIM_X = 9;
     public static final int DIM_Y = 8;
@@ -34,9 +30,8 @@ public class Game {
         alienManager.initializeDestroyerAliens();
         //initialize D.aliens
 
-        ufo = new Ufo(8,5);
+        ufo = new Ufo(8,0);
         ufo.setGame(this);
-        //ufo.setEnabled(true);
         cycles = 0; //initialise cycles to 0
     }
 
@@ -51,7 +46,7 @@ public class Game {
     }
 
     public void restartUFO(){
-        ufo = new Ufo(8,5);
+        ufo = new Ufo(8,0);
         ufo.setGame(this);
     }
 
@@ -63,7 +58,7 @@ public class Game {
         return "Life: " + ucmShip.getResistance() + "\n" +
                 "Points: " + ucmShip.getPoints()
                  + "\n" +
-                "shockWave: " + (ucmShip.isShockwaveAvailable() ? "ON" : "OFF")
+                "shockWave: " + (ucmShip.isShockwaveEnabled() ? "ON" : "OFF")
                 + "\n";
     }
 
@@ -84,20 +79,14 @@ public class Game {
     }
 
     public void shootLaser() {
-        if (ucmShip.getLaserAvailable()) {
+        if (ucmShip.getLaserEnabled()) {
             System.out.println("There's already a laser on the screen!");
         } else {
-            ucmShip.setLaserAvailable(true);
+            ucmShip.setLaserEnabled(true);
             ucmLaser = new UCMLaser(ucmShip.getRow(), ucmShip.getColumn(), Move.UP);
         }
     }
 
-//    public void shootBomb(){
-//        if (!destroyerAlien.isBombAvailable()){
-//            destroyerAlien.setBombAvailable(true);
-//            bomb = new Bomb(destroyerAlien.getRow() + 1, destroyerAlien.getColumn());
-//        }
-//    }
 
     // check if it is a valid board position.
     boolean isValidPosition(int column, int row) {
@@ -118,12 +107,10 @@ public class Game {
     }
 
     public int getCycle() {
-        //TODO fill your code
         return cycles;
     }
 
     public int getRemainingAliens() {
-        //TODO fill your code
         return 0;
     }
 
@@ -144,7 +131,7 @@ public class Game {
             }
 
             // Check if there's a laser on the specified position
-            if (ucmShip.getLaserAvailable() && ucmLaser != null && ucmLaser.getRow() == row && ucmLaser.getColumn() == col) {
+            if (ucmShip.getLaserEnabled() && ucmLaser != null && ucmLaser.getRow() == row && ucmLaser.getColumn() == col) {
                 return Messages.LASER_SYMBOL;
             }
 
@@ -187,7 +174,6 @@ public class Game {
 
     public void updateGame(){ //do all the update per cycle logic here
         incrementCycles();
-
         UFOComputerActions();
 
         if (ucmLaser != null && !laserShotObject && !ucmLaser.isOut()){
@@ -196,7 +182,7 @@ public class Game {
 
         alienManager.bombCollisionShip(ucmShip);
 
-        if (ucmShip.getLaserAvailable()) {
+        if (ucmShip.getLaserEnabled()) {
             alienManager.bombCollisionLaser(ucmLaser);
             alienIsShot();
         }
@@ -239,18 +225,18 @@ public class Game {
             ucmShip.setPoints(ucmShip.getPoints() + ufo.getPoints());
 
             if (!ucmShip.getShockwave()) { //once its dead enable the shockwave
-                ucmShip.setShockwaveAvailable(true);
+                ucmShip.setShockwaveEnabled(true);
             }
 
             // get rid of laser
-            ucmShip.setLaserAvailable(false);
+            ucmShip.setLaserEnabled(false);
             ucmLaser = null;
         }
     }
 
     public void shockWave(){ //shockwave logic, after used set it to "off" again
         alienManager.dealShockwaveDamage();
-        ucmShip.setShockwaveAvailable(false);
+        ucmShip.setShockwaveEnabled(false);
     }
 
 }

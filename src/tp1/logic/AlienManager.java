@@ -1,7 +1,6 @@
 package tp1.logic;
 
 import tp1.logic.gameobjects.*;
-import tp1.logic.lists.BombList;
 import tp1.logic.lists.DestroyerAlienList;
 import tp1.logic.lists.RegularAlienList;
 
@@ -16,8 +15,6 @@ public class AlienManager {
 	private Level level;
 	private Game game;
 	private int remainingAliens;
-	private boolean squadInFinalRow;
-	private int shipsOnBorder;
 	private boolean onBorder;
 	private boolean shouldDescend;
 	private RegularAlienList regularAlienList;
@@ -31,7 +28,6 @@ public class AlienManager {
 
 	public AlienManager(Game game, Level level, UCMSpaceship ucmSpaceship) {
 		this.level = level;
-/*		this.bombList = new BombList(level.getNumDestroyerAliens()); */
 		this.game = game;
 		this.ucmSpaceship = ucmSpaceship;
 		this.remainingAliens = 0;
@@ -82,15 +78,7 @@ public class AlienManager {
 		return list;
 	}
 
-	
-	// CONTROL METHODS
-		
-	public void shipOnBorder() {
-		if(!onBorder) {
-			onBorder = true;
-			shipsOnBorder = remainingAliens;
-		}
-	}
+
 
 	public boolean onBorder() { //check if any alien is on the border
 		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
@@ -153,20 +141,20 @@ public class AlienManager {
 
 	public void tryShooting() {
 		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
-		for (DestroyerAlien da : destroyerAliens) {
-			da.moveBomb();
+		for (DestroyerAlien destroyerAlien : destroyerAliens) {
+			destroyerAlien.moveBomb();
 			if (shootChance())
-				da.enableBomb();
+				destroyerAlien.enableBomb();
 		}
 	}
 
 	public void bombCollisionLaser(UCMLaser laser){
 		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
-		for (DestroyerAlien da : destroyerAliens) {
-			if (da.getBomb() != null && da.getBomb().getRow() == laser.getRow() && da.getBomb().getColumn() == laser.getColumn()) {
-				da.setBomb(null);
-				da.setBombAvailable(false);
-				game.getUcmShip().setLaserAvailable(false);
+		for (DestroyerAlien destroyerAlien : destroyerAliens) {
+			if (destroyerAlien.getBomb() != null && destroyerAlien.getBomb().getRow() == laser.getRow() && destroyerAlien.getBomb().getColumn() == laser.getColumn()) {
+				destroyerAlien.setBomb(null);
+				destroyerAlien.setBombAvailable(false);
+				game.getUcmShip().setLaserEnabled(false);
 				Game.laserShotObject = true;
 			}
 		}
@@ -190,7 +178,7 @@ public class AlienManager {
 		for (RegularAlien regularAlien : regularAliens ){
 			if (regularAlien.getResistance() > 0 && ucmLaser.getRow() == regularAlien.getRow() && ucmLaser.getColumn() == regularAlien.getColumn()){
 				regularAlien.receiveAttack();
-				game.getUcmShip().setLaserAvailable(false); //check
+				game.getUcmShip().setLaserEnabled(false); //check
 				Game.laserShotObject = true;
 				ucmSpaceship.setPoints(ucmSpaceship.getPoints() + regularAlien.getPoints());
 			}
@@ -199,7 +187,7 @@ public class AlienManager {
 		for (DestroyerAlien destroyerAlien : destroyerAliens ){
 			if (destroyerAlien.getResistance() > 0 && ucmLaser.getRow() == destroyerAlien.getRow() && ucmLaser.getColumn() == destroyerAlien.getColumn()){
 				destroyerAlien.receiveAttack();
-				game.getUcmShip().setLaserAvailable(false); //check
+				game.getUcmShip().setLaserEnabled(false); //check
 				Game.laserShotObject = true;
 				ucmSpaceship.setPoints(ucmSpaceship.getPoints() + destroyerAlien.getPoints());
 			}
@@ -207,14 +195,14 @@ public class AlienManager {
 	}
 
 	public void enableLaser(UCMLaser ucmLaser){ //check if the laser is available
-		if (game.isValidPosition(ucmLaser.getColumn(), ucmLaser.getRow()) && game.getUcmShip().getLaserAvailable()) {
+		if (game.isValidPosition(ucmLaser.getColumn(), ucmLaser.getRow()) && game.getUcmShip().getLaserEnabled()) {
 			ucmLaser.performLaserMovement();
 			if (ucmLaser.isOut()){
-				game.getUcmShip().setLaserAvailable(false);
+				game.getUcmShip().setLaserEnabled(false);
 			}
 			Game.laserShotObject = false;
 		} else {
-			game.getUcmShip().setLaserAvailable(true);
+			game.getUcmShip().setLaserEnabled(true);
 		}
 	}
 
@@ -265,12 +253,7 @@ public class AlienManager {
                 break;
             }
 		}
-
-		if (regularDead && destroyerDead){
-			return true;
-		}
-
-		return false;
+		return regularDead && destroyerDead;
 	}
 
 	public RegularAlien getRegularAlienAtPosition(int row, int col) {

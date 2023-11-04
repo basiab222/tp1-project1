@@ -10,7 +10,7 @@ public enum Move {
 	private int x;
 	private int y;
 	
-	private Move(int x, int y) {
+	Move(int x, int y) {
 		this.x=x;
 		this.y=y;
 	}
