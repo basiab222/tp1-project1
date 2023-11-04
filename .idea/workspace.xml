@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a8c8e18b-d412-465d-95ac-60027667e805" name="Changes" comment="finally it shoots omg">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/AlienManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/logic/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +106,8 @@
       <workItem from="1699037257795" duration="5012000" />
       <workItem from="1699044050104" duration="567000" />
       <workItem from="1699044635257" duration="935000" />
-      <workItem from="1699092184343" duration="1764000" />
+      <workItem from="1699092184343" duration="2663000" />
+      <workItem from="1699096604637" duration="296000" />
     </task>
     <task id="LOCAL-00001" summary="board game">
       <created>1696433074166</created>
@@ -157,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699093091100</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="finally it shoots omg">
+      <option name="closed" value="true" />
+      <created>1699094345434</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699094345434</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

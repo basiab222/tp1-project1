@@ -165,7 +165,6 @@ public class Game {
         }
     }
 
-
     public boolean playerWin() {
         return alienManager.playerWin();
     }
@@ -195,6 +194,7 @@ public class Game {
             enableLaser();
         } //only call this when there is a laser on screen, so can move before that
 
+        alienManager.bombCollisionShip(ucmShip);
 
         if (ucmShip.getLaserAvailable()) {
             alienManager.bombCollisionLaser(ucmLaser);

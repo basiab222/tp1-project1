@@ -206,6 +206,17 @@ public class AlienManager {
 		}
 	}
 
+	public void bombCollisionShip(UCMSpaceship ucmShip){
+		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
+		for (DestroyerAlien da : destroyerAliens) {
+			if (da.getBomb() != null && da.getBomb().getRow() == ucmShip.getRow() && da.getBomb().getColumn() == ucmShip.getColumn()) {
+				da.setBomb(null);
+				da.setBombAvailable(false);
+				ucmShip.setResistance(ucmShip.getResistance() - 1);
+			}
+		}
+	}
+
 	public void alienIsShot(UCMLaser ucmLaser){
 		RegularAlien[] regularAliens = regularAlienList.getRegularAliens();
 		DestroyerAlien[] destroyerAliens = destroyerAlienList.getDestroyerAliens();
